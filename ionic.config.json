@@ -1,0 +1,7 @@
+{
+  "name": "JobSeekerApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title class="textHome">Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+  
+  <ion-card *ngFor="let item of dataSet" id="home">
+      <img src="assets/imgs/logo.png" class="poto"/>
+      <ion-card-content>
+        <ion-card-title [innerHTML]="item.companyname | linky"></ion-card-title>
+          <strong><p [innerHTML]="item.judul_loker | linky"></p></strong> <!-- username dari field di database-->
+          <hr/>
+         <p [innerHTML]="item.deskripsi_loker| linky" id="descloker"></p>
+         <span>{{ convertTime(item.created) | amTimeAgo}}</span> <!--feed dari nama field didatabase-->
+         <hr/>
+         <button ion-button full>Apply with my CV</button>
+         <hr/>
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>

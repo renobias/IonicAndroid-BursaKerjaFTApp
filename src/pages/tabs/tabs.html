@@ -1,0 +1,25 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="gotoAbout()">
+      About Us                       
+      </button>
+      <button ion-item (click)="logout()">
+       Logout
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="TabsPage"></ion-nav>
+
+<ion-tabs>
+  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" [tabBadge]="countbadge" tabBadgeStyle="danger"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Notification" tabBadge=4 tabBadgeStyle="danger" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Profil" tabIcon="contacts"></ion-tab>
+</ion-tabs>

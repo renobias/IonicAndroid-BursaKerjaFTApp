@@ -1,0 +1,79 @@
+<!--
+  Generated template for the HomecompanyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title class="textHome">Home</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-nav id="menucompany" #content [root]="HomePage"></ion-nav>
+
+
+<ion-content padding class="foto-feed">
+    <button ion-button full outline>Filter</button>
+    <ion-list>
+        <ion-item>
+          <ion-label>Jurusan</ion-label>
+          <ion-select [(ngModel)]="jurusan" multiple="true">
+            <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
+            <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
+            <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
+            <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      
+      <ion-list>
+          <ion-item>
+            <ion-label>Program Studi</ion-label>
+            <ion-select [(ngModel)]="prodi" multiple="true">
+              <ion-option value="bacon" selected="true">Bacon</ion-option>
+              <ion-option value="olives">Black Olives</ion-option>
+              <ion-option value="xcheese" selected="true">Extra Cheese</ion-option>
+              <ion-option value="peppers">Green Peppers</ion-option>
+              <ion-option value="mushrooms">Mushrooms</ion-option>
+              <ion-option value="onions">Onions</ion-option>
+              <ion-option value="pepperoni">Pepperoni</ion-option>
+              <ion-option value="pineapple">Pineapple</ion-option>
+              <ion-option value="sausage">Sausage</ion-option>
+              <ion-option value="Spinach">Spinach</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+
+    
+<ion-card>
+  <ion-card-content>
+    <h5>Available</h5>
+      <div>
+          <img src="assets/imgs/poto2.jpg">
+          </div>
+          <h1>Rizky Amalia</h1>
+          <h3>Prodi Pendidikan Informatika</h3>
+          <h4>Universitas Negeri Jakarta</h4><hr/>
+          <p>Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.</p>
+          <button ion-button full color="green" outline>Hire</button>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+    <ion-card-content>
+      <h5>Available</h5>
+        <div>
+            <img src="assets/imgs/poto2.jpg">
+            </div>
+            <h1>Rizky Amalia</h1>
+            <h3>Prodi Pendidikan Informatika</h3>
+            <h4>Universitas Negeri Jakarta</h4><hr/>
+            <p>Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.</p>
+            <button ion-button full color="green" outline>Hire</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

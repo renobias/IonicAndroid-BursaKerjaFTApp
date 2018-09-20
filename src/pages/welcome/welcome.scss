@@ -1,0 +1,40 @@
+page-welcome {
+#welcome{
+    background: color($colors, bgwelcome);
+    h1{
+        font-size: 52px;
+        margin-top:50px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		color: white;
+		text-align: center;
+    }
+    .marginTop{
+        margin-top:150px;
+    }
+}
+
+	.action-sheets-basic-page {
+    img{
+      height: 20vh;
+     margin: auto;
+      align-items: center;
+      display: block;
+    }
+
+  .ion-md-share {
+    color: #ED4248;
+  }
+  .ion-md-arrow-dropright-circle {
+    color: #508AE4;
+  }
+  .ion-md-heart-outline {
+    color: #31D55F;
+  }
+  .action-sheet-cancel ion-icon,
+  .action-sheet-destructive ion-icon {
+    color: #757575;
+  }
+}
+	
+}
+
