@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { NavController,App,AlertController } from 'ionic-angular';
+import { NavController,App,AlertController, Item } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LinkyModule } from 'angular-linky';
 import { Common } from "../../providers/auth-service/common";
@@ -15,6 +15,8 @@ export class HomePage {
   public dataSet: any;
   public noRecords: boolean;
 
+  searchQuery: string = '';
+  items: string[];
   
 	
   userPostData = {"user_id":"","token":""};
@@ -22,11 +24,13 @@ export class HomePage {
   constructor( public navCtrl: NavController,public authService:AuthServiceProvider, public app:App,public Common: Common,public alertCtrl: AlertController) {
     const data = JSON.parse(localStorage.getItem('userData'));
     this.userDetails = data.userData;
+
     
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
   
     this.getFeed();
+    this.initializeItems();
   }
 
 
@@ -90,6 +94,30 @@ convertTime(created) {
 }
 
 
+initializeItems() {
+  return this.userPostData;
+}
 
 
+getItems(ev: any) {
+
+  this.initializeItems();
+  let val = ev.target.value;
+
+  if (val && val.trim() != '') {
+      this.authService.postData(this.userPostData, "feedLoker").then(
+          result => {
+              this.resposeData = result;
+              if (this.resposeData.feedData) {
+                  this.dataSet = this.resposeData.feedData.filter((item) => {
+                      return (item.companyname.toLowerCase().indexOf(val.toLowerCase()) > -1);
+                  })
+              }else {
+                  console.log("No access");
+              }
+          },
+      );
+    }
+  }
+    
 }

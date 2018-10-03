@@ -1,14 +1,62 @@
 page-profilalumni {
-	.gambarprofile{
-		   height: 50vw; 
-     width: 50vw; 
-    border: 2px solid #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 5px gray;
-    display: inline-block;
-    margin-left: 19vw;
-		margin-top: 10px;
-  
-		
-	}
+  .foto-feed{
+
+    .tombol-rekrut{
+        margin-top: 10%;
+    }
+
+    .kartu{
+        margin-top:10%;
+    }
+
+    img{
+        height: 20vh;
+        width: 20vh;
+       margin: auto;
+       margin-top:3vh;
+       margin-bottom:-25%;
+        align-items: center;
+        display: block;
+        border-radius: 50%;
+      }
+
+ 
+
+    p{
+        text-align: justify;
+        margin-bottom: 2vh;
+    }
+    hr {
+        border: none;
+        height: 2px;
+    }
+
+    h5{
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    #biodata{
+        margin-top: 25%;
+        .text-prodi{
+            font-weight: bold;
+            font-size: 2.5vh;
+        }
+    }
+
+    hr {
+        border: none;
+        height: 4px;
+    } 
+    
+    .teks-tebel{
+        font-weight: bold;
+    }
+
+    .judul-kotak{
+        font-size: 18px;
+    }
+    
+    }
+
 }

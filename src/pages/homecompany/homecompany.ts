@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import { MenuCompanyPage} from '../menu-company/menu-company';
+import { NgModule } from '@angular/core';
+import { ProfilHireAlumniPage } from '../profil-hire-alumni/profil-hire-alumni';
 /**
  * Generated class for the HomecompanyPage page.
  *
@@ -13,6 +15,7 @@ import { MenuCompanyPage} from '../menu-company/menu-company';
   selector: 'page-homecompany',
   templateUrl: 'homecompany.html',
 })
+
 export class HomecompanyPage {
 
   menuCtrl: any;
@@ -23,6 +26,10 @@ export class HomecompanyPage {
     console.log('ionViewDidLoad HomecompanyPage');
   }
 
-  
+  infolengkap(){
+    this.navCtrl.push(ProfilHireAlumniPage);
+  }
 
 }
+
+

@@ -32,7 +32,7 @@ openMenuSignup() {
 		cssClass: 'action-sheets-basic-page',
      buttons: [
        {
-         text: 'Mahasiswa / Alumni',
+         text: 'Pencari kerja',
          role: 'destructive',
          handler: () => {
           this.navCtrl.push(SignupPage, {}, {animate: true});
@@ -64,7 +64,7 @@ openMenuSignup() {
      title: 'Login sebagai',
      buttons: [
        {
-         text: 'Mahasiswa / Alumni',
+         text: 'Pencari kerja',
          role: 'destructive',
          handler: () => {
           this.navCtrl.push(LoginPage, {}, {animate: true});

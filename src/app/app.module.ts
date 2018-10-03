@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { HomecompanyPage } from '../pages/homecompany/homecompany';
+
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsCompanyPage } from '../pages/tabs-company/tabs-company';
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -28,7 +28,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { Common } from "../providers/auth-service/common";
+
 import{HttpModule} from '@angular/http';
+
+import { HomecompanyPageModule } from '../pages/homecompany/homecompany.module';
+import { LoginPageModule  } from '../pages/login/login.module';
+import { LogincompanyPageModule  } from '../pages/logincompany/logincompany.module';
+import { MenuPageModule  } from '../pages/menu/menu.module';
+import { MenuCompanyPageModule  } from '../pages/menu-company/menu-company.module';
+import { MycompanyLokerPageModule  } from '../pages/mycompany-loker/mycompany-loker.module';
+import { NotifCompanyPageModule  } from '../pages/notif-company/notif-company.module';
+import { NotificationJobSeekerPageModule  } from '../pages/notification-job-seeker/notification-job-seeker.module';
+import { ProfilCompanyPageModule  } from '../pages/profil-company/profil-company.module';
+import { ProfilalumniPageModule  } from '../pages/profilalumni/profilalumni.module';
+import { SignupPageModule } from '../pages/signup/signup.module';
+import { SignupcompanyPageModule  } from '../pages/signupcompany/signupcompany.module';
+import { WelcomePageModule  } from '../pages/welcome/welcome.module';
+import { ProfilHireAlumniPageModule  } from '../pages/profil-hire-alumni/profil-hire-alumni.module';
+
 
 @NgModule({
   declarations: [
@@ -36,24 +53,15 @@ import{HttpModule} from '@angular/http';
     AboutPage,
     ContactPage,
     HomePage,
-    HomecompanyPage,
     TabsPage,
     TabsCompanyPage,
-	  WelcomePage,
-	  SignupPage,
-    LoginPage,
-    MenuPage,
-    NotificationJobSeekerPage,
-    ProfilalumniPage,
-    LogincompanyPage,
-    SignupcompanyPage,
-    NotifCompanyPage,
-    ProfilCompanyPage,
-    MenuCompanyPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),HttpModule,LinkyModule,MomentModule
+    IonicModule.forRoot(MyApp),HttpModule,LinkyModule,MomentModule,HomecompanyPageModule,
+    LoginPageModule,LogincompanyPageModule,MenuPageModule,MenuCompanyPageModule, MycompanyLokerPageModule,
+    NotifCompanyPageModule,NotificationJobSeekerPageModule,ProfilCompanyPageModule,ProfilalumniPageModule,
+    SignupPageModule,SignupcompanyPageModule, WelcomePageModule,ProfilHireAlumniPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,20 +69,8 @@ import{HttpModule} from '@angular/http';
     AboutPage,
     ContactPage,
     HomePage,
-    HomecompanyPage,
     TabsPage,
     TabsCompanyPage,
-	  WelcomePage,
-	  SignupPage,
-    LoginPage,
-    MenuPage,
-    NotificationJobSeekerPage,
-    ProfilalumniPage,
-    LogincompanyPage,
-    SignupcompanyPage,
-    ProfilCompanyPage,
-    NotifCompanyPage,
-    MenuCompanyPage 
   ],
   providers: [
     StatusBar,

@@ -1,4 +1,5 @@
 page-homecompany {
+    /**
 .foto-feed{
     img{
         height: 20vh;
@@ -11,7 +12,7 @@ page-homecompany {
       }
 
     h1{
-        margun-top:10vh;
+        margin-top:10vh;
         text-align: center;
     }
     h3{
@@ -35,4 +36,27 @@ page-homecompany {
     }
 
     }
+*/
+#card-pk{
+    margin-bottom: 0px;
+}
+#btn-more{
+    margin-top: 0px;
+    width: 96.5%;
+    margin-left: 2%;
+}
+    hr {
+        border: none;
+        height: 4px;
+    }
+    
+    .margin-kriteria{
+        border-bottom: 4px solid whitesmoke;
+    }
+    
+    .tom-fil{
+        height:95%;
+        width: 100%;
+    }
+    
 }

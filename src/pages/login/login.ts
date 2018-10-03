@@ -18,7 +18,7 @@ import { Common } from "../../providers/auth-service/common";
 })
 export class LoginPage {
 responseData : any ;
-  userData = {"username":"", "password":""};
+  userData = {"username":"", "password":"" };
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,public authService:AuthServiceProvider,private toastCtrl:ToastController,public Common: Common) {
   
   }
@@ -33,30 +33,28 @@ responseData : any ;
       //Api connections
     this.authService.postData(this.userData, "login").then((result) =>{
     this.responseData = result;
-    if(this.responseData.userData){
-      console.log(this.responseData);
-      localStorage.setItem('userData', JSON.stringify(this.responseData) )
-      this.navCtrl.push(TabsPage);
-      this.Common.closeLoading();
-      
-      const alert = this.alertCtrl.create({
-        title: 'Welcome',
-        subTitle: this.userData.username,
-        buttons: ['OK']
-      });
-      alert.present();
+        if(this.responseData.userData){
+          console.log(this.responseData);
+          localStorage.setItem('userData', JSON.stringify(this.responseData) )
+          this.navCtrl.push(TabsPage);
+          this.Common.closeLoading();
+          
+          const alert = this.alertCtrl.create({
+            title: 'Welcome',
+            subTitle: this.userData.username,
+            buttons: ['OK']
+          });
 
-    }
-    else{
+          alert.present();
+
+        }else{
       this.Common.closeLoading();
       this.presentToast("Please give valid username and password");
-    }
-    
-    }, (err) => {
+      }
+      }, (err) => {
       //Connection failed message
-    });
-  }
-  else {
+      });
+    }else{
     this.Common.closeLoading();
     console.log("Give valid information.");
     this.presentToast("Silahkan isi username dan password terlebih dahulu");
