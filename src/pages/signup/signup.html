@@ -13,7 +13,7 @@
     </ion-card-header>
     <ion-card-content>
       
-        <ion-list radio-group>
+        <ion-list radio-group [(ngModel)]="userData.JenisDaftarPK">
             <ion-label stacked>
               Mendaftar sebagai
             </ion-label>
@@ -31,7 +31,7 @@
 
       <ion-list>
         <ion-item>
-          <ion-label stacked>Nama lengkap</ion-label>
+          <ion-label stacked>Nama</ion-label>
           <ion-input type="text" [(ngModel)]="userData.name"></ion-input>
         </ion-item>
 
@@ -50,31 +50,8 @@
           <ion-input type="password"  [(ngModel)]="userData.password"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Ulangi password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Tempat lahir</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Tanggal lahir</ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-        </ion-item>
-
-        <ion-list>
-          <ion-item>
-            <ion-label stacked>Jenis kelamin</ion-label>
-            <ion-select>
-              <ion-option value="nes">Laki-laki</ion-option>
-              <ion-option value="n64">Perempuan</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-
+        <h1>{{userData.JenisDaftarPK}}</h1>
+        <!--
         <ion-list>
           <ion-item>
             <ion-label stacked>Program studi</ion-label>
@@ -85,25 +62,12 @@
           </ion-item>
         </ion-list>
 
+
         <ion-item>
           <ion-label stacked>Tahun lulus</ion-label>
           <ion-datetime displayFormat="YYYY"></ion-datetime>
         </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Alamat</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Kode pos</ion-label>
-          <ion-input type="number"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Nomor telepon</ion-label>
-          <ion-input type="number"></ion-input>
-        </ion-item>
+        -->
 
         <button ion-button full color="success" (click)="signup()">Sign up</button>
         sudah punya akun? <a href="#" (click)="login()">Login</a>

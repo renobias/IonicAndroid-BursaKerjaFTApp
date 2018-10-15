@@ -46,9 +46,11 @@ export class HomePage {
      this.Common.closeLoading();
 }
 
+
+
 getFeed(){
   this.Common.presentLoading();
-  this.authService.postData(this.userPostData, 'feedLoker')
+  this.authService.postData(this.userPostData, 'feedPK')
   .then((result) => {
     this.resposeData = result;
     if (this.resposeData.feedData) {
@@ -60,6 +62,8 @@ getFeed(){
   });
 }
 
+
+/** 
 doInfinite(e): Promise<any> {
   console.log("Begin async operation");
   return new Promise(resolve => {
@@ -88,6 +92,8 @@ doInfinite(e): Promise<any> {
   });
 }
 
+*/
+
 convertTime(created) {
   let date = new Date(created * 1000);
   return date;
@@ -99,18 +105,19 @@ initializeItems() {
 }
 
 
+
 getItems(ev: any) {
 
   this.initializeItems();
   let val = ev.target.value;
 
   if (val && val.trim() != '') {
-      this.authService.postData(this.userPostData, "feedLoker").then(
+      this.authService.postData(this.userPostData, "feedPK").then(
           result => {
               this.resposeData = result;
               if (this.resposeData.feedData) {
                   this.dataSet = this.resposeData.feedData.filter((item) => {
-                      return (item.companyname.toLowerCase().indexOf(val.toLowerCase()) > -1);
+                      return (item.nama_lengkap.toLowerCase().indexOf(val.toLowerCase()) > -1);
                   })
               }else {
                   console.log("No access");
@@ -119,5 +126,6 @@ getItems(ev: any) {
       );
     }
   }
+
     
 }

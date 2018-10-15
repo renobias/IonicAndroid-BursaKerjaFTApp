@@ -1,0 +1,44 @@
+<!--
+  Generated template for the AfterSignupMahasiswaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>after-signup-mahasiswa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1>hello {{userDetails.username}}, selamat anda telah terdaftar sebagai pencari kerja dengan status mahasiswa di bursa kerja ft unj, isi data dibawah agar orang-orang tahu darimana kamu berasal</h1>
+  <ion-list inset>
+    <ion-item>
+      <ion-label>Nama lengkap</ion-label>
+      <ion-input type="text" [(ngModel)]="afterSignupData.namaLengkap"></ion-input>
+      <hr/>
+    </ion-item>
+  
+    <ion-list>
+      <ion-item>
+        <ion-label>Program studi</ion-label>
+        <ion-select [(ngModel)]="afterSignupData.programstudi">
+          <ion-option value="nes">Pendidikan Informatika</ion-option>
+          <ion-option value="n64">Pendidikan vokasional elektro</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-item>
+      <ion-label>Tahun lulus</ion-label>
+      <ion-datetime displayFormat="YYYY" [(ngModel)]="afterSignupData.tahunlulus"></ion-datetime>
+    </ion-item>
+  
+  </ion-list>
+
+  <button ion-button (click)="keHome()">Next</button>
+</ion-content>

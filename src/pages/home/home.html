@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-<h1>Welcome {{userDetails.username}}</h1>
+<!--<h1>Welcome {{userDetails.username}}</h1>-->
   
 <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
@@ -91,8 +91,13 @@
 </ion-card>
 </ion-grid>
 
+<ion-list>
+  <ion-item *ngFor="let item of items">
+    {{ item }}
+  </ion-item>
+</ion-list>
 
-<ion-grid>
+<ion-grid *ngFor="let item of dataSet">
     <ion-row>
       <ion-col col-12 no-padding no-margin>
         <ion-card id="card-pk">
@@ -102,7 +107,7 @@
               Nama
             </ion-col>
             <ion-col col-6>
-              Reno
+              <h3 [innerHTML]="item.nama_lengkap | linky"></h3>
               </ion-col>
           </ion-row>
           <ion-row>
@@ -110,22 +115,22 @@
                 Program Studi
               </ion-col>
               <ion-col col-6>
-                P.Informatika
+                <h3 [innerHTML]="item.prodi | linky"></h3>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col col-6>
-                  Keahlian
+                  Tahun lulus
                 </ion-col>
                 <ion-col col-6>
-                  Mobile Developer
+                  <h3 [innerHTML]="item.tahun_lulus | linky"></h3>
                   </ion-col>
               </ion-row>
               <hr/>
 
             <ion-row>
               <ion-col col-5>
-                  <img src="assets/imgs/poto2.jpg">
+                  <img src="assets/imgs/Foto Profil Dark.jpg">
               </ion-col>
               <ion-col col-7>
                   <p text-center>
@@ -146,25 +151,26 @@
   </ion-grid>
 
 
-
+<!--
     <ion-list>
       <ion-item *ngFor="let item of items">
         {{ item }}
       </ion-item>
     </ion-list>
   
+    
   <ion-card *ngFor="let item of dataSet" id="home">
       <img src="assets/imgs/logo.png" class="poto"/>
       <ion-card-content>
         <ion-card-title [innerHTML]="item.companyname | linky"></ion-card-title>
-          <strong><p [innerHTML]="item.judul_loker | linky"></p></strong> <!-- username dari field di database-->
+          <strong><p [innerHTML]="item.judul_loker | linky"></p></strong> username dari field di database
           <hr/>
          <p [innerHTML]="item.deskripsi_loker| linky" id="descloker"></p>
-         <span>{{ convertTime(item.created) | amTimeAgo}}</span> <!--feed dari nama field didatabase-->
+         <span>{{ convertTime(item.created) | amTimeAgo}}</span> feed dari nama field didatabase
          <hr/>
          <button ion-button full>Apply with my CV</button>
          <hr/>
       </ion-card-content>
     </ion-card>
-
+  -->
 </ion-content>

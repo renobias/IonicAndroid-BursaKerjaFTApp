@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
-let apiUrl = 'http://localhost/WebService-BursaKerja/api/';
+let apiUrl = 'http://localhost/WebService-BursaKerja-final/api/';
 /*
   Generated class for the AuthServiceProvider provider.
 

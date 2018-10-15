@@ -15,16 +15,16 @@
 
 
 <ion-content padding class="foto-feed">
-    <img src="assets/imgs/poto2.jpg">
-    <ion-card>
+    <img src="assets/imgs/Foto Profil Dark.jpg">
+    <ion-card *ngFor="let item of dataSet">
         <ion-card-content>
           <div id="biodata">
-          <h1 text-center>Reno Biastomo</h1>
-          <h3 text-center class="text-prodi">Prodi Pendidikan Informatika</h3>
-          <h4 text-center>Lulus tahun 2018</h4>
+          <h1 text-center [innerHTML]="item.nama_lengkap"></h1>
+          <h3 text-center class="text-prodi" [innerHTML]="item.prodi"></h3>
+          <h4 text-center>lulus tahun {{item.tahun_lulus}}</h4>
           <hr/>
-          <h5 text-right>tentang saya</h5>
-          <p>
+          <h5 text-center>tentang saya</h5>
+          <p [innerHTML]="item.ttg_saya">
               Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.
           </p>
           </div>
@@ -34,52 +34,93 @@
       <ion-card class="kartu">
         <ion-card-content>
           <h3 text-center class="teks-tebel">status</h3>
-          <h1 text-center>tidak sedang bekerja</h1>
+          <h2 text-center>tidak sedang bekerja</h2>
           <hr/>
           <h3 text-center class="teks-tebel">status pencarian kerja</h3>
           <h2 text-center>sedang mencari pekerjaan</h2>
         </ion-card-content>
       </ion-card>
 
-      <ion-card>
+      <ion-card class="kartu" *ngFor="let item of dataSet">
           <ion-card-header>
             Biodata
           </ion-card-header>
+          <hr/>
         
           <ion-list>
-            <button ion-item>
-              <ion-icon name="cart" item-start></ion-icon>
-              Shopping
-            </button>
-        
-            <button ion-item>
-              <ion-icon name="medical" item-start></ion-icon>
-              Hospital
-            </button>
-        
-            <button ion-item>
-              <ion-icon name="cafe" item-start></ion-icon>
-              Cafe
-            </button>
-        
-            <button ion-item>
-              <ion-icon name="paw" item-start></ion-icon>
-              Dog Park
-            </button>
-        
-            <button ion-item>
-              <ion-icon name="beer" item-start></ion-icon>
-              Pub
-            </button>
-        
-            <button ion-item>
-              <ion-icon name="planet" item-start></ion-icon>
-              Space
-            </button>
+            <ion-item>
+              <ion-icon name="person" item-start></ion-icon>
+              <h2 class="teks-tebel">Nama lengkap</h2>
+              <h4 [innerHTML]="item.nama_lengkap"></h4>
+              <hr/>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name="cafe" item-start></ion-icon>
+                <h2 class="teks-tebel">Tempat lahir</h2>
+                <h4 [innerHTML]="item.tempat_lahir">belum ada</h4>
+                <hr/>
+              </ion-item>
+          
+              <ion-item>
+                  <ion-icon name="cafe" item-start></ion-icon>
+                  <h2 class="teks-tebel">Tanggal lahir</h2>
+                  <h4 [innerHTML]="item.tgl_lahir"></h4>
+                  <hr/>
+                </ion-item>
+
+                <ion-item>
+                    <ion-icon name="cafe" item-start></ion-icon>
+                    <h2 class="teks-tebel">Jenis kelamin</h2>
+                    <h4 border-bottom="solid 5px" [innerHTML]="item.jenis_kelamin">Pria</h4>
+                    <hr/>
+                  </ion-item>
+               
+
+                  <ion-item>
+                      <ion-icon name="cafe" item-start></ion-icon>
+                      <h2 class="teks-tebel">Jenis Pendaftar</h2>
+                      <h4 [innerHTML]="item.jenis_pendaftar"></h4>
+                  </ion-item>
         
           </ion-list>
         </ion-card>
 
+        <ion-card class="kartu" *ngFor="let item of dataSet">
+            <ion-card-header>
+              Kontak
+            </ion-card-header>
+            <hr/>
+          
+            <ion-list>
+              <ion-item>
+                <ion-icon name="cafe" item-start></ion-icon>
+                <h2 class="teks-tebel">Alamat</h2>
+                <p [innerHTML]="item.alamat"></p>
+                <hr/>
+              </ion-item>
+  
+              <ion-item>
+                  <ion-icon name="cafe" item-start></ion-icon>
+                  <h2 class="teks-tebel">Kodepos</h2>
+                  <h4 [innerHTML]="item.kodepos"></h4>
+                  <hr/>
+                </ion-item>
+            
+                <ion-item>
+                    <ion-icon name="call" item-start></ion-icon>
+                    <h2 class="teks-tebel">No telepon</h2>
+                    <h4 [innerHTML]="item.no_telp"></h4>
+                  </ion-item>
+                
+                  <ion-item>
+                      <ion-icon name="mail" item-start></ion-icon>
+                      <h2 class="teks-tebel">email</h2>
+                      <h4 [innerHTML]="item.email"></h4>
+                    </ion-item>
+          
+            </ion-list>
+          </ion-card>
 
       <ion-card class="kartu">
         <ion-card-content>
@@ -124,4 +165,32 @@
             </ion-grid>
           </ion-card-content>
         </ion-card>
+
+        <div *ngFor="let item of dataSet">
+        <ion-card class="kartu">
+          <ion-card-content>
+            <h1 text-center class="teks-tebel judul-kotak">Rieayat Pendidikan</h1>
+            <hr/>
+            <h1 text-center [innerHTML]="item.riw_pendidikan">lorem ipsum</h1>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="kartu">
+          <ion-card-content>
+            <h1 text-center class="teks-tebel judul-kotak">Riwayat Pelatihan</h1>
+            <hr/>
+            <h1 text-center [innerHTML]="item.riw_pelatihan">lorem ipsum</h1>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="kartu">
+          <ion-card-content>
+            <h1 text-center class="teks-tebel judul-kotak">Portofolio</h1>
+            <hr/>
+            <h1 text-center [innerHTML]="item.portofolio">lorem ipsum</h1>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+       <button ion-button full class="tombol-rekrut">Rekrut menjadi pegawai</button>
 </ion-content>

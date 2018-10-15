@@ -1,62 +1,60 @@
 page-profilalumni {
-  .foto-feed{
+    .foto-feed{
 
-    .tombol-rekrut{
-        margin-top: 10%;
-    }
-
-    .kartu{
-        margin-top:10%;
-    }
-
-    img{
-        height: 20vh;
-        width: 20vh;
-       margin: auto;
-       margin-top:3vh;
-       margin-bottom:-25%;
-        align-items: center;
-        display: block;
-        border-radius: 50%;
-      }
-
- 
-
-    p{
-        text-align: justify;
-        margin-bottom: 2vh;
-    }
-    hr {
-        border: none;
-        height: 2px;
-    }
-
-    h5{
-        font-style: italic;
-        font-weight: bold;
-    }
-
-    #biodata{
-        margin-top: 25%;
-        .text-prodi{
-            font-weight: bold;
-            font-size: 2.5vh;
+        .tombol-rekrut{
+            margin-top: 10%;
         }
-    }
 
-    hr {
-        border: none;
-        height: 4px;
-    } 
+        .kartu{
+            margin-top:10%;
+        }
+
+        img{
+            height: 20vh;
+            width: 20vh;
+           margin: auto;
+           margin-top:3vh;
+           margin-bottom:-25%;
+            align-items: center;
+            display: block;
+            border-radius: 50%;
+          }
     
-    .teks-tebel{
-        font-weight: bold;
-    }
+     
 
-    .judul-kotak{
-        font-size: 18px;
-    }
-    
-    }
+        p{
+            text-align: justify;
+            margin-bottom: 2vh;
+        }
+        hr {
+            border: none;
+            height: 2px;
+        }
 
+        h5{
+            font-weight: bold;
+        }
+
+        #biodata{
+            margin-top: 25%;
+            .text-prodi{
+                font-weight: bold;
+                font-size: 2.5vh;
+            }
+        }
+
+        hr {
+            border: none;
+            height: 4px;
+        } 
+        
+        .teks-tebel{
+            font-weight: bold;
+        }
+
+        .judul-kotak{
+            font-size: 18px;
+        }
+        
+        }
 }

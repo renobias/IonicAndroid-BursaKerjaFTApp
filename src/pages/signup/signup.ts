@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams,ToastController, AlertController } 
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { AfterSignupPencarikerjaPage } from '../after-signup-pencarikerja/after-signup-pencarikerja';
+import { AfterSignupMahasiswaPage } from '../after-signup-mahasiswa/after-signup-mahasiswa';
 /**
  * Generated class for the SignupPage page.
  *
@@ -17,17 +19,22 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class SignupPage {
   responseData : any ;
-  userData = {"username":"", "password":"","email":"","name":""};
-  constructor(public alertCtrl: AlertController,public navCtrl : NavController, public authService : AuthServiceProvider, private toastCtrl:ToastController) {}
+  alumni:any;
+  userData = {"username":"", "password":"","email":"","name":"","JenisDaftarPK":""};
+  constructor(public alertCtrl: AlertController,public navCtrl : NavController, public authService : AuthServiceProvider, private toastCtrl:ToastController) {
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Signup');
   }
 
   signup() {
-    if(this.userData.username && this.userData.password && this.userData.email && this.userData.name){
+    if(this.userData.username && this.userData.password && this.userData.email){
+      this.alumni="alumni";
+      console.log(this.alumni);
       //Api connections
-    this.authService.postData(this.userData, "signup").then((result) =>{
+    this.authService.postData(this.userData, "signuppencarikerja").then((result) =>{
     this.responseData = result;
     if(this.responseData.userData){
       console.log(this.responseData);
@@ -37,8 +44,12 @@ export class SignupPage {
         subTitle: this.userData.name,
         buttons: ['OK']
       });
-      alert.present();
-      this.navCtrl.push(TabsPage);
+      if(this.userData.JenisDaftarPK==this.alumni){
+        alert.present();
+      this.navCtrl.push(AfterSignupPencarikerjaPage);
+      }else if(this.userData.JenisDaftarPK=="mahasiswa"){
+        this.navCtrl.push(AfterSignupMahasiswaPage);
+      }
     }
     else{
       this.presentToast("Please give valid username and password");
@@ -48,6 +59,7 @@ export class SignupPage {
       //Connection failed message
     });
   }
+
   else {
     console.log("Give valid information.");
   }
@@ -66,6 +78,10 @@ login() {
       duration: 2000
     });
     toast.present();
+  }
+
+  tessignup(){
+    this.navCtrl.push(AfterSignupPencarikerjaPage);
   }
 
 }

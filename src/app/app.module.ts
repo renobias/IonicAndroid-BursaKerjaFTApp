@@ -45,7 +45,8 @@ import { SignupPageModule } from '../pages/signup/signup.module';
 import { SignupcompanyPageModule  } from '../pages/signupcompany/signupcompany.module';
 import { WelcomePageModule  } from '../pages/welcome/welcome.module';
 import { ProfilHireAlumniPageModule  } from '../pages/profil-hire-alumni/profil-hire-alumni.module';
-
+import { AfterSignupPencarikerjaPageModule  } from '../pages/after-signup-pencarikerja/after-signup-pencarikerja.module';
+import { AfterSignupMahasiswaPageModule} from '../pages/after-signup-mahasiswa/after-signup-mahasiswa.module';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ProfilHireAlumniPageModule  } from '../pages/profil-hire-alumni/profil-
     IonicModule.forRoot(MyApp),HttpModule,LinkyModule,MomentModule,HomecompanyPageModule,
     LoginPageModule,LogincompanyPageModule,MenuPageModule,MenuCompanyPageModule, MycompanyLokerPageModule,
     NotifCompanyPageModule,NotificationJobSeekerPageModule,ProfilCompanyPageModule,ProfilalumniPageModule,
-    SignupPageModule,SignupcompanyPageModule, WelcomePageModule,ProfilHireAlumniPageModule
+    SignupPageModule,SignupcompanyPageModule, WelcomePageModule,ProfilHireAlumniPageModule,AfterSignupPencarikerjaPageModule,
+    AfterSignupMahasiswaPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
