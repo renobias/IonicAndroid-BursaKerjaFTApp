@@ -47,7 +47,13 @@ import { WelcomePageModule  } from '../pages/welcome/welcome.module';
 import { ProfilHireAlumniPageModule  } from '../pages/profil-hire-alumni/profil-hire-alumni.module';
 import { AfterSignupPencarikerjaPageModule  } from '../pages/after-signup-pencarikerja/after-signup-pencarikerja.module';
 import { AfterSignupMahasiswaPageModule} from '../pages/after-signup-mahasiswa/after-signup-mahasiswa.module';
-
+import {EditStatusPkPageModule} from '../pages/edit-status-pk/edit-status-pk.module';
+import {EditIntroPkPageModule} from '../pages/edit-intro-pk/edit-intro-pk.module';
+import {EditBiodataPkPageModule} from '../pages/edit-biodata-pk/edit-biodata-pk.module';
+import {EditKontakPkPageModule} from '../pages/edit-kontak-pk/edit-kontak-pk.module';
+import {EditPortofolioPkPageModule} from '../pages/edit-portofolio-pk/edit-portofolio-pk.module';
+import {EditRiwpenPkPageModule} from '../pages/edit-riwpen-pk/edit-riwpen-pk.module';
+import {EditRiwpelPkPageModule} from '../pages/edit-riwpel-pk/edit-riwpel-pk.module';
 @NgModule({
   declarations: [
     MyApp,
@@ -63,7 +69,8 @@ import { AfterSignupMahasiswaPageModule} from '../pages/after-signup-mahasiswa/a
     LoginPageModule,LogincompanyPageModule,MenuPageModule,MenuCompanyPageModule, MycompanyLokerPageModule,
     NotifCompanyPageModule,NotificationJobSeekerPageModule,ProfilCompanyPageModule,ProfilalumniPageModule,
     SignupPageModule,SignupcompanyPageModule, WelcomePageModule,ProfilHireAlumniPageModule,AfterSignupPencarikerjaPageModule,
-    AfterSignupMahasiswaPageModule
+    AfterSignupMahasiswaPageModule,EditStatusPkPageModule,EditIntroPkPageModule,EditBiodataPkPageModule,EditKontakPkPageModule,
+    EditPortofolioPkPageModule,EditRiwpenPkPageModule,EditRiwpelPkPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

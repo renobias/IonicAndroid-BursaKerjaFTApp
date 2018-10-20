@@ -62,16 +62,19 @@ openMenuSignup() {
 
 	let actionSheet = this.actionSheetCtrl.create({
      title: 'Login sebagai',
+     cssClass: 'action-sheets-basic-page',
      buttons: [
        {
          text: 'Pencari kerja',
          role: 'destructive',
+         cssClass : 'acsheetlogin',
          handler: () => {
           this.navCtrl.push(LoginPage, {}, {animate: true});
          }
        },
        {
          text: 'Perusahaan',
+         cssClass : 'acsheetlogin',
          handler: () => {
           this.navCtrl.push(LogincompanyPage, {}, {animate: true});
          }

@@ -1,9 +1,20 @@
 page-profilalumni {
     .foto-feed{
-
+        .bg{
+            background-image:
+            url(/assets/imgs/batik.png);
+            background-size: contain;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
         .tombol-rekrut{
             margin-top: 10%;
         }
+
+        .text-center-select{
+            text-align: center;
+            max-width: 100% !important;
+            }
 
         .kartu{
             margin-top:10%;
@@ -13,7 +24,7 @@ page-profilalumni {
             height: 20vh;
             width: 20vh;
            margin: auto;
-           margin-top:3vh;
+           margin-top:-17px;
            margin-bottom:-25%;
             align-items: center;
             display: block;
@@ -36,7 +47,7 @@ page-profilalumni {
         }
 
         #biodata{
-            margin-top: 25%;
+            margin-top: 15%;
             .text-prodi{
                 font-weight: bold;
                 font-size: 2.5vh;

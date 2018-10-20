@@ -13,63 +13,91 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding class="foto-feed">
+  <div class="bg">
     <img src="assets/imgs/Foto Profil Dark.jpg">
-    <ion-card *ngFor="let item of dataSet">
+  </div>
+    <ion-card *ngFor="let item of dataSet" >
+      <button ion-button clear (click)="editintro()">
+        <ion-icon name="create" isActive="false"></ion-icon> 
+        </button>
         <ion-card-content>
           <div id="biodata">
           <h1 text-center [innerHTML]="item.nama_lengkap"></h1>
           <h3 text-center class="text-prodi" [innerHTML]="item.prodi"></h3>
           <h4 text-center>lulus tahun {{item.tahun_lulus}}</h4>
           <hr/>
+          <div *ngIf="item.ttg_saya">
           <h5 text-center>tentang saya</h5>
           <p [innerHTML]="item.ttg_saya">
               Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.
           </p>
           </div>
+          </div>
         </ion-card-content>
       </ion-card>
 
-      <ion-card class="kartu">
+      <ion-card class="kartu" *ngFor="let item of dataSet2">
+        <ion-item>
+          <button ion-button clear item-end (click)="editstatus()">
+              <ion-icon name="create" isActive="false"></ion-icon> 
+              </button>
+              </ion-item>
         <ion-card-content>
           <h3 text-center class="teks-tebel">status</h3>
-          <h2 text-center>tidak sedang bekerja</h2>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-12>
+                      <h2 class="text-center-select">{{item.status_kerja}}</h2>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
           <hr/>
           <h3 text-center class="teks-tebel">status pencarian kerja</h3>
-          <h2 text-center>sedang mencari pekerjaan</h2>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-12>
+                 <h2 class="text-center-select">{{item.status_pencarian_kerja}}</h2>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card-content>
       </ion-card>
 
       <ion-card class="kartu" *ngFor="let item of dataSet">
-          <ion-card-header>
+        <ion-item>
+          <ion-card-header item-start>
             Biodata
           </ion-card-header>
+          <button ion-button clear item-end (click)="editbiodata()">
+              <ion-icon name="create" isActive="false"></ion-icon> 
+              </button>
+              </ion-item>
           <hr/>
         
           <ion-list>
-            <ion-item>
+            <ion-item *ngIf="item.nama_lengkap">
               <ion-icon name="person" item-start></ion-icon>
               <h2 class="teks-tebel">Nama lengkap</h2>
               <h4 [innerHTML]="item.nama_lengkap"></h4>
               <hr/>
             </ion-item>
 
-            <ion-item>
+            <ion-item *ngIf="item.tempat_lahir">
                 <ion-icon name="cafe" item-start></ion-icon>
                 <h2 class="teks-tebel">Tempat lahir</h2>
                 <h4 [innerHTML]="item.tempat_lahir">belum ada</h4>
                 <hr/>
               </ion-item>
           
-              <ion-item>
+              <ion-item *ngIf="item.tgl_lahir">
                   <ion-icon name="cafe" item-start></ion-icon>
                   <h2 class="teks-tebel">Tanggal lahir</h2>
                   <h4 [innerHTML]="item.tgl_lahir"></h4>
                   <hr/>
                 </ion-item>
 
-                <ion-item>
+                <ion-item *ngIf="item.jenis_kelamin">
                     <ion-icon name="cafe" item-start></ion-icon>
                     <h2 class="teks-tebel">Jenis kelamin</h2>
                     <h4 border-bottom="solid 5px" [innerHTML]="item.jenis_kelamin">Pria</h4>
@@ -77,7 +105,7 @@
                   </ion-item>
                
 
-                  <ion-item>
+                  <ion-item *ngIf="item.jenis_pendaftar">
                       <ion-icon name="cafe" item-start></ion-icon>
                       <h2 class="teks-tebel">Jenis Pendaftar</h2>
                       <h4 [innerHTML]="item.jenis_pendaftar"></h4>
@@ -87,42 +115,49 @@
         </ion-card>
 
         <ion-card class="kartu" *ngFor="let item of dataSet">
-            <ion-card-header>
-              Kontak
-            </ion-card-header>
+          <ion-list>
+            <ion-item>
+                <ion-card-header>
+                    Kontak
+                  </ion-card-header>
+                  <button ion-button clear item-end (click)="editkontak()">
+                      <ion-icon name="create" isActive="false"></ion-icon> 
+                      </button>
+            </ion-item>
+          </ion-list>
             <hr/>
           
             <ion-list>
-              <ion-item>
+              <ion-item *ngIf="item.alamat">
                 <ion-icon name="cafe" item-start></ion-icon>
                 <h2 class="teks-tebel">Alamat</h2>
                 <p [innerHTML]="item.alamat"></p>
                 <hr/>
               </ion-item>
   
-              <ion-item>
+              <ion-item *ngIf="item.kodepos">
                   <ion-icon name="cafe" item-start></ion-icon>
                   <h2 class="teks-tebel">Kodepos</h2>
                   <h4 [innerHTML]="item.kodepos"></h4>
                   <hr/>
                 </ion-item>
             
-                <ion-item>
+                <ion-item *ngIf="item.no_telp">
                     <ion-icon name="call" item-start></ion-icon>
                     <h2 class="teks-tebel">No telepon</h2>
                     <h4 [innerHTML]="item.no_telp"></h4>
                   </ion-item>
                 
-                  <ion-item>
+                  <ion-item *ngIf="item.email">
                       <ion-icon name="mail" item-start></ion-icon>
                       <h2 class="teks-tebel">email</h2>
                       <h4 [innerHTML]="item.email"></h4>
                     </ion-item>
-          
             </ion-list>
           </ion-card>
 
-      <ion-card class="kartu">
+    <div *ngFor="let item of dataSet2">
+      <ion-card class="kartu" *ngIf="item.id_bidang_pekerjaan_fk">
         <ion-card-content>
           <h1 text-center class="teks-tebel judul-kotak">Bidang pekerjaan</h1>
           <hr/>
@@ -130,7 +165,7 @@
         </ion-card-content>
       </ion-card>
 
-      <ion-card class="kartu">
+      <ion-card class="kartu" *ngIf="item.id_bidang_keahlian_fk_1">
           <ion-card-content>
             <h1 text-center class="teks-tebel judul-kotak">Bidang keahlian</h1>
             <hr/>
@@ -165,28 +200,50 @@
             </ion-grid>
           </ion-card-content>
         </ion-card>
+      </div>
 
         <div *ngFor="let item of dataSet">
-        <ion-card class="kartu">
+        <ion-card class="kartu" *ngIf="item.riw_pendidikan">
+            <ion-item>
+                <ion-card-header item-start>
+                  Riwayat Pendidikan
+                </ion-card-header>
+                <button ion-button clear item-end (click)="editriwpen()">
+                    <ion-icon name="create" isActive="false"></ion-icon> 
+                    </button>
+                    </ion-item>
+                    <hr/>
           <ion-card-content>
-            <h1 text-center class="teks-tebel judul-kotak">Rieayat Pendidikan</h1>
-            <hr/>
             <h1 text-center [innerHTML]="item.riw_pendidikan">lorem ipsum</h1>
           </ion-card-content>
         </ion-card>
 
-        <ion-card class="kartu">
+        <ion-card class="kartu" *ngIf="item.riw_pelatihan">
+            <ion-item>
+                <ion-card-header item-start>
+                  Riwayat Platihan
+                </ion-card-header>
+                <button ion-button clear item-end (click)="editriwpel()">
+                    <ion-icon name="create" isActive="false"></ion-icon> 
+                    </button>
+                    </ion-item>
+                    <hr/>
           <ion-card-content>
-            <h1 text-center class="teks-tebel judul-kotak">Riwayat Pelatihan</h1>
-            <hr/>
             <h1 text-center [innerHTML]="item.riw_pelatihan">lorem ipsum</h1>
           </ion-card-content>
         </ion-card>
 
-        <ion-card class="kartu">
+        <ion-card class="kartu" *ngIf="item.portofolio">
+            <ion-item>
+                <ion-card-header item-start>
+                  Portofolio
+                </ion-card-header>
+                <button ion-button clear item-end (click)="editportofolio()">
+                    <ion-icon name="create" isActive="false"></ion-icon> 
+                    </button>
+                    </ion-item>
+                    <hr/>
           <ion-card-content>
-            <h1 text-center class="teks-tebel judul-kotak">Portofolio</h1>
-            <hr/>
             <h1 text-center [innerHTML]="item.portofolio">lorem ipsum</h1>
           </ion-card-content>
         </ion-card>
