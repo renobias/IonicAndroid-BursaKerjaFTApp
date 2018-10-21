@@ -17,23 +17,23 @@
   <ion-list>
     <ion-item>
         <ion-label stacked>Alamat</ion-label>
-        <ion-textarea rows="3" maxLength="500"></ion-textarea>
+        <ion-textarea rows="3" maxLength="150" [(ngModel)]="userPostData.alamat"></ion-textarea>
       </ion-item>
 
       <ion-item>
           <ion-label stacked>Kode pos</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-input type="number" [(ngModel)]="userPostData.kodepos"></ion-input>
         </ion-item>
       
         <ion-item>
             <ion-label stacked>No Telepon</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="userPostData.no_telp"></ion-input>
         </ion-item>
         
           <ion-item>
               <ion-label stacked>email</ion-label>
-              <ion-input type="email"></ion-input>
+              <ion-input type="email" [(ngModel)]="userPostData.email"></ion-input>
             </ion-item>
     </ion-list>
-    <button ion-button full>Simpan</button>
+    <button ion-button full (click)="simpanKontak()">Simpan</button>
 </ion-content>

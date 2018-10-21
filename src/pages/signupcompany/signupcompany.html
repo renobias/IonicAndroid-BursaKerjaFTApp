@@ -21,26 +21,26 @@
     <ion-card-content>
       <ion-list>
         <ion-item>
-          <ion-label stacked>Name</ion-label>
-          <ion-input type="text" ></ion-input>
+          <ion-label stacked>Name pemegang akun</ion-label>
+          <ion-input type="text" [(ngModel)]="userData.name"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label stacked>Email</ion-label>
-          <ion-input type="text"  ></ion-input>
+          <ion-label stacked>Email pemegang akun</ion-label>
+          <ion-input type="text" [(ngModel)]="userData.email"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label stacked>Username</ion-label>
-          <ion-input type="text" ></ion-input>
+          <ion-label stacked>Username pemegang akun</ion-label>
+          <ion-input type="text" [(ngModel)]="userData.username"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Password</ion-label>
-          <ion-input type="password"  ></ion-input>
+          <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
         </ion-item>
 
-        <button ion-button full color="success" >Sign up</button>
+        <button ion-button full color="success" (click)="signupperusahaan()">Sign up</button>
         sudah punya akun? <a href="#" >Login</a>
       </ion-list>
     </ion-card-content>

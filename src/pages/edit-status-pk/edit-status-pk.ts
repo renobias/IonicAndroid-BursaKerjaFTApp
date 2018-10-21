@@ -46,9 +46,9 @@ userPostData={"user_id":"","token":"","status":"","statusPK":""};
         }, (err) => {
           //Connection failed message
         });
-    }else{
-      this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu 2");
-    }
+      }else{
+        this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu ");
+      }
   }
 
   presentToast(msg) {

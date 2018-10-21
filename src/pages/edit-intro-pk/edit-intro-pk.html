@@ -22,7 +22,9 @@
 
     <ion-item>
         <ion-label stacked>Tentang saya</ion-label>
-        <ion-textarea rows="3" maxLength="500"></ion-textarea>
+        <ion-textarea rows="3" maxLength="1000" [(ngModel)]="userPostData.ttg_saya"></ion-textarea>
       </ion-item>
     </ion-list>
+
+  <button ion-button full (click)="simpanIntro()">Simpan</button>
 </ion-content>

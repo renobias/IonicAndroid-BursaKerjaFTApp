@@ -17,6 +17,7 @@ import {ProfilalumniPage} from '../profilalumni/profilalumni';
   templateUrl: 'edit-biodata-pk.html',
 })
 export class EditBiodataPkPage {
+  toastCtrl: any;
   userPostData={"user_id":"","token":"","nama_lengkap":"","tmpt_lahir":"","tgl_lahir":"","jenkel":""};
   userDetails:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthServiceProvider,public Common: Common,public alertCtrl: AlertController) {
@@ -31,6 +32,7 @@ export class EditBiodataPkPage {
   }
 
   simpanBiodata(){
+    if(this.userPostData.nama_lengkap&&this.userPostData.tmpt_lahir&&this.userPostData.tgl_lahir&&this.userPostData.jenkel){
       this.authService.postData(this.userPostData, "editbiodataPK").then((result) =>{
           const alert = this.alertCtrl.create({
             title: 'Tersimpan',
@@ -42,5 +44,13 @@ export class EditBiodataPkPage {
         }, (err) => {
           //Connection failed message
         });
+      }else{
+        this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu ");
+      }
+    }
+
+    presentToast(msg) {
+      let toast = this.toastCtrl.create({message: msg,duration: 2000});
+      toast.present();
     }
 }

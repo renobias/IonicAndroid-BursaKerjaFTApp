@@ -54,6 +54,7 @@ import {EditKontakPkPageModule} from '../pages/edit-kontak-pk/edit-kontak-pk.mod
 import {EditPortofolioPkPageModule} from '../pages/edit-portofolio-pk/edit-portofolio-pk.module';
 import {EditRiwpenPkPageModule} from '../pages/edit-riwpen-pk/edit-riwpen-pk.module';
 import {EditRiwpelPkPageModule} from '../pages/edit-riwpel-pk/edit-riwpel-pk.module';
+import { AfterSignupPerusahaanPageModule } from '../pages/after-signup-perusahaan/after-signup-perusahaan.module';
 @NgModule({
   declarations: [
     MyApp,
@@ -70,7 +71,7 @@ import {EditRiwpelPkPageModule} from '../pages/edit-riwpel-pk/edit-riwpel-pk.mod
     NotifCompanyPageModule,NotificationJobSeekerPageModule,ProfilCompanyPageModule,ProfilalumniPageModule,
     SignupPageModule,SignupcompanyPageModule, WelcomePageModule,ProfilHireAlumniPageModule,AfterSignupPencarikerjaPageModule,
     AfterSignupMahasiswaPageModule,EditStatusPkPageModule,EditIntroPkPageModule,EditBiodataPkPageModule,EditKontakPkPageModule,
-    EditPortofolioPkPageModule,EditRiwpenPkPageModule,EditRiwpelPkPageModule
+    EditPortofolioPkPageModule,EditRiwpenPkPageModule,EditRiwpelPkPageModule,AfterSignupPerusahaanPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
