@@ -6,233 +6,185 @@
 -->
 <ion-header>
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title class="textHome">Home</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-nav id="menucompany" #content [root]="HomePage"></ion-nav>
 
 
-<ion-content padding class="foto-feed">
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-   
-    <ion-grid>
-      <ion-card>
+  <ion-grid>
+    <ion-card>
       <ion-row class="margin-kriteria">
         <ion-col col-8 no-padding no-margin>
-            <h1 margin="10%">Kriteria</h1>
+          <h1 margin="10%">Kriteria</h1>
         </ion-col>
         <ion-col col-4 no-padding no-margin>
-            <button ion-button class="tom-fil">filter</button>
+          <button ion-button class="tom-fil">filter</button>
         </ion-col>
       </ion-row>
-    
+
       <ion-row>
         <ion-col col-12>
-            <ion-list>
-                <ion-item>
-                  <ion-label>Program Studi</ion-label>
-                  <ion-select [(ngModel)]="jurusan">
-                    <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
-                    <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
-                    <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
-                    <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
-                  </ion-select>
-                </ion-item>
-              </ion-list>
+          <ion-list>
+            <ion-item>
+              <ion-label>Program Studi</ion-label>
+              <ion-select [(ngModel)]="jurusan">
+                <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
+                <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
         </ion-col>
       </ion-row>
-    
-    
-      <ion-row>
-          <ion-col col-12>
-              <ion-list>
-                  <ion-item>
-                    <ion-label>Bidang</ion-label>
-                    <ion-select>
-                      <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
-                      <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
-                      <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
-                      <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
-                    </ion-select>
-                  </ion-item>
-                </ion-list>
-          </ion-col>
-        </ion-row>
-    
-        <ion-row>
-            <ion-col col-12>
-                <ion-list>
-                    <ion-item>
-                      <ion-label>Lulusan</ion-label>
-                      <ion-select>
-                        <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
-                        <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
-                        <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
-                        <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
-                      </ion-select>
-                    </ion-item>
-                  </ion-list>
-            </ion-col>
-          </ion-row>
-    
-          <ion-row>
-              <ion-col col-12>
-                  <ion-list>
-                      <ion-item>
-                        <ion-label>Tahun lulus</ion-label>
-                        <ion-select>
-                          <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
-                          <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
-                          <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
-                          <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
-                        </ion-select>
-                      </ion-item>
-                    </ion-list>
-              </ion-col>
-            </ion-row>
-    
-    </ion-card>
-    </ion-grid>
 
-    <ion-grid>
+
       <ion-row>
-        <ion-col col-12 no-padding no-margin>
-          <ion-card id="card-pk">
-            <ion-card-content>
+        <ion-col col-12>
+          <ion-list>
+            <ion-item>
+              <ion-label>Bidang</ion-label>
+              <ion-select>
+                <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
+                <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-list>
+            <ion-item>
+              <ion-label>Lulusan</ion-label>
+              <ion-select>
+                <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
+                <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-list>
+            <ion-item>
+              <ion-label>Tahun lulus</ion-label>
+              <ion-select>
+                <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
+                <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
+                <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  </ion-list>
+
+  <ion-grid *ngFor="let item of dataSet; let i=index;">
+    <ion-row>
+      <ion-col col-12 no-padding no-margin>
+        <ion-card id="card-pk">
+          <ion-card-content>
+              <ion-row>
+                  <ion-col col-6>
+                    uidfk
+                  </ion-col>
+                  <ion-col col-6>
+                    <h3 [innerHTML]="item.user_id_fk"></h3>
+                  </ion-col>
+                </ion-row>
             <ion-row>
               <ion-col col-6>
                 Nama
               </ion-col>
               <ion-col col-6>
-                Reno
-                </ion-col>
+                <h3 [innerHTML]="item.nama_lengkap"></h3>
+              </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-6>
-                  Program Studi
-                </ion-col>
-                <ion-col col-6>
-                  P.Informatika
-                  </ion-col>
-              </ion-row>
-              <ion-row>
-                  <ion-col col-6>
-                    Keahlian
-                  </ion-col>
-                  <ion-col col-6>
-                    Mobile Developer
-                    </ion-col>
-                </ion-row>
-                <hr/>
+              <ion-col col-6>
+                Program Studi
+              </ion-col>
+              <ion-col col-6>
+                <h3 [innerHTML]="item.prodi"></h3>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6>
+                Tahun lulus
+              </ion-col>
+              <ion-col col-6>
+                <h3 [innerHTML]="item.tahun_lulus "></h3>
+              </ion-col>
+            </ion-row>
+            <hr/>
 
-              <ion-row>
-                <ion-col col-5>
-                    <img src="assets/imgs/poto2.jpg">
-                </ion-col>
-                <ion-col col-7>
-                    <p text-center>
-                        Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.
-                    </p>
-                  </ion-col>
-              </ion-row>
-              </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
+            <ion-row>
+              <ion-col col-5>
+                <img src="assets/imgs/Foto Profil Dark.jpg">
+              </ion-col>
+              <ion-col col-7>
+                <p text-center [innerHTML]="item.ttg_saya">
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-      <ion-row>
+    <ion-row>
         <ion-col col-12>
-          <Button id="btn-more" ion-button full (click)="infolengkap()">More</Button>
+          <Button id="btn-more" ion-button full (click)="more(i)">More</Button>
         </ion-col>
       </ion-row>
-    </ion-grid>
-   
-    <ion-grid>
-        <ion-row>
-          <ion-col col-12 no-padding no-margin>
-            <ion-card id="card-pk">
-              <ion-card-content>
-              <ion-row>
-                <ion-col col-6>
-                  Nama
-                </ion-col>
-                <ion-col col-6>
-                  Reno
-                  </ion-col>
-              </ion-row>
-              <ion-row>
-                  <ion-col col-6>
-                    Program Studi
-                  </ion-col>
-                  <ion-col col-6>
-                    P.Informatika
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col col-6>
-                      Keahlian
-                    </ion-col>
-                    <ion-col col-6>
-                      Mobile Developer
-                      </ion-col>
-                  </ion-row>
-                  <hr/>
-  
-                <ion-row>
-                  <ion-col col-5>
-                      <img src="assets/imgs/poto2.jpg">
-                  </ion-col>
-                  <ion-col col-7>
-                      <p text-center>
-                          Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.
-                      </p>
-                    </ion-col>
-                </ion-row>
-                </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-  
-        <ion-row>
-          <ion-col col-12>
-            <Button id="btn-more" ion-button full (click)="infolengkap()">More</Button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+  </ion-grid>
 
- <!--   
-<ion-card>
-  <ion-card-content>
-    <h5>Available</h5>
-      <div>
-          <img src="assets/imgs/poto2.jpg">
-          </div>
-          <h1>Rizky Amalia</h1>
-          <h3>Prodi Pendidikan Informatika</h3>
-          <h4>Design Grafis</h4><hr/>
-          <p>Saya seorang pekerja keras, saya suka menabung.</p>
-          <button ion-button full >Detail</button>
-  </ion-card-content>
-</ion-card>
 
-<ion-card>
-    <ion-card-content>
-      <h5>Available</h5>
-        <div>
-            <img src="assets/imgs/poto2.jpg">
-            </div>
-            <h1>Rizky Amalia</h1>
-            <h3>Prodi Pendidikan Informatika</h3>
-            <h4>Web Developer</h4><hr/>
-            <p>Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.Saya seorang pekerja keras, saya suka menabung, suka melakukan hal-hal seru.</p>
-            <button ion-button full  >Detail</button>
-    </ion-card-content>
-  </ion-card>
--->
-
+  <!--
+        <ion-list>
+          <ion-item *ngFor="let item of items">
+            {{ item }}
+          </ion-item>
+        </ion-list>
+      
+        
+      <ion-card *ngFor="let item of dataSet" id="home">
+          <img src="assets/imgs/logo.png" class="poto"/>
+          <ion-card-content>
+            <ion-card-title [innerHTML]="item.companyname | linky"></ion-card-title>
+              <strong><p [innerHTML]="item.judul_loker | linky"></p></strong> username dari field di database
+              <hr/>
+             <p [innerHTML]="item.deskripsi_loker| linky" id="descloker"></p>
+             <span>{{ convertTime(item.created) | amTimeAgo}}</span> feed dari nama field didatabase
+             <hr/>
+             <button ion-button full>Apply with my CV</button>
+             <hr/>
+          </ion-card-content>
+        </ion-card>
+      -->
 
 </ion-content>

@@ -4,6 +4,7 @@ import {TabsPage} from '../tabs/tabs';
 import {HomePage} from '../home/home';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Common } from "../../providers/auth-service/common";
+import { TabsCompanyPage } from '../tabs-company/tabs-company';
 /**
  * Generated class for the LoginPage page.
  *
@@ -34,19 +35,34 @@ responseData : any ;
     this.authService.postData(this.userData, "login").then((result) =>{
     this.responseData = result;
         if(this.responseData.userData){
-          console.log(this.responseData);
-          localStorage.setItem('userData', JSON.stringify(this.responseData) )
-          this.navCtrl.push(TabsPage);
-          this.Common.closeLoading();
-          
-          const alert = this.alertCtrl.create({
-            title: 'Welcome',
-            subTitle: this.userData.username,
-            buttons: ['OK']
-          });
-
-          alert.present();
-
+          if(this.responseData.userData.level=="pencari kerja"){
+            console.log(this.responseData);
+            localStorage.setItem('userData', JSON.stringify(this.responseData) );
+            this.navCtrl.push(TabsPage);
+            this.Common.closeLoading();
+            
+            const alert = this.alertCtrl.create({
+              title: 'Welcome',
+              subTitle: this.userData.username,
+              buttons: ['OK']
+            });
+  
+            alert.present();
+  
+          }else if(this.responseData.userData.level=="perusahaan"){
+            console.log(this.responseData);
+            localStorage.setItem('userData', JSON.stringify(this.responseData) );
+            this.navCtrl.push(TabsCompanyPage);
+            this.Common.closeLoading();
+            
+            const alert = this.alertCtrl.create({
+              title: 'Welcome',
+              subTitle: this.userData.username,
+              buttons: ['OK']
+            });
+  
+            alert.present();
+          }
         }else{
       this.Common.closeLoading();
       this.presentToast("Please give valid username and password");

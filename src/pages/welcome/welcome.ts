@@ -93,4 +93,8 @@ openMenuSignup() {
 
 }
 
+openLogin(){
+  this.navCtrl.push(LoginPage);
+}
+
 }
