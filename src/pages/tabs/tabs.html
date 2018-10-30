@@ -19,7 +19,7 @@
 <ion-nav id="nav" #content [root]="TabsPage"></ion-nav>
 
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" [tabBadge]="countbadge" tabBadgeStyle="danger"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Notification" tabBadge=4 tabBadgeStyle="danger" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" tabBadgeStyle="danger"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Notification" [tabBadge]="dataSet" tabBadgeStyle="danger" tabIcon="information-circle" (ionSelect)="resetBadge()"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Profil" tabIcon="contacts"></ion-tab>
 </ion-tabs>

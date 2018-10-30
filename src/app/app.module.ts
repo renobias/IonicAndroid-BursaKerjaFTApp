@@ -55,6 +55,7 @@ import {EditPortofolioPkPageModule} from '../pages/edit-portofolio-pk/edit-porto
 import {EditRiwpenPkPageModule} from '../pages/edit-riwpen-pk/edit-riwpen-pk.module';
 import {EditRiwpelPkPageModule} from '../pages/edit-riwpel-pk/edit-riwpel-pk.module';
 import { AfterSignupPerusahaanPageModule } from '../pages/after-signup-perusahaan/after-signup-perusahaan.module';
+import { ShareServiceProvider } from '../providers/share-service/share-service';
 @NgModule({
   declarations: [
     MyApp,
@@ -86,7 +87,8 @@ import { AfterSignupPerusahaanPageModule } from '../pages/after-signup-perusahaa
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider,Common
+    AuthServiceProvider,Common,
+    ShareServiceProvider
   ]
 })
 export class AppModule {}

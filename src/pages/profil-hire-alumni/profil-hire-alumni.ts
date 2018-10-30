@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Common } from '../../providers/auth-service/common';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { ShareServiceProvider } from '../../providers/share-service/share-service';
 
 /**
  * Generated class for the ProfilHireAlumniPage page.
@@ -18,38 +19,46 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 export class ProfilHireAlumniPage {
   public resposeData: any;
   public dataSet: any;
+  public dataSetNotif: any;
   public userDetails: any;
   public userDetailstest: any;
+  public notifDetails:any;
 
   public resposeData2: any;
+  public resposeDataNotif: any;
   public dataSet2: any;
   public tmpt_lahir: String;
   userPostData2 = { "user_id": "", "token": "","user_id_fk":"" };
-  userPostData = { "user_id": "", "token": "","user_id_fk":"" };
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public Common: Common,
     public alertCtrl: AlertController,
-    public authService: AuthServiceProvider
+    public authService: AuthServiceProvider,
+    public shareService: ShareServiceProvider,
+    private toastCtrl:ToastController
   ) {
     this.tmpt_lahir = "";
     const testdata = JSON.parse(localStorage.getItem("feedData"));
     const data = JSON.parse(localStorage.getItem("userData"));
-    const data2 = localStorage.getItem("uidIdentifier");
+    const dataIDFeedUser = localStorage.getItem("uidIdentifier");
+    const dataNotif = localStorage.getItem("notifData");
     
     this.userDetailstest = testdata.feedData;
     this.userDetails = data.userData;
+    this.notifDetails=dataNotif;
 
-    this.userPostData.user_id = this.userDetails.user_id;
-    this.userPostData.token = this.userDetails.token;
+    shareService.userPostData.user_id = this.userDetails.user_id;
+    shareService.userPostData.token = this.userDetails.token;
 
     this.userPostData2.user_id = this.userDetails.user_id;
     this.userPostData2.token = this.userDetails.token;
-    this.userPostData.user_id_fk = this.userDetailstest[data2].user_id_fk;
-    this.userPostData2.user_id_fk = this.userDetailstest[data2].user_id_fk;
-    console.log(this.userDetailstest);
+
+    shareService.userPostData.user_id_fk = this.userDetailstest[dataIDFeedUser].user_id_fk;
+    this.userPostData2.user_id_fk = this.userDetailstest[dataIDFeedUser].user_id_fk;
+
+
     this.getProfileIntro();
     this.getProfileDetail();
   }
@@ -58,8 +67,12 @@ export class ProfilHireAlumniPage {
     console.log("ionViewDidLoad ProfilalumniPage");
   }
 
+  getcountnotif(){
+
+  }
+
   getProfileIntro() {
-    this.authService.postData(this.userPostData, "profileUserPKHire").then(
+    this.authService.postData(this.shareService.userPostData, "profileUserPKHire").then(
       result => {
         this.resposeData = result;
         if (this.resposeData.profileUserData) {
@@ -82,6 +95,35 @@ export class ProfilHireAlumniPage {
       },
       err => {}
     );
+  }
+
+  interest(){
+    this.shareService.increaseBadge();
+    this.authService.postData(this.shareService.userPostData, "notifikasi").then(
+      result => {
+        this.resposeDataNotif = result;
+        if (this.resposeDataNotif.notifData) {
+          this.dataSetNotif = this.resposeDataNotif.notifData;
+          console.log(this.dataSetNotif);
+          const alert = this.alertCtrl.create({
+            title: 'Welcome',
+            subTitle: 'yess',
+            buttons: ['OK']
+          });
+          alert.present();
+        } else {
+        }
+      },
+      err => {}
+    );
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
 }

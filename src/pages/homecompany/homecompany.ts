@@ -142,7 +142,6 @@ export class HomecompanyPage {
 
   more(index:any){
     localStorage.setItem("uidIdentifier",index);
-    console.log(index);
     this.navCtrl.push(ProfilHireAlumniPage);
   }
 

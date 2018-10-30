@@ -28,7 +28,7 @@ export class TabsCompanyPage {
   tab3Root = ProfilCompanyPage;
 
   constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public Common: Common) {
-
+    
   }
 
 	backToWelcome(){

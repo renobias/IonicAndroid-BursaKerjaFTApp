@@ -77,7 +77,7 @@ export class ProfilalumniPage {
   }
 
   getProfileDetail() {
-    this.authService.postData(this.userPostData2, "profileDetailPKHire").then(
+    this.authService.postData(this.userPostData2, "profileDetailPK").then(
       result => {
         this.resposeData2 = result;
         if (this.resposeData2.profileUserDetailData) {

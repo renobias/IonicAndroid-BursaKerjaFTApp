@@ -43,6 +43,7 @@ export class SignupcompanyPage {
         subTitle: this.userData.name,
         buttons: ['OK']
       });
+      alert.present();
       this.navCtrl.push(AfterSignupPerusahaanPage);
     }
     else{

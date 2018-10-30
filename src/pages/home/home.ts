@@ -3,6 +3,7 @@ import { NavController,App,AlertController, Item } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LinkyModule } from 'angular-linky';
 import { Common } from "../../providers/auth-service/common";
+import { ShareServiceProvider } from '../../providers/share-service/share-service';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,13 +16,15 @@ export class HomePage {
   public dataSet: any;
   public noRecords: boolean;
 
+
   searchQuery: string = '';
   items: string[];
   
 	
   userPostData = {"user_id":"","token":""};
+  
 	
-  constructor( public navCtrl: NavController,public authService:AuthServiceProvider, public app:App,public Common: Common,public alertCtrl: AlertController) {
+  constructor( public navCtrl: NavController,public authService:AuthServiceProvider, public app:App,public Common: Common,public alertCtrl: AlertController,public shareService:ShareServiceProvider) {
     const data = JSON.parse(localStorage.getItem('userData'));
     this.userDetails = data.userData;
 
@@ -127,5 +130,11 @@ getItems(ev: any) {
     }
   }
 
+  increaseTabhome(){
+    this.shareService.increaseBadge();
+  }
     
+  decreaseTabhome(){
+    this.shareService.decreaseBadge();
+  }
 }
