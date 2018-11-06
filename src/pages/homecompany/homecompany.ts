@@ -141,6 +141,7 @@ export class HomecompanyPage {
   }
 
   more(index:any){
+    //mengambil index feed dari pencari kerja 
     localStorage.setItem("uidIdentifier",index);
     this.navCtrl.push(ProfilHireAlumniPage);
   }

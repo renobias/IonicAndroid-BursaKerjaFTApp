@@ -4,7 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { LinkyModule } from 'angular-linky';
+import { MomentModule } from 'angular2-moment';
 
 @Component({
   templateUrl: 'app.html'

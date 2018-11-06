@@ -2,13 +2,17 @@ page-profil-hire-alumni {
     .foto-feed{
         .bg{
             background-image:
-            url(/assets/imgs/batik.png);
+            url(../assets/imgs/batik.png);
             background-size: contain;
             margin-left: -15px;
             margin-right: -15px;
         }
         .tombol-rekrut{
             margin-top: 10%;
+        }
+
+        .tombol-rekrut-notavailable{
+            margin-top: -33%;
         }
 
         .text-center-select{
@@ -31,7 +35,12 @@ page-profil-hire-alumni {
             border-radius: 50%;
           }
     
-     
+        .notavailable{
+           img{
+               width: 100%;
+               height: 0%;
+           }
+        }
 
         p{
             text-align: justify;

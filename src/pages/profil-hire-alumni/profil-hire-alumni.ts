@@ -17,6 +17,14 @@ import { ShareServiceProvider } from '../../providers/share-service/share-servic
   templateUrl: 'profil-hire-alumni.html',
 })
 export class ProfilHireAlumniPage {
+  disableButton=true;
+  enableButton=false;
+  public jumlah:any;
+  public Dataint:any;
+  public stringData:any;
+  public objjumlah:any;
+
+  public datasetNotifdetails: any;
   public resposeData: any;
   public dataSet: any;
   public dataSetNotif: any;
@@ -28,7 +36,15 @@ export class ProfilHireAlumniPage {
   public resposeDataNotif: any;
   public dataSet2: any;
   public tmpt_lahir: String;
+
+  public resposenilainotif:any;
+  public datasetnilaiNotif:any;
+
+  userPostData = { "user_id": "", "token": "","user_id_fk":""};
   userPostData2 = { "user_id": "", "token": "","user_id_fk":"" };
+  notifPostData={"user_id": "", "token": "","user_id_fk":"","count_badge_notif":"" };
+
+  nilaiNotifPostData = { "user_id": ""};
 
   constructor(
     public navCtrl: NavController,
@@ -39,28 +55,35 @@ export class ProfilHireAlumniPage {
     public shareService: ShareServiceProvider,
     private toastCtrl:ToastController
   ) {
-    this.tmpt_lahir = "";
+
     const testdata = JSON.parse(localStorage.getItem("feedData"));
     const data = JSON.parse(localStorage.getItem("userData"));
     const dataIDFeedUser = localStorage.getItem("uidIdentifier");
-    const dataNotif = localStorage.getItem("notifData");
+    const dataNotif = localStorage.getItem("setDataNotif");
     
     this.userDetailstest = testdata.feedData;
     this.userDetails = data.userData;
     this.notifDetails=dataNotif;
 
-    shareService.userPostData.user_id = this.userDetails.user_id;
-    shareService.userPostData.token = this.userDetails.token;
+    this.userPostData.user_id = this.userDetails.user_id;
+    this.userPostData.token = this.userDetails.token;
 
     this.userPostData2.user_id = this.userDetails.user_id;
     this.userPostData2.token = this.userDetails.token;
 
-    shareService.userPostData.user_id_fk = this.userDetailstest[dataIDFeedUser].user_id_fk;
+    this.userPostData.user_id_fk = this.userDetailstest[dataIDFeedUser].user_id_fk;
     this.userPostData2.user_id_fk = this.userDetailstest[dataIDFeedUser].user_id_fk;
 
+    this.notifPostData.user_id= this.userDetails.user_id;
+    this.notifPostData.token=this.userDetails.token;
+    this.notifPostData.user_id_fk=this.userDetailstest[dataIDFeedUser].user_id_fk;
 
+    this.nilaiNotifPostData.user_id=this.userDetailstest[dataIDFeedUser].user_id_fk;
+
+    this.getnilainotifPK();
     this.getProfileIntro();
     this.getProfileDetail();
+    this.tidakbisaditawar();
   }
 
   ionViewDidLoad() {
@@ -72,7 +95,7 @@ export class ProfilHireAlumniPage {
   }
 
   getProfileIntro() {
-    this.authService.postData(this.shareService.userPostData, "profileUserPKHire").then(
+    this.authService.postData(this.userPostData, "profileUserPKHire").then(
       result => {
         this.resposeData = result;
         if (this.resposeData.profileUserData) {
@@ -90,6 +113,10 @@ export class ProfilHireAlumniPage {
         this.resposeData2 = result;
         if (this.resposeData2.profileUserDetailData) {
           this.dataSet2 = this.resposeData2.profileUserDetailData;
+          console.log(this.dataSet2);
+          if(this.dataSet2.status_pencarian_kerja=="tidak mencari pekerjaan"){
+            this.disableButton=true;
+          }
         } else {
         }
       },
@@ -97,9 +124,29 @@ export class ProfilHireAlumniPage {
     );
   }
 
+
+  //fungsi ketika perusahaan menghire atau tertarik terhadap pencari kerja
   interest(){
-    this.shareService.increaseBadge();
-    this.authService.postData(this.shareService.userPostData, "notifikasi").then(
+    //mengambil jumlah data notifikasi dari local storage
+    const dataNotif = localStorage.getItem("setDataNotif");
+    this.notifDetails=dataNotif;
+    console.log("dataNotif :"+this.notifDetails);
+
+    this.jumlah=1;
+
+    //mengubah type data jumlah notifikasi dari json object ke number
+    this.Dataint=(this.notifDetails as number);
+
+    //menambahkan jumlah notifikasi 
+    this.jumlah = this.jumlah + +this.Dataint;
+    console.log("jumlah :"+this.jumlah);
+
+    //memasukkan jumlah notifikasi yang sudah ditambahkan ke dalam objek notifPostData.count_badge_notif
+    this.notifPostData.count_badge_notif = (this.jumlah as string);
+    console.log("notifPostData.count_badge_notif :"+this.notifPostData.count_badge_notif);
+    
+    //mengirim ke API untuk mengubah/mengupdate jumlah notifikasi di database
+    this.authService.postData(this.notifPostData, "notifikasi").then(
       result => {
         this.resposeDataNotif = result;
         if (this.resposeDataNotif.notifData) {
@@ -116,6 +163,23 @@ export class ProfilHireAlumniPage {
       },
       err => {}
     );
+    this.disableButton=true;
+  }
+
+  //fungsi untuk Mengambil data jumlah notifikasi dari database dan memasukkan ke localstorage
+  getnilainotifPK() {
+    this.authService.postData(this.nilaiNotifPostData, "ambilnilainotifikasi").then(
+      result => {
+        this.resposenilainotif = result;
+        if (this.resposenilainotif) {
+          this.datasetnilaiNotif = this.resposenilainotif;
+          localStorage.setItem('setDataNotif',this.datasetnilaiNotif);
+          console.log(this.datasetnilaiNotif);
+        } else {
+        }
+      },
+      err => {}
+    );
   }
 
   presentToast(msg) {
@@ -126,4 +190,7 @@ export class ProfilHireAlumniPage {
     toast.present();
   }
 
+  tidakbisaditawar(){
+    const dataIDFeedUser = localStorage.getItem("uidIdentifier");
+  }
 }

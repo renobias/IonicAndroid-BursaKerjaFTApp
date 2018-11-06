@@ -130,11 +130,5 @@ getItems(ev: any) {
     }
   }
 
-  increaseTabhome(){
-    this.shareService.increaseBadge();
-  }
-    
-  decreaseTabhome(){
-    this.shareService.decreaseBadge();
-  }
+
 }

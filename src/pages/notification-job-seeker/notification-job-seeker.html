@@ -15,23 +15,28 @@
 
 
 <ion-content padding>
+   
 
+<div id="notification" *ngFor="let item of dataSet">
+  <div *ngIf="item.nama_perusahaan;else nonotification">
 <ion-card>
-  <ion-card-header>
-    Company Name
+  <ion-card-header [innerHTML]="item.nama_perusahaan">
   </ion-card-header>
   <ion-card-content class="notif">
-    Hello, kami dari "company name" sangat tertarik dengan anda, kami harap anda dapat memberikan nomor yang dapat
-    dihubungi untuk kami hubungi lebih lanjut. Thanks :) 
+    Hello, kami dari {{item.nama_perusahaan}} sangat tertarik dengan anda, Harap konfirmasi agar kami dapat menghubungi lebih lanjut. Terima kasih :) 
   </ion-card-content>
-  <ion-item>
-      <ion-input type="text" placeholder="Nomor yang dapat dihubungi" value=""></ion-input>
-    </ion-item>
     <div id="btn-notif">
-    <button ion-button color="green" outline (click)="beriNomor()">Beri nomor</button>
-    <button ion-button color="danger" outline>Tolak</button>
+    <button ion-button color="green" outline (click)="beriNomor()">call me</button>
+    <button ion-button color="danger" outline>not now</button>
   </div>
+<hr/>
+  <div style="margin-bottom: 5%;text-align: right;margin-right: 5%;">{{ convertTime(item.created) | amTimeAgo}}</div>
 </ion-card>
+</div>
+</div>
 
+<ng-template #nonotification>
+    <h6>belum ada notifikasi</h6>
+</ng-template>
 
 </ion-content>

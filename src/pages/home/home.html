@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+    <ng-template #kosong>
+        <img src="assets/imgs/empty2.png">
+      </ng-template>
 <!--<h1>Welcome {{userDetails.username}}</h1>-->
   
 <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
@@ -128,15 +131,17 @@
               </ion-row>
               <hr/>
 
-            <ion-row>
-              <ion-col col-5>
-                  <img src="assets/imgs/Foto Profil Dark.jpg">
-              </ion-col>
-              <ion-col col-7>
-                  <p text-center [innerHTML]="item.ttg_saya">
-                  </p>
-                </ion-col>
-            </ion-row>
+              <ion-row>
+                  <ion-col col-5>
+                    <img src="assets/imgs/Foto Profil Dark.jpg">
+                  </ion-col>
+                  <ion-col col-7>
+                  <div *ngIf="item.ttg_saya;else kosong">
+                    <p text-justify [innerHTML]="item.ttg_saya">
+                    </p>
+                  </div>
+                  </ion-col>
+                </ion-row>
             </ion-card-content>
         </ion-card>
       </ion-col>
@@ -172,6 +177,4 @@
       </ion-card-content>
     </ion-card>
   -->
-  <button ion-button (click)="increaseTabhome()">increase</button>
-  <button ion-button (click)="decreaseTabhome()">decrease</button>
 </ion-content>

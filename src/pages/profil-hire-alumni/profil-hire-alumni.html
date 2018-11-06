@@ -237,5 +237,20 @@
         </ion-card>
       </div>
 
-       <button ion-button full class="tombol-rekrut" (click)="interest()">Rekrut menjadi pegawai</button>
+
+      <div *ngFor="let item of dataSet2">
+          <div *ngIf="item.status_pencarian_kerja=='tidak mencari pekerjaan';else enablee">
+            <div class="notavailable">
+              <img src="assets/imgs/not_available.png">
+              <div>
+         <button ion-button full class="tombol-rekrut-notavailable" (click)="interest()" [disabled]="disableButton">Tawari pekerjaan</button>
+        </div>
+        </div>
+          </div>
+        </div>
+
+        <ng-template #enablee>
+            <button ion-button full class="tombol-rekrut" (click)="interest()" [disabled]="enableButton">Tawari pekerjaan</button>
+        </ng-template>
+
 </ion-content>

@@ -12,6 +12,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+  public notifDetails: any;
   public dataSet: any;
   public resposeData: any;
   public userDetails: any;
@@ -20,7 +21,7 @@ export class TabsPage {
   tab3Root = ProfilalumniPage;
 
   userPostData = { "user_id": "", "token": "" };
-
+  notifPostData={"user_id": "", "token": "","count_badge_notif":"" };
 
   constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public Common: Common,public shareService:ShareServiceProvider,public authService:AuthServiceProvider) {
     const data = JSON.parse(localStorage.getItem("userData"));
@@ -28,6 +29,9 @@ export class TabsPage {
 
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+
+    this.notifPostData.user_id = this.userDetails.user_id;
+    this.notifPostData.token =this.userDetails.token;
     this.getnotif();
   }
 
@@ -48,15 +52,18 @@ gotoAbout(){
 }
 
 resetBadge(){
-  this.shareService.clearBadge();
-  this.authService.postData(this.shareService.userPostData, "notifikasi").then(
+  const dataNotif = localStorage.getItem("setDataNotif");
+  this.notifDetails=dataNotif;
+  console.log("dataNotif :"+this.notifDetails);
+
+  this.dataSet = 0;
+  this.notifPostData.count_badge_notif =this.dataSet;
+  this.authService.postData(this.notifPostData, "emptynotifikasi").then(
     result => {
   
     },
     err => {}
   );
-
-  console.log(this.shareService.countbadge);
 }
 
 getnotif() {

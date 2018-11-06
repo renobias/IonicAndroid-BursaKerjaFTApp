@@ -25,7 +25,7 @@
 <ion-nav id="nav" #content [root]="TabsCompanyPage"></ion-nav>
 
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Feed" tabIcon="home" tabBadge=10 tabBadgeStyle="danger"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Notification" tabBadge=4 tabBadgeStyle="danger" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Feed" tabIcon="home" tabBadgeStyle="danger"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Notification" [tabBadge]="null" tabBadgeStyle="danger" tabIcon="information-circle"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Profil" tabIcon="contacts"></ion-tab>
 </ion-tabs>
