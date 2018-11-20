@@ -44,6 +44,7 @@ export class HomePage {
 	
 	logout(){
     this.Common.presentLoading();
+    window.localStorage.clear();
      localStorage.clear();
      setTimeout(() => this.backToWelcome(), 1000);
      this.Common.closeLoading();

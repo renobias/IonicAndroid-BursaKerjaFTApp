@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ToastController, AlertController,Nav } from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {HomePage} from '../home/home';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -36,11 +36,12 @@ responseData : any ;
     this.responseData = result;
         if(this.responseData.userData){
           if(this.responseData.userData.level=="pencari kerja"){
+            window.localStorage.setItem('sudahloginPK', "sudah loginPK");
             console.log(this.responseData);
             localStorage.setItem('userData', JSON.stringify(this.responseData) );
             this.navCtrl.push(TabsPage);
             this.Common.closeLoading();
-            
+
             const alert = this.alertCtrl.create({
               title: 'Welcome',
               subTitle: this.userData.username,
@@ -50,6 +51,7 @@ responseData : any ;
             alert.present();
   
           }else if(this.responseData.userData.level=="perusahaan"){
+            window.localStorage.setItem('sudahloginCompany', "sudah login company");
             console.log(this.responseData);
             localStorage.setItem('userData', JSON.stringify(this.responseData) );
             this.navCtrl.push(TabsCompanyPage);

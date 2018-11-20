@@ -4,6 +4,7 @@ import { SignupPage } from '../signup/signup';
 import { SignupcompanyPage } from '../signupcompany/signupcompany';
 import { LoginPage } from '../login/login';
 import { LogincompanyPage } from '../logincompany/logincompany';
+import { Badge } from '@ionic-native/badge';
 /**
  * Generated class for the WelcomePage page.
  *
@@ -18,7 +19,7 @@ import { LogincompanyPage } from '../logincompany/logincompany';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController,private badge: Badge) {
   }
 
   ionViewDidLoad() {

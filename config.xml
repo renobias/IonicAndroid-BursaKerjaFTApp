@@ -81,5 +81,9 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.2.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
+    <plugin name="cordova-plugin-badge" spec="git+https://github.com/katzer/cordova-plugin-badge.git" />
+    <plugin name="cordova-plugin-background-mode" spec="^0.7.2" />
+    <engine name="android" spec="^7.1.1" />
+    <engine name="browser" spec="5.0.4" />
 </widget>

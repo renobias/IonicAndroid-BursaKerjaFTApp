@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,App } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams,App,Nav } from 'ionic-angular';
 
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
@@ -10,6 +10,7 @@ import { Common } from "../../providers/auth-service/common";
 import {HomecompanyPage} from "../homecompany/homecompany";
 import {NotifCompanyPage} from "../notif-company/notif-company";
 import {ProfilCompanyPage} from '../profil-company/profil-company';
+import { WelcomePage } from '../welcome/welcome';
 /**
  * Generated class for the TabsCompanyPage page.
  *
@@ -23,6 +24,8 @@ import {ProfilCompanyPage} from '../profil-company/profil-company';
   templateUrl: 'tabs-company.html',
 })
 export class TabsCompanyPage {
+  @ViewChild(Nav) nav: Nav;
+  rootPage:any;
   tab1Root = HomecompanyPage;
   tab2Root = NotifCompanyPage;
   tab3Root = ProfilCompanyPage;
@@ -38,6 +41,7 @@ export class TabsCompanyPage {
 
   logout(){
     this.Common.presentLoading();
+    window.localStorage.removeItem('sudahloginCompany');
     localStorage.clear();
     setTimeout(() => this.backToWelcome(),500);
     this.Common.closeLoading();

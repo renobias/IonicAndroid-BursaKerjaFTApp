@@ -31,6 +31,8 @@ import { Common } from "../providers/auth-service/common";
 
 import{HttpModule} from '@angular/http';
 
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 import { HomecompanyPageModule } from '../pages/homecompany/homecompany.module';
 import { LoginPageModule  } from '../pages/login/login.module';
 import { LogincompanyPageModule  } from '../pages/logincompany/logincompany.module';
@@ -56,7 +58,8 @@ import {EditRiwpenPkPageModule} from '../pages/edit-riwpen-pk/edit-riwpen-pk.mod
 import {EditRiwpelPkPageModule} from '../pages/edit-riwpel-pk/edit-riwpel-pk.module';
 import { AfterSignupPerusahaanPageModule } from '../pages/after-signup-perusahaan/after-signup-perusahaan.module';
 import { ShareServiceProvider } from '../providers/share-service/share-service';
-
+import { Badge } from '@ionic-native/badge';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,10 @@ import { ShareServiceProvider } from '../providers/share-service/share-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,Common,
-    ShareServiceProvider
+    ShareServiceProvider,
+    LocalNotifications,
+    Badge,
+    BackgroundMode,
   ]
 })
 export class AppModule {}

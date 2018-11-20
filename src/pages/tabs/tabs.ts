@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController,NavParams,App } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController,NavParams,App, Platform,Nav } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
@@ -8,22 +8,31 @@ import { ProfilalumniPage } from '../profilalumni/profilalumni';
 import { Common } from "../../providers/auth-service/common";
 import { ShareServiceProvider } from '../../providers/share-service/share-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { WelcomePage } from '../welcome/welcome';
+import { Badge } from '@ionic-native/badge';
+import { Cordova } from '@ionic-native/core';
+import { BackgroundMode } from '@ionic-native/background-mode';
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+  @ViewChild(Nav) nav: Nav;
+  rootPage:any;
+  notip:boolean;
   public notifDetails: any;
   public dataSet: any;
+  public dataSetawal:any=0;
   public resposeData: any;
   public userDetails: any;
   tab1Root = HomePage;
   tab2Root = NotificationJobSeekerPage;
   tab3Root = ProfilalumniPage;
-
   userPostData = { "user_id": "", "token": "" };
   notifPostData={"user_id": "", "token": "","count_badge_notif":"" };
 
-  constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public Common: Common,public shareService:ShareServiceProvider,public authService:AuthServiceProvider) {
+  constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public Common: Common,public shareService:ShareServiceProvider,public authService:AuthServiceProvider,public localNotifications: LocalNotifications,public platform: Platform,private badge: Badge,private backgroundMode: BackgroundMode) {
+    this.backgroundMode.enable();
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
 
@@ -32,7 +41,9 @@ export class TabsPage {
 
     this.notifPostData.user_id = this.userDetails.user_id;
     this.notifPostData.token =this.userDetails.token;
-    this.getnotif();
+
+    this.startTimer();
+
   }
 
 	backToWelcome(){
@@ -42,8 +53,10 @@ export class TabsPage {
 
   logout(){
     this.Common.presentLoading();
+    window.localStorage.removeItem('sudahlogin');
     localStorage.clear();
-    setTimeout(() => this.backToWelcome(),500);
+    this.nav.setRoot(WelcomePage);
+    setTimeout(() =>this.backToWelcome(),500);
     this.Common.closeLoading();
 }
 
@@ -57,6 +70,8 @@ resetBadge(){
   console.log("dataNotif :"+this.notifDetails);
 
   this.dataSet = 0;
+  this.dataSetawal = 0;
+  this.badge.set(this.dataSet);
   this.notifPostData.count_badge_notif =this.dataSet;
   this.authService.postData(this.notifPostData, "emptynotifikasi").then(
     result => {
@@ -66,18 +81,44 @@ resetBadge(){
   );
 }
 
+
 getnotif() {
   this.authService.postData(this.userPostData, "tampilnotifikasi").then(
-    result => {
+     result => {
       this.resposeData = result;
       if (this.resposeData) {
         this.dataSet = this.resposeData;
+        this.badge.set(this.dataSet);
         console.log(this.dataSet);
+        if(/*agar alarm/pemberitahuan hanya menyala jika nilai notifikasi bertambah(dibandingkan dengan nilai datasetawal)*/this.dataSet>this.dataSetawal){
+          this.localNotifications.schedule({
+            text: 'Ada perusahaan baru yang tertarik dengan anda',
+            led: 'FF0000',
+            sound: this.setSound(),
+         });
+        }
+        //dataset awal baru disamakan nilainya disini dengan nilai dataset agar alarm tidak bunyi terus menerus
+        this.dataSetawal=this.dataSet;
       } else {
       }
     },
     err => {}
   );
+}
+
+//method agar fungsi getNotif dapat berjalan/terpanggil terus selama interval 1 detik
+startTimer(){
+  setInterval(()=>{
+    this.getnotif();
+  },1000);
+}
+
+setSound() {
+  if (this.platform.is('android')) {
+    return 'file://assets/sounds/Funncartoon text mesage(2).mp3'
+  } else {
+    return 'file://assets/sounds/Funncartoon text mesage(2).mp3'
+  }
 }
 
 }
