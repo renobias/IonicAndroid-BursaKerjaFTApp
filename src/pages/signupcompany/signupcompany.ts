@@ -37,25 +37,33 @@ export class SignupcompanyPage {
     this.responseData = result;
     if(this.responseData.userData){
       console.log(this.responseData);
+      window.localStorage.setItem('sudahloginCompany', "sudah login company");
       localStorage.setItem('userData', JSON.stringify(this.responseData) )
+      this.navCtrl.push(AfterSignupPerusahaanPage);
       const alert = this.alertCtrl.create({
         title: 'Welcome',
         subTitle: this.userData.name,
         buttons: ['OK']
       });
       alert.present();
-      this.navCtrl.push(AfterSignupPerusahaanPage);
     }
     else{
-      this.presentToast("Please give valid username and password");
+      this.presentToast("Format penulisan ada yang salah, mungkin anda salah memasukkan format email");
     }
     
     }, (err) => {
       //Connection failed message
+      let alert = this.alertCtrl.create({
+        title: 'Registration Failed',
+        subTitle: 'Oh no! Your Registration failed.. may be check your connection',
+        buttons: ['OK']
+      });
+      alert.present();
     });
   }
 
   else {
+    this.presentToast("lengkapi semua kolom terlebih dahulu");
     console.log("Give valid information.");
   }
   

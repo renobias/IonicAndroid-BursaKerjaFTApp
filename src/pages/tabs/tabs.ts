@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController,NavParams,App, Platform,Nav } from 'ionic-angular';
+import { NavController,NavParams,App, Platform,Nav, ToastController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
@@ -13,6 +13,7 @@ import { WelcomePage } from '../welcome/welcome';
 import { Badge } from '@ionic-native/badge';
 import { Cordova } from '@ionic-native/core';
 import { BackgroundMode } from '@ionic-native/background-mode';
+
 @Component({
   templateUrl: 'tabs.html'
 })
@@ -31,7 +32,7 @@ export class TabsPage {
   userPostData = { "user_id": "", "token": "" };
   notifPostData={"user_id": "", "token": "","count_badge_notif":"" };
 
-  constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public Common: Common,public shareService:ShareServiceProvider,public authService:AuthServiceProvider,public localNotifications: LocalNotifications,public platform: Platform,private badge: Badge,private backgroundMode: BackgroundMode) {
+  constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public Common: Common,public shareService:ShareServiceProvider,public authService:AuthServiceProvider,public localNotifications: LocalNotifications,public platform: Platform,private badge: Badge,private backgroundMode: BackgroundMode,private toastCtrl:ToastController) {
     this.backgroundMode.enable();
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
@@ -48,15 +49,14 @@ export class TabsPage {
 
 	backToWelcome(){
     const root = this.app.getRootNav();
-    root.popToRoot();
  }
 
   logout(){
     this.Common.presentLoading();
-    window.localStorage.removeItem('sudahlogin');
     localStorage.clear();
-    this.nav.setRoot(WelcomePage);
-    setTimeout(() =>this.backToWelcome(),500);
+    this.navCtrl.setRoot(WelcomePage);
+    this.backToWelcome;
+    window.localStorage.setItem('sudahlogoutPK', "sudah logoutPK");
     this.Common.closeLoading();
 }
 
@@ -81,7 +81,6 @@ resetBadge(){
   );
 }
 
-
 getnotif() {
   this.authService.postData(this.userPostData, "tampilnotifikasi").then(
      result => {
@@ -94,6 +93,7 @@ getnotif() {
           this.localNotifications.schedule({
             text: 'Ada perusahaan baru yang tertarik dengan anda',
             led: 'FF0000',
+            icon: 'res://drawable-hdpi/icon.png',
             sound: this.setSound(),
          });
         }
@@ -102,7 +102,10 @@ getnotif() {
       } else {
       }
     },
-    err => {}
+    err => {
+      this.Common.closeLoading();
+      this.presentToast("Error Connection");
+    }
   );
 }
 
@@ -119,6 +122,14 @@ setSound() {
   } else {
     return 'file://assets/sounds/Funncartoon text mesage(2).mp3'
   }
+}
+
+presentToast(msg) {
+  let toast = this.toastCtrl.create({
+    message: msg,
+    duration: 2000
+  });
+  toast.present();
 }
 
 }

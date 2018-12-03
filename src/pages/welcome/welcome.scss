@@ -4,7 +4,13 @@ page-welcome {
     height: 3px;
   }
 #welcome{
-    background: color($colors, bgwelcome);
+  
+  background-image:
+  url(../assets/imgs/orang.jpg);
+  background-size:70% ;
+  background-repeat: no-repeat;
+  background-position: center;
+    //background: color($colors, bgwelcome);
     h1{
         font-size: 52px;
         margin-top:50px;
@@ -48,6 +54,7 @@ page-welcome {
   }
 }
 
+/*
 #batik{
   margin-top: 20%;
   img{
@@ -58,7 +65,14 @@ page-welcome {
   left: 0;
   }
 }
+*/
 
+#tombolMenu{
+  margin-top: 38%;
+}
 
+#judul-app{
+  margin-top: 20%;
+}
 }
 

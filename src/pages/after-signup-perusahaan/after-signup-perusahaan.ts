@@ -47,13 +47,19 @@ userPostData={"user_id":"","token":"token","namaPerusahaan":"","bidangPerusahaan
           this.navCtrl.push(TabsCompanyPage);
         }
         else{
-          this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu");
+          this.presentToast("Format penulisan ada yang salah, periksa kembali format penulisan anda");
         }
         }, (err) => {
           //Connection failed message
+          let alert = this.alertCtrl.create({
+            title: 'Registration Failed',
+            subTitle: 'Oh no! Your Registration failed',
+            buttons: ['OK']
+          });
+          alert.present();
         });
     }else{
-      this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu 2");
+      this.presentToast("Harap lengkapi isi semua kolom dan lengkapi data terlebih dahulu 2");
     }
   }
 

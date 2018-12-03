@@ -36,14 +36,14 @@ export class TabsCompanyPage {
 
 	backToWelcome(){
     const root = this.app.getRootNav();
-    root.popToRoot();
  }
 
   logout(){
     this.Common.presentLoading();
-    window.localStorage.removeItem('sudahloginCompany');
     localStorage.clear();
-    setTimeout(() => this.backToWelcome(),500);
+    this.navCtrl.setRoot(WelcomePage);
+    this.backToWelcome();
+    window.localStorage.setItem('sudahlogoutCompany', "sudah logoutCompany");
     this.Common.closeLoading();
 }
 

@@ -7,15 +7,19 @@
 <ion-content padding id="welcome" class="action-sheets-basic-page">
   <hr/>
   <img src="assets/imgs/Logo-unj.png" />
+  <hr/>
+
+  <div id="judul-app">
   <ion-grid>
     <ion-row>
       <ion-col>
-        <hr/>
         <h1>Bursa Kerja FT UNJ</h1>
       </ion-col>
     </ion-row>
   </ion-grid>
+</div>
 
+<div id="tombolMenu">
   <ion-grid>
     <ion-row>
       <ion-col center text-center>
@@ -28,21 +32,13 @@
         <button ion-button block (click)="openLogin()" style="color:white">Login</button>
       </ion-col>
     </ion-row>
-
-    <ion-row>
-      <ion-col center text-center>
-        <button ion-button block (click)="badge.set(10)" style="color:white">set Badge 10</button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col center text-center>
-        <button ion-button block (click)="badge.clear()" style="color:white">clear Badge</button>
-      </ion-col>
-    </ion-row>
   </ion-grid>
+</div>
 
+
+  <!--
   <div id="batik">
     <img src="assets/imgs/batik.png" />
   </div>
+  -->
 </ion-content>

@@ -20,11 +20,17 @@ export class MyApp {
 
       let sudahlogin = window.localStorage.getItem('sudahloginPK') ? window.localStorage.getItem('sudahloginPK') : '';
       let sudahloginCompany = window.localStorage.getItem('sudahloginCompany') ? window.localStorage.getItem('sudahloginCompany') : '';
+      let sudahlogout = window.localStorage.getItem('sudahlogoutPK') ? window.localStorage.getItem('sudahlogoutPK') : '';
+      let sudahlogoutCompany = window.localStorage.getItem('sudahlogoutCompany') ? window.localStorage.getItem('sudahlogoutCompany') : '';
 
       if(sudahlogin == 'sudah loginPK') {
         this.nav.setRoot(TabsPage);
       }else if(sudahloginCompany == 'sudah login company'){
         this.nav.setRoot(TabsCompanyPage);
+      }else if(sudahlogout == 'sudah logoutPK'){
+        this.nav.setRoot(WelcomePage);
+      }else if(sudahlogoutCompany == 'sudah logoutCompany'){
+        this.nav.setRoot(WelcomePage);
       }else{
         this.nav.setRoot(WelcomePage);
       }

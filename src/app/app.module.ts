@@ -60,6 +60,8 @@ import { AfterSignupPerusahaanPageModule } from '../pages/after-signup-perusahaa
 import { ShareServiceProvider } from '../providers/share-service/share-service';
 import { Badge } from '@ionic-native/badge';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
 
 @NgModule({
   declarations: [
@@ -97,6 +99,8 @@ import { BackgroundMode } from '@ionic-native/background-mode';
     LocalNotifications,
     Badge,
     BackgroundMode,
+    ImagePicker,
+    Base64,
   ]
 })
 export class AppModule {}

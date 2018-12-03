@@ -16,8 +16,10 @@
 <ion-content padding>
   <ion-list>
       <ion-item>
-          <ion-label stacked>Foto profil</ion-label>
-          <ion-input type="file" accept="image/*"></ion-input>
+        <ion-label fixed>Avatar</ion-label>
+        <ion-avatar item-end>
+          <img src="{{imgPreview}}" (click)="getPhoto()">
+        </ion-avatar>
         </ion-item>
 
     <ion-item>

@@ -1,6 +1,12 @@
 page-notification-job-seeker {
-    #notification{
-        margin-bottom: 10%;
+        img{
+            height: 50%;
+            width: 50%;
+            margin: auto;
+            display: block;
+            margin-top: 35%;
+        }
+
     .notif{
         text-align: justify;
     }
@@ -11,5 +17,5 @@ page-notification-job-seeker {
         margin-top: 5vw;
         margin-bottom: 5vw;
     }
-}
+
 }   

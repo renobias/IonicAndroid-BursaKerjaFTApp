@@ -41,6 +41,12 @@ userDetails:any;
         this.navCtrl.push(ProfilalumniPage);
     }, (err) => {
       //Connection failed message
+      let alert = this.alertCtrl.create({
+        title: 'update Failed',
+        subTitle: 'Oh no! Your update is failed',
+        buttons: ['OK']
+      });
+      alert.present();
     });
   }else{
     this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu ");

@@ -30,7 +30,7 @@ export class SignupPage {
   }
 
   signup() {
-    if(this.userData.username && this.userData.password && this.userData.email){
+    if(this.userData.username && this.userData.password && this.userData.email && this.userData.name){
       this.alumni="alumni";
       console.log(this.alumni);
       //Api connections
@@ -38,29 +38,41 @@ export class SignupPage {
     this.responseData = result;
     if(this.responseData.userData){
       console.log(this.responseData);
+      window.localStorage.setItem('sudahloginPK', "sudah loginPK");
       localStorage.setItem('userData', JSON.stringify(this.responseData) )
+      this.navCtrl.push(AfterSignupPencarikerjaPage);
       const alert = this.alertCtrl.create({
         title: 'Welcome',
         subTitle: this.userData.name,
         buttons: ['OK']
       });
+      alert.present();
+      /**ini buat kalo nanti ada 2 tipe pendaftar : alumni dan mahasiswa */
+      /*
       if(this.userData.JenisDaftarPK==this.alumni){
         alert.present();
       this.navCtrl.push(AfterSignupPencarikerjaPage);
       }else if(this.userData.JenisDaftarPK=="mahasiswa"){
         this.navCtrl.push(AfterSignupMahasiswaPage);
       }
+      */
+
     }
     else{
-      this.presentToast("Please give valid username and password");
+      this.presentToast("isilah data dengan format yang benar terutama email");
     }
     
     }, (err) => {
       //Connection failed message
+      let alert = this.alertCtrl.create({
+        title: 'Login Failed',
+        subTitle: 'Oh no! Your Registration failed.. may be check your connection',
+        buttons: ['OK']
+      });
+      alert.present();
     });
-  }
-
-  else {
+  }else {
+    this.presentToast("Harap lengkapi setiap informasi atau kolom terlebih dahulu");
     console.log("Give valid information.");
   }
   

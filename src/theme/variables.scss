@@ -42,7 +42,9 @@ $colors: (
   energy:             #f2b632,
   bgwelcome: #27AE60,
   danger: red,
-  green: green
+  green: #228B22,
+  darkred : #8B0000,
+  maroon : #800000
 );
 $toolbar-background: color($colors, primary);
 $toolbar-md-title-text-color:white;

@@ -54,6 +54,12 @@ userPostData = {"user_id":"","token":"","namaLengkap":"","prodi":"","tahunlulus"
         }
         }, (err) => {
           //Connection failed message
+          const alert = this.alertCtrl.create({
+            title: 'Koneksi bermasalah',
+            subTitle: 'Jaringan internet atau server bermasalah',
+            buttons: ['OK']
+          });
+            alert.present();
         });
     }else{
       this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu 2");
