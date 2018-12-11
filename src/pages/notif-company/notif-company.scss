@@ -1,8 +1,11 @@
 page-notif-company {
-    #nothing{
-        background-image:  url(../assets/imgs/kosong.jpg);
-        background-position: center;
-        background-size:70%;
-        background-repeat: no-repeat;
+#kosong{
+    img{
+        height: 50%;
+        width: 50%;
+        margin: auto;
+        display: block;
+        margin-top: 35%;
     }
+}
 }

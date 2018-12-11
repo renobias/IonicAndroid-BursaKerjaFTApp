@@ -21,9 +21,19 @@ export class HomecompanyPage {
 
   @ViewChild("updatebox") updatebox;
   public userDetails: any;
+
   public resposeData: any;
+  public resposeDataBP: any;
+  public resposeDataBK: any;
+  public resposeDataPS: any;
   public resposeDatauser: any;
+
   public dataSet: any;
+  public dataSetBP: any;
+  public dataSetBK:any;
+  public dataSetPS:any;
+
+
   public noRecords: boolean;
 
   searchQuery: string = '';
@@ -31,20 +41,26 @@ export class HomecompanyPage {
 
 
   userPostData = { "user_id": "", "token": "" };
+  pekerjaanPostData= {"user_id": "", "token": "","id_bidang_pekerjaan":""};
  public userIdentify={"uidfk":""};
 
   constructor(public navCtrl: NavController, public authService: AuthServiceProvider, public app: App, public Common: Common, public alertCtrl: AlertController) {
     const data = JSON.parse(localStorage.getItem('userData'));
     this.userDetails = data.userData;
 
-
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
 
-    this.getFeed();
-    this.initializeItems();
+    this.pekerjaanPostData.user_id = this.userDetails.user_id;
+    this.pekerjaanPostData.token = this.userDetails.token;
   }
 
+  ionViewWillEnter(){
+    this.getFeed();
+    this.getProgramStudi();
+    this.getBidangPekerjaan();
+    this.initializeItems();
+  }  
 
   backToWelcome() {
     const root = this.app.getRootNav();
@@ -58,6 +74,47 @@ export class HomecompanyPage {
     this.Common.closeLoading();
   }
 
+  getProgramStudi(){
+    this.authService.postData(this.userPostData, 'getProgramStudi')
+    .then((result) => {
+      this.resposeDataPS = result;
+      if (this.resposeDataPS.ProgramStudiData) {
+        this.dataSetPS = this.resposeDataPS.ProgramStudiData;
+        console.log("datasetPS"+this.dataSetPS);
+      } else { }
+    }, (err) => {
+      console.log("asuuu");
+    });
+  }
+
+  getBidangPekerjaan(){
+    this.authService.postData(this.userPostData, 'getBidangPekerjaan')
+    .then((result) => {
+      this.resposeDataBP = result;
+      if (this.resposeDataBP.BidangPekerjaanData) {
+        this.dataSetBP = this.resposeDataBP.BidangPekerjaanData;
+        console.log("datasetBP"+this.dataSetBP);
+      } else { }
+    }, (err) => {
+      console.log("asuuu");
+    });
+  }
+
+  getBidangKeahlian(index){
+    console.log(this.dataSetBP[index].id_bidang_pekerjaan);
+    this.pekerjaanPostData.id_bidang_pekerjaan= this.dataSetBP[index].id_bidang_pekerjaan;
+    console.log(this.pekerjaanPostData.id_bidang_pekerjaan);
+    
+    this.authService.postData(this.pekerjaanPostData, 'getBidangKeahlian')
+    .then((result) => {
+      this.resposeDataBK = result;
+      if (this.resposeDataBK.BidangKeahlianData) {
+        this.dataSetBK = this.resposeDataBK.BidangKeahlianData;
+      } else { }
+    }, (err) => {
+      console.log("asuuu");
+    });
+  }
 
 
   getFeed() {
@@ -68,6 +125,7 @@ export class HomecompanyPage {
         if (this.resposeData.feedData) {
           localStorage.setItem('feedData', JSON.stringify(this.resposeData) );
           this.dataSet = this.resposeData.feedData;
+          console.log("dataSet :"+this.dataSet)
           this.Common.closeLoading();
         } else { }
       }, (err) => {

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { Common } from '../../providers/auth-service/common';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ShareServiceProvider } from '../../providers/share-service/share-service';
+import { TabsPage } from '../tabs/tabs';
+import { TabsCompanyPage } from '../tabs-company/tabs-company';
 
 /**
  * Generated class for the ProfilHireAlumniPage page.
@@ -153,8 +155,8 @@ export class ProfilHireAlumniPage {
           this.dataSetNotif = this.resposeDataNotif.notifData;
           console.log(this.dataSetNotif);
           const alert = this.alertCtrl.create({
-            title: 'Welcome',
-            subTitle: 'yess',
+            title: 'Berhasil',
+            subTitle: 'Pencari kerja tersebut telah masuk ke dalam daftar penawaran dan notifikasi akan terkirim ke pencari kerja tersebut',
             buttons: ['OK']
           });
           alert.present();

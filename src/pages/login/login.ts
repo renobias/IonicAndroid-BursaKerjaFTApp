@@ -35,8 +35,8 @@ responseData : any ;
  }
 
   login(){
-    this.Common.presentLoading();
     if(this.userData.username && this.userData.password){
+      this.Common.presentLoading();
       //Api connections
     this.authService.postData(this.userData, "login").then((result) =>{
     this.responseData = result;
@@ -46,8 +46,9 @@ responseData : any ;
             localStorage.setItem('userData', JSON.stringify(this.responseData) );
             this.navCtrl.setRoot(TabsPage);
             this.app.getRootNav();
-            window.localStorage.setItem('sudahloginPK', "sudah loginPK");
             this.Common.closeLoading();
+            window.localStorage.setItem('sudahloginPK', "sudah loginPK");
+         
             const alert = this.alertCtrl.create({
               title: 'Welcome',
               subTitle: this.userData.username,

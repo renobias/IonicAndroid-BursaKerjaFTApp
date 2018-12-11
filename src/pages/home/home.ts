@@ -32,10 +32,12 @@ export class HomePage {
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
   
+  }
+
+  ionViewWillEnter(){
     this.getFeed();
     this.initializeItems();
   }
-
 
 	backToWelcome(){
    const root = this.app.getRootNav();

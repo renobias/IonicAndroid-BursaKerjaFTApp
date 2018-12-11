@@ -39,28 +39,14 @@
             <ion-item>
               <ion-label>Program Studi</ion-label>
               <ion-select [(ngModel)]="jurusan">
-                <ion-option value="11">Pendidikan Teknik Elektro (S-1)</ion-option>
-                <ion-option value="12">Pendidikan Teknik Elektronika (S-1)</ion-option>
-                <ion-option value="13">Pend Teknik Informatika dan Komputer (S-1)</ion-option>
-                <ion-option value="14">Teknik Elektronika (D-III)</ion-option>
-                <ion-option value="21">Pendidikan Teknik Mesin (S-1)</ion-option>
-                <ion-option value="22">Teknik Mesin (D-III)</ion-option>
-                <ion-option value="31">Pendidikan Teknik Bangunan (S-1)</ion-option>
-                <ion-option value="32">Teknik Sipil (D-III)</ion-option>
-                <ion-option value="33">Transportasi (D-III)</ion-option>
-                <ion-option value="41">Pendidikan Tata Boga (S-1)</ion-option>
-                <ion-option value="42">Pendidikan Tata Busana (S-1)</ion-option>
-                <ion-option value="43">Pendidikan Tatat Rias (S-1)</ion-option>
-                <ion-option value="44">Pendidikan Kesejahteraan Keluarga (S-1)</ion-option>
-                <ion-option value="45">Tata Boga (D-III)</ion-option>
-                <ion-option value="46">Tata Busana (D-III)</ion-option>
-                <ion-option value="47">Tata Rias(D-III)</ion-option>
+                <div *ngFor="let item of dataSetPS">
+                <ion-option [innerHTML]="item.prodi"></ion-option>
+                </div>
               </ion-select>
             </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
-
 
       <ion-row>
         <ion-col col-12>
@@ -68,15 +54,29 @@
             <ion-item>
               <ion-label>Bidang Pekerjaan</ion-label>
               <ion-select>
-                <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
-                <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
-                <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
-                <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
+                <div *ngFor="let item of dataSetBP;let i=index">
+                <ion-option [innerHTML]="item.bidang_pekerjaan" (ionSelect)="getBidangKeahlian(i)"></ion-option>
+                </div>
               </ion-select>
             </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
+
+      <ion-row *ngIf="dataSetBK">
+          <ion-col col-12>
+            <ion-list>
+              <ion-item>
+                <ion-label>Bidang Keahlian</ion-label>
+                <ion-select>
+                  <div *ngFor="let item of dataSetBK">
+                  <ion-option [innerHTML]="item.bidang_keahlian"></ion-option>
+                  </div>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
 
       <ion-row>
         <ion-col col-12>
@@ -113,7 +113,7 @@
             </ion-row>
             <ion-row>
               <ion-col col-6>
-                Program Studi
+                Program studi
               </ion-col>
               <ion-col col-6>
                 <h3 [innerHTML]="item.prodi"></h3>
@@ -127,7 +127,7 @@
                 <h3 [innerHTML]="item.tahun_lulus"></h3>
               </ion-col>
             </ion-row>
-            <hr/>
+                <hr/>
 
             <ion-row>
               <ion-col col-5>
