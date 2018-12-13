@@ -14,6 +14,9 @@ import { EditIntroPkPage } from "../edit-intro-pk/edit-intro-pk";
 import { EditRiwpenPkPage } from "../edit-riwpen-pk/edit-riwpen-pk";
 import { EditRiwpelPkPage } from "../edit-riwpel-pk/edit-riwpel-pk";
 import { EditPortofolioPkPage } from "../edit-portofolio-pk/edit-portofolio-pk";
+import { EditKeahlianUtamaPage } from "../edit-keahlian-utama/edit-keahlian-utama";
+import { EditKeahlianKeduaPage } from "../edit-keahlian-kedua/edit-keahlian-kedua";
+import { EditKeahlianKetigaPage } from "../edit-keahlian-ketiga/edit-keahlian-ketiga";
 
 /**
  * Generated class for the ProfilalumniPage page.
@@ -29,14 +32,20 @@ import { EditPortofolioPkPage } from "../edit-portofolio-pk/edit-portofolio-pk";
 })
 export class ProfilalumniPage {
   public resposeData: any;
+  public resposeDataKeahlianUtama: any;
+  public resposeDataKeahlianKedua: any;
+  public resposeDataKeahlianKetiga: any;
   public dataSet: any;
+  public dataKeahlianUtama: any;
+  public dataKeahlianKedua: any;
+  public dataKeahlianKetiga: any;
   public userDetails: any;
 
   public resposeData2: any;
   public dataSet2: any;
   public tmpt_lahir: String;
-  userPostData2 = { "user_id": "", "token": "" };
-  userPostData = { "user_id": "", "token": "" };
+  userPostData2 = { user_id: "", token: "" };
+  userPostData = { user_id: "", token: "" };
 
   constructor(
     public navCtrl: NavController,
@@ -87,6 +96,39 @@ export class ProfilalumniPage {
       },
       err => {}
     );
+
+    this.authService.postData(this.userPostData2, "getKeahlianUtama").then(
+      result => {
+        this.resposeDataKeahlianUtama = result;
+        if (this.resposeDataKeahlianUtama.keahlianUtamaData) {
+          this.dataKeahlianUtama = this.resposeDataKeahlianUtama.keahlianUtamaData;
+        } else {
+        }
+      },
+      err => {}
+    );
+
+    this.authService.postData(this.userPostData2, "getKeahlianKedua").then(
+      result => {
+        this.resposeDataKeahlianKedua = result;
+        if (this.resposeDataKeahlianKedua.keahlianKeduaData) {
+          this.dataKeahlianKedua = this.resposeDataKeahlianKedua.keahlianKeduaData;
+        } else {
+        }
+      },
+      err => {}
+    );
+
+    this.authService.postData(this.userPostData2, "getKeahlianKetiga").then(
+      result => {
+        this.resposeDataKeahlianKetiga = result;
+        if (this.resposeDataKeahlianKetiga.keahlianKetigaData) {
+          this.dataKeahlianKetiga = this.resposeDataKeahlianKetiga.keahlianKetigaData;
+        } else {
+        }
+      },
+      err => {}
+    );
   }
 
   editstatus() {
@@ -110,5 +152,14 @@ export class ProfilalumniPage {
   }
   editportofolio() {
     this.navCtrl.push(EditPortofolioPkPage);
+  }
+  editkeahlianutama(){
+    this.navCtrl.push(EditKeahlianUtamaPage);
+  }
+  editkeahliankedua(){
+    this.navCtrl.push(EditKeahlianKeduaPage);
+  }
+  editkeahlianketiga(){
+    this.navCtrl.push(EditKeahlianKetigaPage);
   }
 }

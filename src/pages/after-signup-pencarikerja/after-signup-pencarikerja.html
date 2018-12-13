@@ -5,30 +5,33 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Welcome</ion-title>
-  </ion-navbar>
-
+  <ion-navbar> <ion-title>Welcome</ion-title> </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <h1>hello {{userDetails.username}}, selamat anda telah terdaftar sebagai pencari kerja di bursa kerja ft unj, isi data dibawah agar orang-orang tahu darimana kamu berasal</h1>
+  <h1>
+    hello {{ userDetails.username }}, selamat anda telah terdaftar sebagai
+    pencari kerja di bursa kerja ft unj, isi data dibawah agar orang-orang tahu
+    darimana kamu berasal
+  </h1>
   <ion-list inset>
     <ion-item>
       <ion-label>Nama lengkap</ion-label>
       <ion-input type="text" [(ngModel)]="userPostData.namaLengkap"></ion-input>
-      <hr/>
+      <hr />
     </ion-item>
-  
+
     <ion-list>
       <ion-item>
         <ion-label>Program studi</ion-label>
         <ion-select [(ngModel)]="userPostData.prodi">
           <ion-option value="11">Pendidikan Teknik Elektro (S-1)</ion-option>
-          <ion-option value="12">Pendidikan Teknik Elektronika (S-1)</ion-option>
-          <ion-option value="13">Pend Teknik Informatika dan Komputer (S-1)</ion-option>
+          <ion-option value="12"
+            >Pendidikan Teknik Elektronika (S-1)</ion-option
+          >
+          <ion-option value="13"
+            >Pend Teknik Informatika dan Komputer (S-1)</ion-option
+          >
           <ion-option value="14">Teknik Elektronika (D-III)</ion-option>
           <ion-option value="21">Pendidikan Teknik Mesin (S-1)</ion-option>
           <ion-option value="22">Teknik Mesin (D-III)</ion-option>
@@ -38,7 +41,9 @@
           <ion-option value="41">Pendidikan Tata Boga (S-1)</ion-option>
           <ion-option value="42">Pendidikan Tata Busana (S-1)</ion-option>
           <ion-option value="43">Pendidikan Tatat Rias (S-1)</ion-option>
-          <ion-option value="44">Pendidikan Kesejahteraan Keluarga (S-1)</ion-option>
+          <ion-option value="44"
+            >Pendidikan Kesejahteraan Keluarga (S-1)</ion-option
+          >
           <ion-option value="45">Tata Boga (D-III)</ion-option>
           <ion-option value="46">Tata Busana (D-III)</ion-option>
           <ion-option value="47">Tata Rias(D-III)</ion-option>
@@ -46,12 +51,13 @@
       </ion-item>
     </ion-list>
 
-
     <ion-item>
       <ion-label>Tahun lulus</ion-label>
-      <ion-datetime displayFormat="YYYY" [(ngModel)]="userPostData.tahunlulus"></ion-datetime>
+      <ion-datetime
+        displayFormat="YYYY"
+        [(ngModel)]="userPostData.tahunlulus"
+      ></ion-datetime>
     </ion-item>
-  
   </ion-list>
 
   <button ion-button (click)="keHome()">Next</button>

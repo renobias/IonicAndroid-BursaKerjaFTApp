@@ -1,177 +1,182 @@
 <ion-header>
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     <ion-title class="textHome">Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ng-template #kosong>
-        <img src="assets/imgs/empty2.png">
-      </ng-template>
-<!--<h1>Welcome {{userDetails.username}}</h1>-->
-  
-<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ng-template #kosong> <img src="assets/imgs/empty2.png" /> </ng-template>
+  <!-- <h1>Welcome {{userDetails.username}}</h1> -->
 
-<ion-grid>
-  <ion-card>
-  <ion-row class="margin-kriteria">
-    <ion-col col-8 no-padding no-margin>
-        <h1 margin="10%">Kriteria</h1>
-    </ion-col>
-    <ion-col col-4 no-padding no-margin>
-        <button ion-button class="tom-fil">filter</button>
-    </ion-col>
-  </ion-row>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
-  <ion-row>
-    <ion-col col-12>
-        <ion-list>
+  <ion-grid>
+    <ion-card>
+      <ion-row class="margin-kriteria">
+        <ion-col col-8 no-padding no-margin>
+          <h1 margin="10%">Kriteria</h1>
+        </ion-col>
+        <ion-col col-4 no-padding no-margin>
+          <button ion-button class="tom-fil">filter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-list>
             <ion-item>
               <ion-label>Program Studi</ion-label>
-              <ion-select [(ngModel)]="jurusan">
-                <ion-option value="11">Pendidikan Teknik Elektro (S-1)</ion-option>
-                <ion-option value="12">Pendidikan Teknik Elektronika (S-1)</ion-option>
-                <ion-option value="13">Pend Teknik Informatika dan Komputer (S-1)</ion-option>
+              <ion-select [(ngModel)]="jurusan" class="text-center-select">
+                <ion-option value="11"
+                  >Pendidikan Teknik Elektro (S-1)</ion-option
+                >
+                <ion-option value="12"
+                  >Pendidikan Teknik Elektronika (S-1)</ion-option
+                >
+                <ion-option value="13"
+                  >Pend Teknik Informatika dan Komputer (S-1)</ion-option
+                >
                 <ion-option value="14">Teknik Elektronika (D-III)</ion-option>
-                <ion-option value="21">Pendidikan Teknik Mesin (S-1)</ion-option>
+                <ion-option value="21"
+                  >Pendidikan Teknik Mesin (S-1)</ion-option
+                >
                 <ion-option value="22">Teknik Mesin (D-III)</ion-option>
-                <ion-option value="31">Pendidikan Teknik Bangunan (S-1)</ion-option>
+                <ion-option value="31"
+                  >Pendidikan Teknik Bangunan (S-1)</ion-option
+                >
                 <ion-option value="32">Teknik Sipil (D-III)</ion-option>
                 <ion-option value="33">Transportasi (D-III)</ion-option>
                 <ion-option value="41">Pendidikan Tata Boga (S-1)</ion-option>
                 <ion-option value="42">Pendidikan Tata Busana (S-1)</ion-option>
                 <ion-option value="43">Pendidikan Tatat Rias (S-1)</ion-option>
-                <ion-option value="44">Pendidikan Kesejahteraan Keluarga (S-1)</ion-option>
+                <ion-option value="44"
+                  >Pendidikan Kesejahteraan Keluarga (S-1)</ion-option
+                >
                 <ion-option value="45">Tata Boga (D-III)</ion-option>
                 <ion-option value="46">Tata Busana (D-III)</ion-option>
                 <ion-option value="47">Tata Rias(D-III)</ion-option>
               </ion-select>
             </ion-item>
           </ion-list>
-    </ion-col>
-  </ion-row>
-
-
-  <ion-row>
-      <ion-col col-12>
-          <ion-list>
-              <ion-item>
-                <ion-label>Bidang Pekerjaan</ion-label>
-                <ion-select>
-                  <ion-option value="Pendidikan Teknik Elektro (S1)">Pend.Teknik Elektro (S1)</ion-option>
-                  <ion-option value="Pendidikan Teknik Elektronika (S1)">Pend.Teknik Elektronika (S1)</ion-option>
-                  <ion-option value="Pendidikan Teknik Informatika dan Komputer (S-1)">Pend.Teknik Informatika dan Komputer (S-1)</ion-option>
-                  <ion-option value="Teknik Elektronika (D-III)">Teknik Elektronika (D-III)</ion-option>
-                </ion-select>
-              </ion-item>
-            </ion-list>
-      </ion-col>
-    </ion-row>
+        </ion-col>
+      </ion-row>
 
       <ion-row>
-          <ion-col col-12>
-              <ion-list>
-                <ion-row>
-                  <ion-col col-12>
-                    <ion-list>
-                      <ion-item>
-                        <ion-label>Tahun lulus</ion-label>
-                        <ion-datetime displayFormat="YYYY" ></ion-datetime>
-                      </ion-item>
-                    </ion-list>
-                  </ion-col>
-                </ion-row>
-              </ion-list>
-          </ion-col>
-        </ion-row>
+        <ion-col col-12>
+          <ion-list>
+            <ion-item>
+              <ion-label>Bidang Pekerjaan</ion-label>
+              <ion-select class="text-center-select">
+                <ion-option value="Pendidikan Teknik Elektro (S1)"
+                  >Pend.Teknik Elektro (S1)</ion-option
+                >
+                <ion-option value="Pendidikan Teknik Elektronika (S1)"
+                  >Pend.Teknik Elektronika (S1)</ion-option
+                >
+                <ion-option
+                  value="Pendidikan Teknik Informatika dan Komputer (S-1)"
+                  >Pend.Teknik Informatika dan Komputer (S-1)</ion-option
+                >
+                <ion-option value="Teknik Elektronika (D-III)"
+                  >Teknik Elektronika (D-III)</ion-option
+                >
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
 
-</ion-card>
-</ion-grid>
+      <ion-row>
+        <ion-col col-12>
+          <ion-list>
+            <ion-row>
+              <ion-col col-12>
+                <ion-list>
+                  <ion-item>
+                    <ion-label>Tahun lulus</ion-label>
+                    <ion-datetime displayFormat="YYYY"></ion-datetime>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
 
-<ion-list>
-  <ion-item *ngFor="let item of items">
-    {{ item }}
-  </ion-item>
-</ion-list>
+  <ion-list>
+    <ion-item *ngFor="let item of items"> {{ item }} </ion-item>
+  </ion-list>
 
-<ion-grid *ngFor="let item of dataSet">
+  <ion-grid *ngFor="let item of dataSet">
     <ion-row>
       <ion-col col-12 no-padding no-margin>
         <ion-card id="card-pk">
           <ion-card-content>
-          <ion-row>
-            <ion-col col-6>
-              Nama
-            </ion-col>
-            <ion-col col-6>
-              <h3 [innerHTML]="item.nama_lengkap | linky"></h3>
-              </ion-col>
-          </ion-row>
-          <ion-row>
+            <ion-row>
+              <ion-col col-6> Nama </ion-col>
               <ion-col col-6>
-                Program Studi
+                <h3 [innerHTML]="item.nama_lengkap | linky"></h3>
               </ion-col>
-              <ion-col col-6>
-                <h3 [innerHTML]="item.prodi | linky"></h3>
-                </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-6>
-                  Tahun lulus
-                </ion-col>
-                <ion-col col-6>
-                  <h3 [innerHTML]="item.tahun_lulus | linky"></h3>
-                  </ion-col>
-              </ion-row>
-              <hr/>
+              <ion-col col-6> Program Studi </ion-col>
+              <ion-col col-6>
+                <h3 [innerHTML]="item.prodi | linky"></h3>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6> Tahun lulus </ion-col>
+              <ion-col col-6>
+                <h3 [innerHTML]="item.tahun_lulus | linky"></h3>
+              </ion-col>
+            </ion-row>
+            <hr />
 
-              <ion-row>
-                  <ion-col col-5>
-                    <img src="assets/imgs/Foto Profil Dark.jpg">
-                  </ion-col>
-                  <ion-col col-7>
-                  <div *ngIf="item.ttg_saya;else kosong">
-                    <p text-justify [innerHTML]="item.ttg_saya">
-                    </p>
-                  </div>
-                  </ion-col>
-                </ion-row>
-            </ion-card-content>
+            <ion-row>
+              <ion-col col-5>
+                <img src="assets/imgs/Foto Profil Dark.jpg" />
+              </ion-col>
+              <ion-col col-7>
+                <div *ngIf="item.ttg_saya; else: kosong">
+                  <p text-justify [innerHTML]="item.ttg_saya"></p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col col-12>
-        <Button id="btn-more" ion-button full>More</Button>
+        <button id="btn-more" ion-button full>More</button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
+  <!--
+      <ion-list>
+        <ion-item *ngFor="let item of items">
+          {{ item }}
+        </ion-item>
+      </ion-list>
 
-<!--
-    <ion-list>
-      <ion-item *ngFor="let item of items">
-        {{ item }}
-      </ion-item>
-    </ion-list>
-  
-    
-  <ion-card *ngFor="let item of dataSet" id="home">
-      <img src="assets/imgs/logo.png" class="poto"/>
-      <ion-card-content>
-        <ion-card-title [innerHTML]="item.companyname | linky"></ion-card-title>
-          <strong><p [innerHTML]="item.judul_loker | linky"></p></strong> username dari field di database
-          <hr/>
-         <p [innerHTML]="item.deskripsi_loker| linky" id="descloker"></p>
-         <span>{{ convertTime(item.created) | amTimeAgo}}</span> feed dari nama field didatabase
-         <hr/>
-         <button ion-button full>Apply with my CV</button>
-         <hr/>
-      </ion-card-content>
-    </ion-card>
+
+    <ion-card *ngFor="let item of dataSet" id="home">
+        <img src="assets/imgs/logo.png" class="poto"/>
+        <ion-card-content>
+          <ion-card-title [innerHTML]="item.companyname | linky"></ion-card-title>
+            <strong><p [innerHTML]="item.judul_loker | linky"></p></strong> username dari field di database
+            <hr/>
+           <p [innerHTML]="item.deskripsi_loker| linky" id="descloker"></p>
+           <span>{{ convertTime(item.created) | amTimeAgo}}</span> feed dari nama field didatabase
+           <hr/>
+           <button ion-button full>Apply with my CV</button>
+           <hr/>
+        </ion-card-content>
+      </ion-card>
   -->
 </ion-content>

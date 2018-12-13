@@ -5,19 +5,12 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Pendaftaran</ion-title>
-  </ion-navbar>
-
+  <ion-navbar> <ion-title>Pendaftaran</ion-title> </ion-navbar>
 </ion-header>
-
 
 <ion-content padding class="appBackground">
   <ion-card>
-    <ion-card-header>
-      Perusahaan
-    </ion-card-header>
+    <ion-card-header> Perusahaan </ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item>
@@ -37,13 +30,17 @@
 
         <ion-item>
           <ion-label stacked>Password</ion-label>
-          <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
+          <ion-input
+            type="password"
+            [(ngModel)]="userData.password"
+          ></ion-input>
         </ion-item>
 
-        <button ion-button full color="success" (click)="signupperusahaan()">Sign up</button>
-        sudah punya akun? <a href="#" >Login</a>
+        <button ion-button full color="success" (click)="signupperusahaan()">
+          Sign up
+        </button>
+        sudah punya akun? <a href="#">Login</a>
       </ion-list>
     </ion-card-content>
   </ion-card>
 </ion-content>
-

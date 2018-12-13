@@ -1,18 +1,11 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Pendaftaran</ion-title>
-  </ion-navbar>
-
+  <ion-navbar> <ion-title>Pendaftaran</ion-title> </ion-navbar>
 </ion-header>
 
 <ion-content padding class="appBackground">
   <ion-card>
-    <ion-card-header>
-      Pencari Kerja
-    </ion-card-header>
+    <ion-card-header> Pencari Kerja </ion-card-header>
     <ion-card-content>
-      
       <!--
         <ion-list radio-group [(ngModel)]="userData.JenisDaftarPK">
             <ion-label stacked>
@@ -22,14 +15,14 @@
                 <ion-label>Alumni</ion-label>
                 <ion-radio checked="true" value="alumni"></ion-radio>
               </ion-item>
-            
+
               <ion-item>
                 <ion-label>Mahasiswa</ion-label>
                 <ion-radio value="mahasiswa"></ion-radio>
               </ion-item>
           </ion-list>
         <hr/>
-        -->
+      -->
 
       <ion-list>
         <ion-item>
@@ -39,40 +32,45 @@
 
         <ion-item>
           <ion-label stacked>Email</ion-label>
-          <ion-input type="text"  [(ngModel)]="userData.email"></ion-input>
+          <ion-input type="text" [(ngModel)]="userData.email"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Username</ion-label>
-          <ion-input type="text"  [(ngModel)]="userData.username"></ion-input>
+          <ion-input type="text" [(ngModel)]="userData.username"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Password</ion-label>
-          <ion-input type="password"  [(ngModel)]="userData.password"></ion-input>
+          <ion-input
+            type="password"
+            [(ngModel)]="userData.password"
+          ></ion-input>
         </ion-item>
 
-        <!-- <h1>{{userData.JenisDaftarPK}}</h1>-->
+        <!-- <h1>{{userData.JenisDaftarPK}}</h1> -->
 
         <!--
-        <ion-list>
+          <ion-list>
+            <ion-item>
+              <ion-label stacked>Program studi</ion-label>
+              <ion-select>
+                <ion-option value="nes">Pendidikan Informatika</ion-option>
+                <ion-option value="n64">Pendidikan vokasional elektro</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+
           <ion-item>
-            <ion-label stacked>Program studi</ion-label>
-            <ion-select>
-              <ion-option value="nes">Pendidikan Informatika</ion-option>
-              <ion-option value="n64">Pendidikan vokasional elektro</ion-option>
-            </ion-select>
+            <ion-label stacked>Tahun lulus</ion-label>
+            <ion-datetime displayFormat="YYYY"></ion-datetime>
           </ion-item>
-        </ion-list>
-
-
-        <ion-item>
-          <ion-label stacked>Tahun lulus</ion-label>
-          <ion-datetime displayFormat="YYYY"></ion-datetime>
-        </ion-item>
         -->
 
-        <button ion-button full color="success" (click)="signup()">Sign up</button>
+        <button ion-button full color="success" (click)="signup()">
+          Sign up
+        </button>
         sudah punya akun? <a href="#" (click)="login()">Login</a>
       </ion-list>
     </ion-card-content>

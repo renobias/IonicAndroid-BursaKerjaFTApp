@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { LinkyModule } from 'angular-linky';
-import { MomentModule } from 'angular2-moment';
-
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController
+} from "ionic-angular";
+import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { LinkyModule } from "angular-linky";
+import { MomentModule } from "angular2-moment";
 
 /**
  * Generated class for the NotificationJobSeekerPage page.
@@ -14,15 +18,20 @@ import { MomentModule } from 'angular2-moment';
 
 @IonicPage()
 @Component({
-  selector: 'page-notification-job-seeker',
-  templateUrl: 'notification-job-seeker.html',
+  selector: "page-notification-job-seeker",
+  templateUrl: "notification-job-seeker.html"
 })
 export class NotificationJobSeekerPage {
   public dataSet: any;
   public resposeData: any;
   public userDetails: any;
-  userPostData = { "user_id": "", "token": ""};
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,public authService:AuthServiceProvider) {
+  userPostData = { user_id: "", token: "" };
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public authService: AuthServiceProvider
+  ) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
     this.userPostData.user_id = this.userDetails.user_id;
@@ -32,7 +41,7 @@ export class NotificationJobSeekerPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NotificationJobSeekerPage');
+    console.log("ionViewDidLoad NotificationJobSeekerPage");
   }
 
   getPesanNotifikasi() {
@@ -48,11 +57,12 @@ export class NotificationJobSeekerPage {
     );
   }
 
-  beriNomor(){
+  beriNomor() {
     const alert = this.alertCtrl.create({
-      title: 'Terkirim!',
-      subTitle: 'Nomor anda sudah memberikan nomor kontak yang dapat dihubungi perusahaan tersebut!',
-      buttons: ['OK']
+      title: "Terkirim!",
+      subTitle:
+        "Nomor anda sudah memberikan nomor kontak yang dapat dihubungi perusahaan tersebut!",
+      buttons: ["OK"]
     });
     alert.present();
   }

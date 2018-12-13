@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the EditRiwpelPkPage page.
@@ -10,16 +10,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-edit-riwpel-pk',
-  templateUrl: 'edit-riwpel-pk.html',
+  selector: "page-edit-riwpel-pk",
+  templateUrl: "edit-riwpel-pk.html"
 })
 export class EditRiwpelPkPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditRiwpelPkPage');
+    console.log("ionViewDidLoad EditRiwpelPkPage");
   }
-
 }

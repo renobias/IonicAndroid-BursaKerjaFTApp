@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 /*
   Generated class for the ShareServiceProvider provider.
@@ -9,10 +9,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ShareServiceProvider {
   constructor() {
-    console.log('Hello ShareServiceProvider Provider');
-
+    console.log("Hello ShareServiceProvider Provider");
   }
-
-
-
 }

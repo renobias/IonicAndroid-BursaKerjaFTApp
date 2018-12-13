@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,MenuController} from 'ionic-angular';
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  MenuController
+} from "ionic-angular";
 
 /**
  * Generated class for the MenuCompanyPage page.
@@ -10,20 +15,21 @@ import { IonicPage, NavController, NavParams ,MenuController} from 'ionic-angula
 
 @IonicPage()
 @Component({
-  selector: 'page-menu-company',
-  templateUrl: 'menu-company.html',
+  selector: "page-menu-company",
+  templateUrl: "menu-company.html"
 })
 export class MenuCompanyPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl: MenuController) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public menuCtrl: MenuController
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MenuCompanyPage');
+    console.log("ionViewDidLoad MenuCompanyPage");
   }
 
   openMenucompany() {
     this.menuCtrl.open();
   }
-
 }

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import{TabsCompanyPage} from '../tabs-company/tabs-company';
-import{HomecompanyPage} from '../homecompany/homecompany';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { TabsCompanyPage } from "../tabs-company/tabs-company";
+import { HomecompanyPage } from "../homecompany/homecompany";
 /**
  * Generated class for the LogincompanyPage page.
  *
@@ -11,20 +11,17 @@ import{HomecompanyPage} from '../homecompany/homecompany';
 
 @IonicPage()
 @Component({
-  selector: 'page-logincompany',
-  templateUrl: 'logincompany.html',
+  selector: "page-logincompany",
+  templateUrl: "logincompany.html"
 })
 export class LogincompanyPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LogincompanyPage');
+    console.log("ionViewDidLoad LogincompanyPage");
   }
 
-  logincompany(){
+  logincompany() {
     this.navCtrl.push(TabsCompanyPage);
   }
-
 }

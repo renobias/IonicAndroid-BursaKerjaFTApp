@@ -1,9 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, App, AlertController, Item } from 'ionic-angular';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { LinkyModule } from 'angular-linky';
+import { Component, ViewChild } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  App,
+  AlertController,
+  Item
+} from "ionic-angular";
+import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { LinkyModule } from "angular-linky";
 import { Common } from "../../providers/auth-service/common";
-import { ProfilHireAlumniPage } from '../profil-hire-alumni/profil-hire-alumni';
+import { ProfilHireAlumniPage } from "../profil-hire-alumni/profil-hire-alumni";
 /**
  * Generated class for the HomecompanyPage page.
  *
@@ -13,12 +19,10 @@ import { ProfilHireAlumniPage } from '../profil-hire-alumni/profil-hire-alumni';
 
 @IonicPage()
 @Component({
-  selector: 'page-homecompany',
-  templateUrl: 'homecompany.html',
+  selector: "page-homecompany",
+  templateUrl: "homecompany.html"
 })
-
 export class HomecompanyPage {
-
   @ViewChild("updatebox") updatebox;
   public userDetails: any;
 
@@ -30,22 +34,26 @@ export class HomecompanyPage {
 
   public dataSet: any;
   public dataSetBP: any;
-  public dataSetBK:any;
-  public dataSetPS:any;
-
+  public dataSetBK: any;
+  public dataSetPS: any;
 
   public noRecords: boolean;
 
-  searchQuery: string = '';
+  searchQuery: string = "";
   items: string[];
 
+  userPostData = { user_id: "", token: "",prodi:""};
+  pekerjaanPostData = { user_id: "", token: "", id_bidang_pekerjaan: "" };
+  public userIdentify = { uidfk: "" };
 
-  userPostData = { "user_id": "", "token": "" };
-  pekerjaanPostData= {"user_id": "", "token": "","id_bidang_pekerjaan":""};
- public userIdentify={"uidfk":""};
-
-  constructor(public navCtrl: NavController, public authService: AuthServiceProvider, public app: App, public Common: Common, public alertCtrl: AlertController) {
-    const data = JSON.parse(localStorage.getItem('userData'));
+  constructor(
+    public navCtrl: NavController,
+    public authService: AuthServiceProvider,
+    public app: App,
+    public Common: Common,
+    public alertCtrl: AlertController
+  ) {
+    const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
 
     this.userPostData.user_id = this.userDetails.user_id;
@@ -55,12 +63,12 @@ export class HomecompanyPage {
     this.pekerjaanPostData.token = this.userDetails.token;
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getFeed();
     this.getProgramStudi();
     this.getBidangPekerjaan();
     this.initializeItems();
-  }  
+  }
 
   backToWelcome() {
     const root = this.app.getRootNav();
@@ -74,65 +82,76 @@ export class HomecompanyPage {
     this.Common.closeLoading();
   }
 
-  getProgramStudi(){
-    this.authService.postData(this.userPostData, 'getProgramStudi')
-    .then((result) => {
-      this.resposeDataPS = result;
-      if (this.resposeDataPS.ProgramStudiData) {
-        this.dataSetPS = this.resposeDataPS.ProgramStudiData;
-        console.log("datasetPS"+this.dataSetPS);
-      } else { }
-    }, (err) => {
-      console.log("asuuu");
-    });
+  getProgramStudi() {
+    this.authService.postData(this.userPostData, "getProgramStudi").then(
+      result => {
+        this.resposeDataPS = result;
+        if (this.resposeDataPS.ProgramStudiData) {
+          this.dataSetPS = this.resposeDataPS.ProgramStudiData;
+          console.log("datasetPS" + this.dataSetPS);
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
   }
 
-  getBidangPekerjaan(){
-    this.authService.postData(this.userPostData, 'getBidangPekerjaan')
-    .then((result) => {
-      this.resposeDataBP = result;
-      if (this.resposeDataBP.BidangPekerjaanData) {
-        this.dataSetBP = this.resposeDataBP.BidangPekerjaanData;
-        console.log("datasetBP"+this.dataSetBP);
-      } else { }
-    }, (err) => {
-      console.log("asuuu");
-    });
+  getBidangPekerjaan() {
+    this.authService.postData(this.userPostData, "getBidangPekerjaan").then(
+      result => {
+        this.resposeDataBP = result;
+        if (this.resposeDataBP.BidangPekerjaanData) {
+          this.dataSetBP = this.resposeDataBP.BidangPekerjaanData;
+          console.log("datasetBP" + this.dataSetBP);
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
   }
 
-  getBidangKeahlian(index){
+  getBidangKeahlian(index) {
     console.log(this.dataSetBP[index].id_bidang_pekerjaan);
-    this.pekerjaanPostData.id_bidang_pekerjaan= this.dataSetBP[index].id_bidang_pekerjaan;
+    this.pekerjaanPostData.id_bidang_pekerjaan = this.dataSetBP[
+      index
+    ].id_bidang_pekerjaan;
     console.log(this.pekerjaanPostData.id_bidang_pekerjaan);
-    
-    this.authService.postData(this.pekerjaanPostData, 'getBidangKeahlian')
-    .then((result) => {
-      this.resposeDataBK = result;
-      if (this.resposeDataBK.BidangKeahlianData) {
-        this.dataSetBK = this.resposeDataBK.BidangKeahlianData;
-      } else { }
-    }, (err) => {
-      console.log("asuuu");
-    });
-  }
 
+    this.authService.postData(this.pekerjaanPostData, "getBidangKeahlian").then(
+      result => {
+        this.resposeDataBK = result;
+        if (this.resposeDataBK.BidangKeahlianData) {
+          this.dataSetBK = this.resposeDataBK.BidangKeahlianData;
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
+  }
 
   getFeed() {
+    console.log(this.userPostData.prodi);
     this.Common.presentLoading();
-    this.authService.postData(this.userPostData, 'feedPK')
-      .then((result) => {
+    this.authService.postData(this.userPostData, "feedPK").then(
+      result => {
         this.resposeData = result;
         if (this.resposeData.feedData) {
-          localStorage.setItem('feedData', JSON.stringify(this.resposeData) );
+          localStorage.setItem("feedData", JSON.stringify(this.resposeData));
           this.dataSet = this.resposeData.feedData;
-          console.log("dataSet :"+this.dataSet)
+          console.log("dataSet :" + this.dataSet);
           this.Common.closeLoading();
-        } else { }
-      }, (err) => {
-
-      });
+        } else {
+        }
+      },
+      err => {}
+    );
   }
-
 
   /** 
   doInfinite(e): Promise<any> {
@@ -165,45 +184,42 @@ export class HomecompanyPage {
   
   */
 
+  filter(){
+    this.ionViewWillEnter();
+  }
+
   convertTime(created) {
     let date = new Date(created * 1000);
     return date;
   }
 
-
   initializeItems() {
     return this.userPostData;
   }
 
-
-
   getItems(ev: any) {
-
     this.initializeItems();
     let val = ev.target.value;
 
-    if (val && val.trim() != '') {
-      this.authService.postData(this.userPostData, "feedPK").then(
-        result => {
-          this.resposeData = result;
-          if (this.resposeData.feedData) {
-            this.dataSet = this.resposeData.feedData.filter((item) => {
-              return (item.nama_lengkap.toLowerCase().indexOf(val.toLowerCase()) > -1);
-            })
-          } else {
-            console.log("No access");
-          }
-        },
-      );
+    if (val && val.trim() != "") {
+      this.authService.postData(this.userPostData, "feedPK").then(result => {
+        this.resposeData = result;
+        if (this.resposeData.feedData) {
+          this.dataSet = this.resposeData.feedData.filter(item => {
+            return (
+              item.nama_lengkap.toLowerCase().indexOf(val.toLowerCase()) > -1
+            );
+          });
+        } else {
+          console.log("No access");
+        }
+      });
     }
   }
 
-  more(index:any){
-    //mengambil index feed dari pencari kerja 
-    localStorage.setItem("uidIdentifier",index);
+  more(index: any) {
+    //mengambil index feed dari pencari kerja
+    localStorage.setItem("uidIdentifier", index);
     this.navCtrl.push(ProfilHireAlumniPage);
   }
-
 }
-
-

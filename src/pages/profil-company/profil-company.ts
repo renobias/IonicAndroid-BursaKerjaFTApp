@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { Common } from '../../providers/auth-service/common';
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController
+} from "ionic-angular";
+import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { Common } from "../../providers/auth-service/common";
 
 /**
  * Generated class for the ProfilCompanyPage page.
@@ -12,20 +17,22 @@ import { Common } from '../../providers/auth-service/common';
 
 @IonicPage()
 @Component({
-  selector: 'page-profil-company',
-  templateUrl: 'profil-company.html',
+  selector: "page-profil-company",
+  templateUrl: "profil-company.html"
 })
 export class ProfilCompanyPage {
   public resposeData: any;
   public dataSet: any;
   public userDetails: any;
   userPostData = { user_id: "", token: "" };
-  constructor( public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
     public Common: Common,
     public alertCtrl: AlertController,
-    public authService: AuthServiceProvider) {
-      const data = JSON.parse(localStorage.getItem("userData"));
+    public authService: AuthServiceProvider
+  ) {
+    const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
 
     this.userPostData.user_id = this.userDetails.user_id;
@@ -34,7 +41,7 @@ export class ProfilCompanyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilCompanyPage');
+    console.log("ionViewDidLoad ProfilCompanyPage");
   }
 
   getProfilePerusahaan() {
@@ -49,6 +56,4 @@ export class ProfilCompanyPage {
       err => {}
     );
   }
-
-
 }

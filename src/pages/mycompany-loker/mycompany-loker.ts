@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the MycompanyLokerPage page.
@@ -10,16 +10,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-mycompany-loker',
-  templateUrl: 'mycompany-loker.html',
+  selector: "page-mycompany-loker",
+  templateUrl: "mycompany-loker.html"
 })
 export class MycompanyLokerPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MycompanyLokerPage');
+    console.log("ionViewDidLoad MycompanyLokerPage");
   }
-
 }

@@ -1,41 +1,46 @@
 page-home {
-    #home{
-        #descloker{
-            text-align: justify;
-        }
-    .poto{
-        height: 70vw;
+  .text-center-select {
+    text-align: center;
+    max-width: 100% !important;
+  }
+
+  #home {
+    #descloker {
+      text-align: justify;
     }
-    .button-more{
-        margin-left: 27vw;
+    .poto {
+      height: 70vw;
+    }
+    .button-more {
+      margin-left: 27vw;
     }
     hr {
-        border: none;
-        height: 2px;
+      border: none;
+      height: 2px;
     }
-}
+  }
 
-hr {
+  hr {
     border: none;
     height: 4px;
-}
+  }
 
-.margin-kriteria{
+  .margin-kriteria {
     border-bottom: 4px solid whitesmoke;
-}
+  }
 
-.tom-fil{
-    height:95%;
+  .tom-fil {
+    height: 95%;
     width: 100%;
-}
+    color: #f9f9b2;
+  }
 
-#card-pk{
+  #card-pk {
     margin-bottom: 0px;
-}
-#btn-more{
+  }
+  #btn-more {
     margin-top: 0px;
     width: 96.5%;
     margin-left: 2%;
-}
-
+  }
 }

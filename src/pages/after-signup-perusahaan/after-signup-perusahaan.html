@@ -5,51 +5,73 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>after-signup-perusahaan</ion-title>
-  </ion-navbar>
-
+  <ion-navbar> <ion-title>after-signup-perusahaan</ion-title> </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <h1>hello {{userDetails.username}}, selamat anda telah terdaftar sebagai admin perusahaan di bursa kerja ft unj, silahkan lengkapi identitas perusahaan anda</h1>
+  <h1>
+    hello {{ userDetails.username }}, selamat anda telah terdaftar sebagai admin
+    perusahaan di bursa kerja ft unj, silahkan lengkapi identitas perusahaan
+    anda
+  </h1>
   <ion-list inset>
     <ion-item>
       <ion-label stacked>Nama Perusahaan</ion-label>
-      <ion-input type="text" [(ngModel)]="userPostData.namaPerusahaan"></ion-input>
+      <ion-input
+        type="text"
+        [(ngModel)]="userPostData.namaPerusahaan"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label stacked>Bidang Perusahaan</ion-label>
-        <ion-input type="text" [(ngModel)]="userPostData.bidangPerusahaan"></ion-input>
+      <ion-label stacked>Bidang Perusahaan</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="userPostData.bidangPerusahaan"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label stacked>Alamat Perusahaan</ion-label>
-        <ion-textarea rows="3" maxLength="150" [(ngModel)]="userPostData.alamatPerusahaan"></ion-textarea>
-      </ion-item>
-
-    <ion-item>
-        <ion-label stacked>Kodepos Perusahaan</ion-label>
-        <ion-input type="text" [(ngModel)]="userPostData.kodeposPerusahaan"></ion-input>
+      <ion-label stacked>Alamat Perusahaan</ion-label>
+      <ion-textarea
+        rows="3"
+        maxLength="150"
+        [(ngModel)]="userPostData.alamatPerusahaan"
+      ></ion-textarea>
     </ion-item>
 
     <ion-item>
-        <ion-label stacked>no telepon Perusahaan</ion-label>
-        <ion-input type="number" [(ngModel)]="userPostData.notelpPerusahaan"></ion-input>
+      <ion-label stacked>Kodepos Perusahaan</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="userPostData.kodeposPerusahaan"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label stacked>email Perusahaan</ion-label>
-        <ion-input type="email" [(ngModel)]="userPostData.emailPerusahaan"></ion-input>
+      <ion-label stacked>no telepon Perusahaan</ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="userPostData.notelpPerusahaan"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label stacked>Deskripsi Perusahaan</ion-label>
-        <ion-textarea rows="3" maxLength="200" [(ngModel)]="userPostData.deskripsiPerusahaan"></ion-textarea>
-      </ion-item>
+      <ion-label stacked>email Perusahaan</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="userPostData.emailPerusahaan"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Deskripsi Perusahaan</ion-label>
+      <ion-textarea
+        rows="3"
+        maxLength="200"
+        [(ngModel)]="userPostData.deskripsiPerusahaan"
+      ></ion-textarea>
+    </ion-item>
   </ion-list>
 
   <button ion-button full (click)="keHome()">Next</button>

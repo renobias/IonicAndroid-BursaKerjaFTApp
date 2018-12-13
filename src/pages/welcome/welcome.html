@@ -5,40 +5,46 @@
   Ionic pages and navigation.
 -->
 <ion-content padding id="welcome" class="action-sheets-basic-page">
-  <hr/>
+  <hr />
   <img src="assets/imgs/Logo-unj.png" />
-  <hr/>
+  <hr />
 
   <div id="judul-app">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h1>Bursa Kerja FT UNJ</h1>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
+    <ion-grid>
+      <ion-row>
+        <ion-col> <h1>Bursa Kerja FT UNJ</h1> </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
-<div id="tombolMenu">
-  <ion-grid>
-    <ion-row>
-      <ion-col center text-center>
-        <button ion-button block (click)="openMenuSignup()" style="color:white">Sign Up</button>
-      </ion-col>
-    </ion-row>
+  <div id="tombolMenu">
+    <ion-grid>
+      <ion-row>
+        <ion-col center text-center>
+          <button
+            ion-button
+            block
+            (click)="openMenuSignup()"
+            style="color:white"
+          >
+            Sign Up
+          </button>
+        </ion-col>
+      </ion-row>
 
-    <ion-row>
-      <ion-col center text-center>
-        <button ion-button block (click)="openLogin()" style="color:white">Login</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
-
+      <ion-row>
+        <ion-col center text-center>
+          <button ion-button block (click)="openLogin()" style="color:white">
+            Login
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
   <!--
-  <div id="batik">
-    <img src="assets/imgs/batik.png" />
-  </div>
+    <div id="batik">
+      <img src="assets/imgs/batik.png" />
+    </div>
   -->
 </ion-content>

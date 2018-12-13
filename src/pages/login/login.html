@@ -5,21 +5,18 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
+  <ion-navbar> <ion-title>Login</ion-title> </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-
   <ion-list>
-
     <ion-item>
-      <ion-label floating>UserName</ion-label>
-      <ion-input type="text" type="text" [(ngModel)]="userData.username"></ion-input>
+      <ion-label floating>Username or email</ion-label>
+      <ion-input
+        type="text"
+        type="text"
+        [(ngModel)]="userData.username"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -27,8 +24,5 @@
       <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
     </ion-item>
   </ion-list>
-
   <button ion-button full (click)="login()">Login</button>
-
-
 </ion-content>

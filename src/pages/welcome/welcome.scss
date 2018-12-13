@@ -1,60 +1,56 @@
 page-welcome {
-  hr{
+  hr {
     border: none;
     height: 3px;
   }
-#welcome{
-  
-  background-image:
-  url(../assets/imgs/orang.jpg);
-  background-size:70% ;
-  background-repeat: no-repeat;
-  background-position: center;
+  #welcome {
+    background-image: url(../assets/imgs/orang.jpg);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
     //background: color($colors, bgwelcome);
-    h1{
-        font-size: 52px;
-        margin-top:50px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-		color:#FBC531;
-    text-align: center;
+    h1 {
+      font-size: 52px;
+      margin-top: 50px;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      color: #fbc531;
+      text-align: center;
     }
-    .marginTop{
-        margin-top:150px;
+    .marginTop {
+      margin-top: 150px;
     }
-}
+  }
 
-
-	.action-sheets-basic-page {
-    .acsheetlogin{
+  .action-sheets-basic-page {
+    .acsheetlogin {
       margin-left: 50px;
-      color: #508AE4 !important;
-      }
-        
+      color: #508ae4 !important;
+    }
 
-    img{
+    img {
       height: 10vh;
-     margin: auto;
-     margin-top: 0px;
+      margin: auto;
+      margin-top: 0px;
       align-items: center;
       display: block;
     }
 
-  .ion-md-share {
-    color: #ED4248;
+    .ion-md-share {
+      color: #ed4248;
+    }
+    .ion-md-arrow-dropright-circle {
+      color: #508ae4;
+    }
+    .ion-md-heart-outline {
+      color: #31d55f;
+    }
+    .action-sheet-cancel ion-icon,
+    .action-sheet-destructive ion-icon {
+      color: #fbc531;
+    }
   }
-  .ion-md-arrow-dropright-circle {
-    color: #508AE4;
-  }
-  .ion-md-heart-outline {
-    color: #31D55F;
-  }
-  .action-sheet-cancel ion-icon,
-  .action-sheet-destructive ion-icon {
-    color: #FBC531;
-  }
-}
 
-/*
+  /*
 #batik{
   margin-top: 20%;
   img{
@@ -67,12 +63,11 @@ page-welcome {
 }
 */
 
-#tombolMenu{
-  margin-top: 38%;
-}
+  #tombolMenu {
+    margin-top: 38%;
+  }
 
-#judul-app{
-  margin-top: 20%;
+  #judul-app {
+    margin-top: 20%;
+  }
 }
-}
-

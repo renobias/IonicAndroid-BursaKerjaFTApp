@@ -5,28 +5,27 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>ubah intro</ion-title>
-  </ion-navbar>
-
+  <ion-navbar> <ion-title>ubah intro</ion-title> </ion-navbar>
 </ion-header>
-
 
 <ion-content padding>
   <ion-list>
-      <ion-item>
-        <ion-label fixed>Avatar</ion-label>
-        <ion-avatar item-end>
-          <img src="{{imgPreview}}" (click)="getPhoto()">
-        </ion-avatar>
-        </ion-item>
+    <ion-item>
+      <ion-label fixed>Avatar</ion-label>
+      <ion-avatar item-end>
+        <img src="{{imgPreview}}" (click)="getPhoto()" />
+      </ion-avatar>
+    </ion-item>
 
     <ion-item>
-        <ion-label stacked>Tentang saya</ion-label>
-        <ion-textarea rows="3" maxLength="1000" [(ngModel)]="userPostData.ttg_saya"></ion-textarea>
-      </ion-item>
-    </ion-list>
+      <ion-label stacked>Tentang saya</ion-label>
+      <ion-textarea
+        rows="3"
+        maxLength="1000"
+        [(ngModel)]="userPostData.ttg_saya"
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
 
   <button ion-button full (click)="simpanIntro()">Simpan</button>
 </ion-content>
