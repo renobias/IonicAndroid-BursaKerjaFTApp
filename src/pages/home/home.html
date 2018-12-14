@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title class="textHome">Home</ion-title>
+    <ion-title class="textHome">Beranda</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
           <h1 margin="10%">Kriteria</h1>
         </ion-col>
         <ion-col col-4 no-padding no-margin>
-          <button ion-button class="tom-fil">filter</button>
+          <button ion-button class="tom-fil">saring</button>
         </ion-col>
       </ion-row>
 
@@ -110,7 +110,7 @@
     <ion-item *ngFor="let item of items"> {{ item }} </ion-item>
   </ion-list>
 
-  <ion-grid *ngFor="let item of dataSet">
+  <ion-grid *ngFor="let item of dataSet;let i = index">
     <ion-row>
       <ion-col col-12 no-padding no-margin>
         <ion-card id="card-pk">
@@ -152,7 +152,7 @@
 
     <ion-row>
       <ion-col col-12>
-        <button id="btn-more" ion-button full>More</button>
+        <button id="btn-more" ion-button full (click)="more(i)">lainnya</button>
       </ion-col>
     </ion-row>
   </ion-grid>

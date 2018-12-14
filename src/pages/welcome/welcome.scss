@@ -4,13 +4,13 @@ page-welcome {
     height: 3px;
   }
   #welcome {
-    background-image: url(../assets/imgs/orang.jpg);
-    background-size: 70%;
+    background-image: url(../assets/imgs/bg-bursakerja.jpg);
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     //background: color($colors, bgwelcome);
     h1 {
-      font-size: 52px;
+      font-size: 20px;
       margin-top: 50px;
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
       color: #fbc531;
@@ -25,14 +25,6 @@ page-welcome {
     .acsheetlogin {
       margin-left: 50px;
       color: #508ae4 !important;
-    }
-
-    img {
-      height: 10vh;
-      margin: auto;
-      margin-top: 0px;
-      align-items: center;
-      display: block;
     }
 
     .ion-md-share {
@@ -64,10 +56,9 @@ page-welcome {
 */
 
   #tombolMenu {
-    margin-top: 38%;
   }
 
-  #judul-app {
-    margin-top: 20%;
+  #logo-app {
+    margin-top: 10%;
   }
 }

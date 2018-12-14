@@ -47,6 +47,7 @@ import { AfterSignupPerusahaanPageModule } from "../pages/after-signup-perusahaa
 import { EditKeahlianUtamaPageModule } from "../pages/edit-keahlian-utama/edit-keahlian-utama.module";
 import { EditKeahlianKeduaPageModule } from "../pages/edit-keahlian-kedua/edit-keahlian-kedua.module";
 import { EditKeahlianKetigaPageModule } from "../pages/edit-keahlian-ketiga/edit-keahlian-ketiga.module";
+import { ProfilSesamaPkPageModule} from "../pages/profil-sesama-pk/profil-sesama-pk.module";
 
 //plugin
 import { ShareServiceProvider } from "../providers/share-service/share-service";
@@ -106,7 +107,8 @@ import { HttpModule } from "@angular/http";
     AfterSignupPerusahaanPageModule,
     EditKeahlianUtamaPageModule,
     EditKeahlianKeduaPageModule,
-    EditKeahlianKetigaPageModule
+    EditKeahlianKetigaPageModule,
+    ProfilSesamaPkPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

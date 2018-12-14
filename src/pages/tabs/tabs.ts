@@ -105,8 +105,7 @@ export class TabsPage {
           this.badge.set(this.dataSet);
           console.log(this.dataSet);
           if (
-            /*agar alarm/pemberitahuan hanya menyala jika nilai notifikasi bertambah(dibandingkan dengan nilai datasetawal)*/ this
-              .dataSet > this.dataSetawal
+            /*agar alarm/pemberitahuan hanya menyala jika nilai notifikasi bertambah(dibandingkan dengan nilai datasetawal)*/ this.dataSet > this.dataSetawal
           ) {
             this.localNotifications.schedule({
               text: "Ada perusahaan baru yang tertarik dengan anda",

@@ -4,6 +4,7 @@ import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { LinkyModule } from "angular-linky";
 import { Common } from "../../providers/auth-service/common";
 import { ShareServiceProvider } from "../../providers/share-service/share-service";
+import { ProfilSesamaPkPage } from "../profil-sesama-pk/profil-sesama-pk";
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
@@ -59,6 +60,7 @@ export class HomePage {
       result => {
         this.resposeData = result;
         if (this.resposeData.feedData) {
+          localStorage.setItem("feedData", JSON.stringify(this.resposeData));
           this.dataSet = this.resposeData.feedData;
           this.Common.closeLoading();
         } else {
@@ -126,5 +128,11 @@ doInfinite(e): Promise<any> {
         }
       });
     }
+  }
+
+  more(index: any) {
+    //mengambil index feed dari pencari kerja
+    localStorage.setItem("uidIdentifier", index);
+    this.navCtrl.push(ProfilSesamaPkPage);
   }
 }

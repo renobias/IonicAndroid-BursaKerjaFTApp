@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title class="textHome">Home</ion-title>
+    <ion-title class="textHome">Beranda</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-nav id="menucompany" #content [root]="HomePage"></ion-nav>
@@ -88,7 +88,6 @@
       </ion-row>
     </ion-card>
   </ion-grid>
-  <h6>{{userPostData.prodi}}</h6>
 
   <ion-list>
     <ion-item *ngFor="let item of items"> {{ item }} </ion-item>
@@ -134,7 +133,7 @@
 
     <ion-row>
       <ion-col col-12>
-        <button id="btn-more" ion-button full (click)="more(i)">More</button>
+        <button id="btn-more" ion-button full (click)="more(i)">lainnya</button>
       </ion-col>
     </ion-row>
   </ion-grid>

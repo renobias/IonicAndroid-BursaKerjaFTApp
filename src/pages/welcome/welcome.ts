@@ -36,7 +36,7 @@ export class WelcomePage {
 
   openMenuSignup() {
     let actionSheet = this.actionSheetCtrl.create({
-      title: "Sign Up sebagai",
+      title: "Daftar sebagai",
       cssClass: "action-sheets-basic-page",
       buttons: [
         {
@@ -53,7 +53,7 @@ export class WelcomePage {
           }
         },
         {
-          text: "Cancel",
+          text: "Batal",
           role: "cancel",
           handler: () => {
             console.log("Cancel clicked");

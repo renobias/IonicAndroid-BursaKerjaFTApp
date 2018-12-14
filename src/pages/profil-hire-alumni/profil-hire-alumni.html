@@ -147,7 +147,7 @@
 
     <!-- KEAHLIAN -->
     <div *ngSwitchCase="'keahlian'">
-      <ion-card class="kartu" *ngFor="let item of dataKeahlianUtama">
+      <ion-card class="kartu">
         <ion-list>
           <ion-item>
             <ion-card-header> Keahlian Utama </ion-card-header>
@@ -155,7 +155,7 @@
         </ion-list>
         <hr />
 
-        <ion-list>
+        <ion-list *ngFor="let item of dataKeahlianUtama">
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang pekerjaan</h2>
@@ -184,14 +184,14 @@
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang pekerjaan</h2>
-            <p>Not yet</p>
+            <p [innerHTML]="item.bidang_pekerjaan">Not yet</p>
             <hr />
           </ion-item>
 
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang keahlian</h2>
-            <h4>Not yet</h4>
+            <h4 [innerHTML]="item.bidang_keahlian">Not yet</h4>
             <hr />
           </ion-item>
         </ion-list>
@@ -209,14 +209,14 @@
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang pekerjaan</h2>
-            <p>Not yet</p>
+            <p [innerHTML]="item.bidang_pekerjaan">Not yet</p>
             <hr />
           </ion-item>
 
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang keahlian</h2>
-            <h4>Not yet</h4>
+            <h4 [innerHTML]="item.bidang_keahlian">Not yet</h4>
             <hr />
           </ion-item>
         </ion-list>
@@ -228,9 +228,6 @@
         <ion-card class="kartu">
           <ion-item>
             <ion-card-header item-start> Riwayat Pendidikan </ion-card-header>
-            <button ion-button clear item-end>
-              <ion-icon name="create" isActive="false"></ion-icon>
-            </button>
           </ion-item>
           <hr />
           <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
@@ -239,9 +236,6 @@
         <ion-card class="kartu">
           <ion-item>
             <ion-card-header item-start> Riwayat Pelatihan </ion-card-header>
-            <button ion-button clear item-end>
-              <ion-icon name="create" isActive="false"></ion-icon>
-            </button>
           </ion-item>
           <hr />
           <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
@@ -250,9 +244,6 @@
         <ion-card class="kartu">
           <ion-item>
             <ion-card-header item-start> Portofolio </ion-card-header>
-            <button ion-button clear item-end>
-              <ion-icon name="create" isActive="false"></ion-icon>
-            </button>
           </ion-item>
           <hr />
           <ion-card-content> <h3 text-center>none</h3> </ion-card-content>

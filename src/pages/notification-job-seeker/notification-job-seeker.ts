@@ -37,19 +37,22 @@ export class NotificationJobSeekerPage {
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
 
-    this.getPesanNotifikasi();
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad NotificationJobSeekerPage");
   }
 
+  ionViewWillEnter() {
+    this.getPesanNotifikasi();
+  }
   getPesanNotifikasi() {
     this.authService.postData(this.userPostData, "pesannotifikasiPK").then(
       result => {
         this.resposeData = result;
         if (this.resposeData.profileUserData) {
           this.dataSet = this.resposeData.profileUserData;
+          console.log(this.dataSet);
         } else {
         }
       },

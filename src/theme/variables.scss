@@ -28,6 +28,25 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
+  primary : #3498DB,
+  secondary : #2980B9,
+  Kuning : #F1C40F,
+  Orange : #f39c12,
+  silver : #ECF0F1,
+  putih  : #FFFFFF,
+  Hijau  : #27AE60,
+  lightprimary: #b5b5b7,
+  light: #f4f4f4,
+  dark: #222,
+  energy: #f2b632,
+  bgwelcome: #27ae60,
+  danger: red,
+  green: #228b22,
+  darkred: #8b0000,
+  maroon: #800000,
+  white: #ffffff
+
+  /*
   primary: #f1c40f,
   secondary: #677077,
   lightprimary: #b5b5b7,
@@ -40,6 +59,7 @@ $colors: (
   darkred: #8b0000,
   maroon: #800000,
   white: #ffffff
+  */
 );
 $toolbar-background: color($colors, primary);
 $toolbar-md-title-text-color: white;
