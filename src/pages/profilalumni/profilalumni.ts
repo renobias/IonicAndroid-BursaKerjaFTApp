@@ -44,8 +44,12 @@ export class ProfilalumniPage {
   public resposeData2: any;
   public dataSet2: any;
   public tmpt_lahir: String;
+  public img_profile:any;
+  public img_profile_default:any;
+
   userPostData2 = { user_id: "", token: "" };
   userPostData = { user_id: "", token: "" };
+
 
   constructor(
     public navCtrl: NavController,
@@ -54,6 +58,7 @@ export class ProfilalumniPage {
     public alertCtrl: AlertController,
     public authService: AuthServiceProvider
   ) {
+
     this.tmpt_lahir = "";
 
     const data = JSON.parse(localStorage.getItem("userData"));
@@ -61,6 +66,7 @@ export class ProfilalumniPage {
 
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+    
 
     this.userPostData2.user_id = this.userDetails.user_id;
     this.userPostData2.token = this.userDetails.token;
@@ -78,6 +84,14 @@ export class ProfilalumniPage {
         this.resposeData = result;
         if (this.resposeData.profileUserData) {
           this.dataSet = this.resposeData.profileUserData;
+          console.log(this.dataSet[0].foto_profil);
+          if(this.dataSet[0].foto_profil){
+            this.img_profile = this.dataSet[0].foto_profil;
+          }
+          else{
+            this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
+          }
+            console.log(this.img_profile);
         } else {
         }
       },

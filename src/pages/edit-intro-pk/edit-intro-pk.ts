@@ -12,6 +12,8 @@ import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { ProfilalumniPage } from "../profilalumni/profilalumni";
 import { ImagePicker } from "@ionic-native/image-picker";
 import { Base64 } from "@ionic-native/base64";
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 /**
  * Generated class for the EditIntroPkPage page.
  *
@@ -25,7 +27,12 @@ import { Base64 } from "@ionic-native/base64";
   templateUrl: "edit-intro-pk.html"
 })
 export class EditIntroPkPage {
-  userPostData = { user_id: "", token: "", ttg_saya: "", avatar: "" };
+  /** Djamware */
+  imageURI:any;
+  imageFileName:any;
+  /** djamware */
+
+  userPostData = { user_id: "", token: "", ttg_saya: "", avatar: "",poto_profil:"" };
   userDetails: any;
   imgPreview = "assets/imgs/Foto Profil Dark.jpg";
   loading: any;
@@ -37,7 +44,9 @@ export class EditIntroPkPage {
     private toastCtrl: ToastController,
     private imagePicker: ImagePicker,
     private base64: Base64,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private transfer: FileTransfer,
+    private camera: Camera,
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
@@ -67,7 +76,7 @@ export class EditIntroPkPage {
         this.loading.dismiss();
         let alert = this.alertCtrl.create({
           title: "update Failed",
-          subTitle: "Oh no! Your updateis failed",
+          subTitle: "Oh tidak! update gagal",
           buttons: ["OK"]
         });
         alert.present();
@@ -102,8 +111,30 @@ export class EditIntroPkPage {
           this.imgPreview = results[i];
           this.userPostData.avatar = results[i];
         }
+
+        const fileTransfer: FileTransferObject = this.transfer.create();
+
+        let options1: FileUploadOptions = {
+           fileKey: 'file',
+           fileName: this.userPostData.user_id+'.jpg',
+           headers: {}
+        }
+
+        this.userPostData.poto_profil = "http://10.0.2.2/WebService-BursaKerja-final/img/"+this.userPostData.user_id+".jpg";
+        
+    fileTransfer.upload(this.imgPreview, 'http://10.0.2.2/WebService-BursaKerja-final/upload.php', options1)
+     .then((data) => {
+       // success
+       alert("success");
+     }, (err) => {
+       // error
+       alert("error"+JSON.stringify(err));
+     });
+
       },
       err => {}
     );
   }
+
+
 }

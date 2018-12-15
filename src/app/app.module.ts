@@ -62,6 +62,9 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { AuthServiceProvider } from "../providers/auth-service/auth-service";
 import { Common } from "../providers/auth-service/common";
 import { LocalNotifications } from "@ionic-native/local-notifications";
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
 
 //HTTP
 import { HttpModule } from "@angular/http";
@@ -130,7 +133,11 @@ import { HttpModule } from "@angular/http";
     Badge,
     BackgroundMode,
     ImagePicker,
-    Base64
+    Base64,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    Camera
   ]
 })
 export class AppModule {}

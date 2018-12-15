@@ -27,6 +27,8 @@ export class HomePage {
   public noRecords: boolean;
   public variabelsearch:any;
 
+  public img_profile:any;
+
   searchQuery: string = "";
   items: string[];
 
@@ -133,6 +135,7 @@ export class HomePage {
         if (this.resposeData.feedData) {
           localStorage.setItem("feedData", JSON.stringify(this.resposeData));
           this.dataSet = this.resposeData.feedData;
+          //this.img_profile = "http://localhost/WebService-BursaKerja-final/img/"+this.dataSet+".jpg";
           this.Common.closeLoading();
         } else {
         }
