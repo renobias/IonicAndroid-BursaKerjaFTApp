@@ -26,6 +26,9 @@ export class AfterSignupPencarikerjaPage {
   public userDetails: any;
   responseData: any;
   public dataSet: any;
+
+  public resposeDataPS: any;
+  public dataSetPS: any;
   userPostData = {
     user_id: "",
     token: "",
@@ -46,6 +49,7 @@ export class AfterSignupPencarikerjaPage {
 
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+    this.getProgramStudi();
   }
 
   ionViewDidLoad() {
@@ -93,6 +97,22 @@ export class AfterSignupPencarikerjaPage {
         "Harap lengkapi isi dan lengkapi data terlebih dahulu 2"
       );
     }
+  }
+
+  getProgramStudi() {
+    this.authService.postData(this.userPostData, "getProgramStudi").then(
+      result => {
+        this.resposeDataPS = result;
+        if (this.resposeDataPS.ProgramStudiData) {
+          this.dataSetPS = this.resposeDataPS.ProgramStudiData;
+          console.log(this.dataSetPS);
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
   }
 
   presentToast(msg) {

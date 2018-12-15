@@ -8,6 +8,9 @@
   <ion-navbar>
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     <ion-title class="textHome">Beranda</ion-title>
+    <ion-buttons end>
+    <button ion-button (click)="ionViewWillEnter()"><ion-icon name="refresh"></ion-icon></button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-nav id="menucompany" #content [root]="HomePage"></ion-nav>
@@ -15,16 +18,17 @@
 <ion-content padding>
   <ng-template #kosong> <img src="assets/imgs/empty2.png" /> </ng-template>
 
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-
+  <ion-searchbar (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel" placeholder="search by name"></ion-searchbar>
   <ion-grid>
     <ion-card>
       <ion-row class="margin-kriteria">
-        <ion-col col-8 no-padding no-margin>
+        <ion-col col-6 no-padding no-margin>
           <h1 margin="10%">Kriteria</h1>
         </ion-col>
+        <ion-col col-2 no-padding no-margin>
+          </ion-col>
         <ion-col col-4 no-padding no-margin>
-          <button ion-button class="tom-fil">filter</button>
+          <button ion-button class="tom-fil" (click)="filter()">saring</button>
         </ion-col>
       </ion-row>
 
@@ -93,6 +97,7 @@
     <ion-item *ngFor="let item of items"> {{ item }} </ion-item>
   </ion-list>
 
+  <div *ngIf="dataSet; else: masihkosong">
   <ion-grid *ngFor="let item of dataSet; let i = index">
     <ion-row>
       <ion-col col-12 no-padding no-margin>
@@ -137,6 +142,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+</div>
 
   <!--
       <ion-list>
@@ -160,4 +166,8 @@
         </ion-card-content>
       </ion-card>
   -->
+
+  <ng-template #masihkosong>
+    <div id="kosong"><h6>masih kosong</h6></div>
+  </ng-template>
 </ion-content>

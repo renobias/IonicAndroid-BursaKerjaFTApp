@@ -38,11 +38,12 @@ export class HomecompanyPage {
   public dataSetPS: any;
 
   public noRecords: boolean;
+  public variabelsearch:any;
 
   searchQuery: string = "";
-  items: string[];
-
-  userPostData = { user_id: "", token: "",prodi:""};
+  items: string[]; 
+  userPostData = { user_id: "", token: "",prodi:"",keyword:""};
+  userPostDataKey = { user_id: "", token: "",keyword:""};
   pekerjaanPostData = { user_id: "", token: "", id_bidang_pekerjaan: "" };
   public userIdentify = { uidfk: "" };
 
@@ -88,7 +89,7 @@ export class HomecompanyPage {
         this.resposeDataPS = result;
         if (this.resposeDataPS.ProgramStudiData) {
           this.dataSetPS = this.resposeDataPS.ProgramStudiData;
-          console.log("datasetPS" + this.dataSetPS);
+          console.log(this.dataSetPS);
         } else {
         }
       },
@@ -144,7 +145,7 @@ export class HomecompanyPage {
         if (this.resposeData.feedData) {
           localStorage.setItem("feedData", JSON.stringify(this.resposeData));
           this.dataSet = this.resposeData.feedData;
-          console.log("dataSet :" + this.dataSet);
+          console.log(this.dataSet);
           this.Common.closeLoading();
         } else {
         }
@@ -185,7 +186,21 @@ export class HomecompanyPage {
   */
 
   filter(){
-    this.ionViewWillEnter();
+    console.log(this.userPostData.prodi);
+    this.Common.presentLoading();
+    this.authService.postData(this.userPostData, "feedfilterPK").then(
+      result => {
+        this.resposeData = result;
+        if (this.resposeData.feedData) {
+          localStorage.setItem("feedData", JSON.stringify(this.resposeData));
+          this.dataSet = this.resposeData.feedData;
+          console.log(this.dataSet);
+          this.Common.closeLoading();
+        } else {
+        }
+      },
+      err => {}
+    );
   }
 
   convertTime(created) {
@@ -214,8 +229,38 @@ export class HomecompanyPage {
           console.log("No access");
         }
       });
+    }else {
+      this.authService.postData(this.userPostData, "feedPK").then(result => {
+        this.resposeData = result;
+        if (this.resposeData.feedData) {
+          this.dataSet = this.resposeData.feedData;
+        } else {
+          console.log("No access");
+        }
+      });
     }
   }
+
+  /** 
+  searchbyword(){
+    this.userPostDataKey.keyword = this.variabelsearch+'%';
+    console.log(this.userPostDataKey.keyword);
+   
+    this.authService.postData(this.userPostDataKey, "searchfeedPK").then(
+      result => {
+        this.resposeData = result;
+        if (this.resposeData.feedData) {
+          localStorage.setItem("feedData", JSON.stringify(this.resposeData));
+          this.dataSet = this.resposeData.feedData;
+          console.log(this.dataSet);
+      
+        } else {
+        }
+      },
+      err => {}
+    );
+  }
+  */
 
   more(index: any) {
     //mengambil index feed dari pencari kerja

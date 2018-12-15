@@ -72,9 +72,9 @@ export class SignupcompanyPage {
         err => {
           //Connection failed message
           let alert = this.alertCtrl.create({
-            title: "Registration Failed",
+            title: "Pendaftaran Gagagl",
             subTitle:
-              "Oh no! Your Registration failed.. may be check your connection",
+              "Oh tidak! pendaftaran kamu gagal.. mungkin koneksi kamu bermasalah",
             buttons: ["OK"]
           });
           alert.present();
@@ -82,7 +82,7 @@ export class SignupcompanyPage {
       );
     } else {
       this.presentToast("lengkapi semua kolom terlebih dahulu");
-      console.log("Give valid information.");
+      console.log("Berikan Informsai yang Sesuai.");
     }
   }
 

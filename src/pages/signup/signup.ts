@@ -63,7 +63,7 @@ export class SignupPage {
             localStorage.setItem("userData", JSON.stringify(this.responseData));
             this.navCtrl.push(AfterSignupPencarikerjaPage);
             const alert = this.alertCtrl.create({
-              title: "Welcome",
+              title: "Selamat datang",
               subTitle: this.userData.name,
               buttons: ["OK"]
             });
@@ -86,9 +86,9 @@ export class SignupPage {
         err => {
           //Connection failed message
           let alert = this.alertCtrl.create({
-            title: "Login Failed",
+            title: "Gagal Masuk",
             subTitle:
-              "Oh no! Your Registration failed.. may be check your connection",
+              "Oh tidak! Pendaftaran kamu gagal.. mungkin koneksi kamu bermasalah",
             buttons: ["OK"]
           });
           alert.present();
@@ -98,7 +98,7 @@ export class SignupPage {
       this.presentToast(
         "Harap lengkapi setiap informasi atau kolom terlebih dahulu"
       );
-      console.log("Give valid information.");
+      console.log("Berikan Informasi yang Sesuai.");
     }
   }
 

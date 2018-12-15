@@ -12,14 +12,27 @@ import { ProfilSesamaPkPage } from "../profil-sesama-pk/profil-sesama-pk";
 export class HomePage {
   @ViewChild("updatebox") updatebox;
   public userDetails: any;
+
   public resposeData: any;
+  public resposeDataBP: any;
+  public resposeDataBK: any;
+  public resposeDataPS: any;
+  public resposeDatauser: any;
+
   public dataSet: any;
+  public dataSetBP: any;
+  public dataSetBK: any;
+  public dataSetPS: any;
+
   public noRecords: boolean;
+  public variabelsearch:any;
 
   searchQuery: string = "";
   items: string[];
 
-  userPostData = { user_id: "", token: "" };
+  userPostData = { user_id: "", token: "",prodi:"",keyword:""};
+  userPostDataKey = { user_id: "", token: "",keyword:""};
+  pekerjaanPostData = { user_id: "", token: "", id_bidang_pekerjaan: "" };
 
   constructor(
     public navCtrl: NavController,
@@ -34,10 +47,15 @@ export class HomePage {
 
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+
+    this.pekerjaanPostData.user_id = this.userDetails.user_id;
+    this.pekerjaanPostData.token = this.userDetails.token;
   }
 
   ionViewWillEnter() {
     this.getFeed();
+    this.getProgramStudi();
+    this.getBidangPekerjaan();
     this.initializeItems();
   }
 
@@ -52,6 +70,59 @@ export class HomePage {
     localStorage.clear();
     setTimeout(() => this.backToWelcome(), 1000);
     this.Common.closeLoading();
+  }
+
+  getProgramStudi() {
+    this.authService.postData(this.userPostData, "getProgramStudi").then(
+      result => {
+        this.resposeDataPS = result;
+        if (this.resposeDataPS.ProgramStudiData) {
+          this.dataSetPS = this.resposeDataPS.ProgramStudiData;
+          console.log(this.dataSetPS);
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
+  }
+
+  getBidangPekerjaan() {
+    this.authService.postData(this.userPostData, "getBidangPekerjaan").then(
+      result => {
+        this.resposeDataBP = result;
+        if (this.resposeDataBP.BidangPekerjaanData) {
+          this.dataSetBP = this.resposeDataBP.BidangPekerjaanData;
+          console.log("datasetBP" + this.dataSetBP);
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
+  }
+
+  getBidangKeahlian(index) {
+    console.log(this.dataSetBP[index].id_bidang_pekerjaan);
+    this.pekerjaanPostData.id_bidang_pekerjaan = this.dataSetBP[
+      index
+    ].id_bidang_pekerjaan;
+    console.log(this.pekerjaanPostData.id_bidang_pekerjaan);
+
+    this.authService.postData(this.pekerjaanPostData, "getBidangKeahlian").then(
+      result => {
+        this.resposeDataBK = result;
+        if (this.resposeDataBK.BidangKeahlianData) {
+          this.dataSetBK = this.resposeDataBK.BidangKeahlianData;
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
   }
 
   getFeed() {
@@ -101,6 +172,24 @@ doInfinite(e): Promise<any> {
 
 */
 
+filter(){
+  console.log(this.userPostData.prodi);
+  this.Common.presentLoading();
+  this.authService.postData(this.userPostData, "feedfilterPK").then(
+    result => {
+      this.resposeData = result;
+      if (this.resposeData.feedData) {
+        localStorage.setItem("feedData", JSON.stringify(this.resposeData));
+        this.dataSet = this.resposeData.feedData;
+        console.log(this.dataSet);
+        this.Common.closeLoading();
+      } else {
+      }
+    },
+    err => {}
+  );
+}
+
   convertTime(created) {
     let date = new Date(created * 1000);
     return date;
@@ -123,6 +212,15 @@ doInfinite(e): Promise<any> {
               item.nama_lengkap.toLowerCase().indexOf(val.toLowerCase()) > -1
             );
           });
+        } else {
+          console.log("No access");
+        }
+      });
+    }else {
+      this.authService.postData(this.userPostData, "feedPK").then(result => {
+        this.resposeData = result;
+        if (this.resposeData.feedData) {
+          this.dataSet = this.resposeData.feedData;
         } else {
           console.log("No access");
         }

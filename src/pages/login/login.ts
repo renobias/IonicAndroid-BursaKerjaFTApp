@@ -68,7 +68,7 @@ export class LoginPage {
               window.localStorage.setItem("sudahloginPK", "sudah loginPK");
 
               const alert = this.alertCtrl.create({
-                title: "Welcome",
+                title: "Selamat datang",
                 subTitle: this.userData.username,
                 buttons: ["OK"]
               });
@@ -87,7 +87,7 @@ export class LoginPage {
               this.app.getRootNav();
               this.Common.closeLoading();
               const alert = this.alertCtrl.create({
-                title: "Welcome",
+                title: "Selamat datang",
                 subTitle: this.userData.username,
                 buttons: ["OK"]
               });
@@ -104,7 +104,7 @@ export class LoginPage {
           this.Common.closeLoading();
           let alert = this.alertCtrl.create({
             title: "Login Failed",
-            subTitle: "Oh no! Your Login failed.. may be check your connection",
+            subTitle: "Oh tidak! gagal.. mungkin koneksi anda bermasalah",
             buttons: ["OK"]
           });
           alert.present();
@@ -112,7 +112,7 @@ export class LoginPage {
       );
     } else {
       this.Common.closeLoading();
-      console.log("Give valid information.");
+      console.log("Berikan Informasi yang valid.");
       this.presentToast("Silahkan isi username dan password terlebih dahulu");
     }
   }
