@@ -56,6 +56,8 @@ export class ProfilHireAlumniPage {
   public resposenilainotif: any;
   public datasetnilaiNotif: any;
 
+  public img_profile:any;
+
   userPostData = { user_id: "", token: "", user_id_fk: "" };
   userPostData2 = { user_id: "", token: "", user_id_fk: "" };
   notifPostData = {
@@ -93,9 +95,11 @@ export class ProfilHireAlumniPage {
     this.userPostData2.user_id = this.userDetails.user_id;
     this.userPostData2.token = this.userDetails.token;
 
-    this.userPostData.user_id_fk = this.userDetailstest[
-      dataIDFeedUser
-    ].user_id_fk;
+    console.log(dataIDFeedUser);
+    console.log(this.userDetailstest[dataIDFeedUser]);
+    console.log(this.userDetailstest[dataIDFeedUser].user_id_fk);
+
+    this.userPostData.user_id_fk = this.userDetailstest[dataIDFeedUser].user_id_fk;
     this.userPostData2.user_id_fk = this.userDetailstest[
       dataIDFeedUser
     ].user_id_fk;
@@ -131,6 +135,12 @@ export class ProfilHireAlumniPage {
         this.resposeData = result;
         if (this.resposeData.profileUserData) {
           this.dataSet = this.resposeData.profileUserData;
+          if(this.dataSet[0].foto_profil){
+            this.img_profile = this.dataSet[0].foto_profil;
+          }
+          else{
+            this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
+          }
         } else {
         }
       },

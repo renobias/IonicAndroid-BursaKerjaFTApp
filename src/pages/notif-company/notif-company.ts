@@ -27,6 +27,7 @@ export class NotifCompanyPage {
   public dataKeahlianUtama: any;
   public dataKeahlianKedua: any;
   public dataKeahlianKetiga: any;
+  public img_profile:any;
 
   berhentipenawaranPostData = { user_id: "", token: "", id_penawaran: "" };
   userPostData = { user_id: "", token: "" };
@@ -60,30 +61,23 @@ export class NotifCompanyPage {
       result => {
         this.responseData = result;
         if (this.responseData.profileUserData) {
-          console.log(this.responseData);
           localStorage.setItem(
             "daftarPenawaran",
             JSON.stringify(this.responseData)
           );
           this.dataSet = this.responseData.profileUserData;
-          console.log(this.dataSet);
+          if(this.dataSet[0].foto_profil){
+            this.img_profile = this.dataSet[0].foto_profil;
+          }
+          else{
+            this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
+          }
         } else {
         }
       },
       err => {}
     );
 
-    this.authService.postData(this.userPostData, "getKeahlianUtamaAll").then(
-      result => {
-        this.resposeDataKeahlianUtama = result;
-        if (this.resposeDataKeahlianUtama.keahlianUtamaData) {
-          this.dataKeahlianUtama = this.resposeDataKeahlianUtama.keahlianUtamaData;
-          console.log(this.dataKeahlianUtama);
-        } else {
-        }
-      },
-      err => {}
-    );
   }
 
   berhentiPenawaran(index: any) {

@@ -42,7 +42,7 @@ export class HomecompanyPage {
 
   searchQuery: string = "";
   items: string[]; 
-  userPostData = { user_id: "", token: "",prodi:"",keyword:""};
+  userPostData = { user_id: "", token: "",prodi:"",keyword:"",tahun_lulus:"",bidang_keahlian:""};
   userPostDataKey = { user_id: "", token: "",keyword:""};
   pekerjaanPostData = { user_id: "", token: "", id_bidang_pekerjaan: "" };
   public userIdentify = { uidfk: "" };
@@ -137,6 +137,9 @@ export class HomecompanyPage {
   }
 
   getFeed() {
+    this.userPostData.tahun_lulus="";
+    this.userPostData.bidang_keahlian="";
+    this.userPostData.prodi="";
     console.log(this.userPostData.prodi);
     this.Common.presentLoading();
     this.authService.postData(this.userPostData, "feedPK").then(
@@ -186,7 +189,6 @@ export class HomecompanyPage {
   */
 
   filter(){
-    console.log(this.userPostData.prodi);
     this.Common.presentLoading();
     this.authService.postData(this.userPostData, "feedfilterPK").then(
       result => {

@@ -21,7 +21,7 @@
       <ion-item-sliding *ngFor="let item of dataSet; let i = index;">
         <ion-item>
           <ion-avatar item-start>
-            <img src="assets/imgs/Foto Profil Dark.jpg" />
+            <img src="{{img_profil}}" />
           </ion-avatar>
           <h2 [innerHTML]="item.nama_lengkap">nama lengkap</h2>
           <h3 [innerHTML]="item.bidang_pekerjaan">Enginering</h3>

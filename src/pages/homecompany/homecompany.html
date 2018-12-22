@@ -17,6 +17,7 @@
 
 <ion-content padding>
   <ng-template #kosong> <img src="assets/imgs/empty2.png" /> </ng-template>
+  <ng-template #noprofil> <img src="assets/imgs/Foto Profil Dark.jpg" /> </ng-template>
 
   <ion-searchbar (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel" placeholder="search by name"></ion-searchbar>
   <ion-grid>
@@ -70,7 +71,7 @@
           <ion-list>
             <ion-item>
               <ion-label>Bidang Keahlian</ion-label>
-              <ion-select class="text-center-select">
+              <ion-select class="text-center-select" [(ngModel)]="userPostData.bidang_keahlian">
                 <div *ngFor="let item of dataSetBK">
                   <ion-option [innerHTML]="item.bidang_keahlian"></ion-option>
                 </div>
@@ -85,7 +86,7 @@
           <ion-list>
             <ion-item>
               <ion-label>Tahun lulus</ion-label>
-              <ion-datetime displayFormat="YYYY"></ion-datetime>
+              <ion-datetime displayFormat="YYYY" [(ngModel)]="userPostData.tahun_lulus"></ion-datetime>
             </ion-item>
           </ion-list>
         </ion-col>
@@ -123,7 +124,9 @@
 
             <ion-row>
               <ion-col col-5>
-                <img src="assets/imgs/Foto Profil Dark.jpg" />
+                <div *ngIf="dataSet[i].foto_profil; else: noprofil">
+                  <img src="{{item.foto_profil}}" />
+                  </div>
               </ion-col>
               <ion-col col-7>
                 <div *ngIf="item.ttg_saya; else: kosong">

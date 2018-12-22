@@ -49,6 +49,8 @@ export class ProfilSesamaPkPage {
   public resposenilainotif: any;
   public datasetnilaiNotif: any;
 
+  public img_profile:any;
+
   userPostData = { user_id: "", token: "", user_id_fk: "" };
   userPostData2 = { user_id: "", token: "", user_id_fk: "" };
   gettKeahlianPostData={user_id:""};
@@ -104,6 +106,12 @@ export class ProfilSesamaPkPage {
         this.resposeData = result;
         if (this.resposeData.profileUserData) {
           this.dataSet = this.resposeData.profileUserData;
+          if(this.dataSet[0].foto_profil){
+            this.img_profile = this.dataSet[0].foto_profil;
+          }
+          else{
+            this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
+          }
         } else {
         }
       },

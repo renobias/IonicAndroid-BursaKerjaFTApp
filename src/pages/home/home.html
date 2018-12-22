@@ -65,7 +65,7 @@
                 <ion-list>
                   <ion-item>
                     <ion-label>Bidang Keahlian</ion-label>
-                    <ion-select class="text-center-select">
+                    <ion-select class="text-center-select"  [(ngModel)]="userPostData.bidang_keahlian">
                       <div *ngFor="let item of dataSetBK">
                         <ion-option [innerHTML]="item.bidang_keahlian"></ion-option>
                       </div>
@@ -83,7 +83,7 @@
                 <ion-list>
                   <ion-item>
                     <ion-label>Tahun lulus</ion-label>
-                    <ion-datetime displayFormat="YYYY"></ion-datetime>
+                    <ion-datetime displayFormat="YYYY" [(ngModel)]="userPostData.tahun_lulus"></ion-datetime>
                   </ion-item>
                 </ion-list>
               </ion-col>

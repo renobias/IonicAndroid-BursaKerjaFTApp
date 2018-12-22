@@ -24,6 +24,8 @@ export class ProfilCompanyPage {
   public resposeData: any;
   public dataSet: any;
   public userDetails: any;
+  public img_profile:any;
+
   userPostData = { user_id: "", token: "" };
   constructor(
     public navCtrl: NavController,
@@ -50,6 +52,12 @@ export class ProfilCompanyPage {
         this.resposeData = result;
         if (this.resposeData.feedData) {
           this.dataSet = this.resposeData.feedData;
+          if(this.dataSet[0].logo){
+            this.img_profile = this.dataSet[0].foto_profil;
+          }
+          else{
+            this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
+          }
         } else {
         }
       },
