@@ -24,7 +24,7 @@ export class ProfilCompanyPage {
   public resposeData: any;
   public dataSet: any;
   public userDetails: any;
-  public img_profile:any;
+  public img_profile_company:any;
 
   userPostData = { user_id: "", token: "" };
   constructor(
@@ -39,11 +39,15 @@ export class ProfilCompanyPage {
 
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
-    this.getProfilePerusahaan();
+    this.ionViewWillEnter();
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ProfilCompanyPage");
+  }
+
+  ionViewWillEnter() {
+    this.getProfilePerusahaan();
   }
 
   getProfilePerusahaan() {
@@ -52,12 +56,14 @@ export class ProfilCompanyPage {
         this.resposeData = result;
         if (this.resposeData.feedData) {
           this.dataSet = this.resposeData.feedData;
+          console.log(this.dataSet[0].logo);
           if(this.dataSet[0].logo){
-            this.img_profile = this.dataSet[0].foto_profil;
+            this.img_profile_company = this.dataSet[0].logo;
           }
           else{
-            this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
+            this.img_profile_company ="assets/imgs/office.jpg";
           }
+          console.log(this.img_profile_company);
         } else {
         }
       },

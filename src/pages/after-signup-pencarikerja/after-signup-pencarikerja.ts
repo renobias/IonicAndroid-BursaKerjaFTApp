@@ -34,7 +34,9 @@ export class AfterSignupPencarikerjaPage {
     token: "",
     namaLengkap: "",
     prodi: "",
-    tahunlulus: ""
+    tahunmasuk:"",
+    tahunlulus: "",
+    jenis_pendaftar:1
   };
 
   constructor(
@@ -113,6 +115,12 @@ export class AfterSignupPencarikerjaPage {
         console.log("asuuu");
       }
     );
+  }
+
+  ambilIDProdi(index:any){
+    console.log(this.dataSetPS[index].id_prodi);
+    this.userPostData.prodi = this.dataSetPS[index].id_prodi;
+    console.log(this.userPostData.prodi);
   }
 
   presentToast(msg) {

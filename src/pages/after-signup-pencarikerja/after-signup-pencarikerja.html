@@ -24,13 +24,21 @@
     <ion-list>
         <ion-item>
           <ion-label>Program Studi</ion-label>
-          <ion-select [(ngModel)]="userPostData.prodi" class="text-center-select">
-            <div *ngFor="let item of dataSetPS">
-              <ion-option [innerHTML]="item.prodi"></ion-option>
+          <ion-select class="text-center-select">
+            <div *ngFor="let item of dataSetPS;let i=index">
+              <ion-option [innerHTML]="item.prodi" (ionSelect)="ambilIDProdi(i)"></ion-option>
             </div>
           </ion-select>
         </ion-item>
       </ion-list>
+
+      <ion-item>
+        <ion-label>Tahun Masuk</ion-label>
+        <ion-datetime
+          displayFormat="YYYY"
+          [(ngModel)]="userPostData.tahunmasuk"
+        ></ion-datetime>
+      </ion-item>
 
     <ion-item>
       <ion-label>Tahun lulus</ion-label>

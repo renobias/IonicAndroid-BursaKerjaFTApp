@@ -14,6 +14,7 @@
 
 
 <ion-content padding class="foto-feed">
+    <ng-template #belumada> <h4 text-center>belum ada</h4> </ng-template>
     <div class="bg"><img src="{{img_profile}}" /></div>
     <ion-card *ngFor="let item of dataSet">
       <ion-card-content>
@@ -230,12 +231,23 @@
   
       <div *ngSwitchCase="'riwayat'">
         <div *ngFor="let item of dataSet">
+            <ion-card class="kartu">
+                <ion-item>
+                  <ion-card-header item-start>Judul Skripsi</ion-card-header>
+                  <button ion-button clear item-end>
+                    <ion-icon name="create" isActive="false"></ion-icon>
+                  </button>
+                </ion-item>
+                <hr />
+                <ion-card-content> <h3 text-center *ngIf="item.judul_skripsi;else:belumada">{{item.judul_skripsi}}</h3> </ion-card-content>
+              </ion-card>
+
           <ion-card class="kartu">
             <ion-item>
               <ion-card-header item-start> Riwayat Pendidikan </ion-card-header>
             </ion-item>
             <hr />
-            <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
+            <ion-card-content> <h3 text-center *ngIf="item.riw_pendidikan; else:belumada">none</h3> </ion-card-content>
           </ion-card>
   
           <ion-card class="kartu">
@@ -243,7 +255,7 @@
               <ion-card-header item-start> Riwayat Pelatihan </ion-card-header>
             </ion-item>
             <hr />
-            <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
+            <ion-card-content> <h3 text-center *ngIf="item.riw_pelatihan; else:belumada">none</h3> </ion-card-content>
           </ion-card>
   
           <ion-card class="kartu">
@@ -251,7 +263,7 @@
               <ion-card-header item-start> Portofolio </ion-card-header>
             </ion-item>
             <hr />
-            <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
+            <ion-card-content> <h3 text-center *ngIf="item.riw_portofolio; else:belumada">none</h3> </ion-card-content>
           </ion-card>
         </div>
       </div>

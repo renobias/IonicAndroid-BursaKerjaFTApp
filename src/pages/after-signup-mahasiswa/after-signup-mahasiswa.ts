@@ -8,6 +8,7 @@ import {
 } from "ionic-angular";
 import { TabsPage } from "../tabs/tabs";
 import { HomePage } from "../home/home";
+import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 
 /**
  * Generated class for the AfterSignupMahasiswaPage page.
@@ -23,19 +24,34 @@ import { HomePage } from "../home/home";
 })
 export class AfterSignupMahasiswaPage {
   public userDetails: any;
-  userPostData = { user_id: "", token: "" };
-  afterSignupData = { namaLengkap: "", programstudi: "", tahunlulus: "" };
+  responseData: any;
+  public dataSet: any;
+
+  public resposeDataPS: any;
+  public dataSetPS: any;
+
+  userPostData = {
+    user_id: "",
+    token: "",
+    namaLengkap: "",
+    prodi: "",
+    tahunmasuk: "",
+    tahunlulus:"",
+    jenis_pendaftar:2
+  };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private toastCtrl: ToastController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public authService: AuthServiceProvider
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
 
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+    this.getProgramStudi();
   }
 
   ionViewDidLoad() {
@@ -44,23 +60,67 @@ export class AfterSignupMahasiswaPage {
 
   keHome() {
     if (
-      this.afterSignupData.namaLengkap &&
-      this.afterSignupData.programstudi &&
-      this.afterSignupData.tahunlulus
+      this.userPostData.namaLengkap &&
+      this.userPostData.prodi &&
+      this.userPostData.tahunmasuk
     ) {
-      this.navCtrl.push(TabsPage);
-
-      const alert = this.alertCtrl.create({
-        title: "Lengkapi Profil",
-        subTitle:
-          "Yuk lengkapi dahulu profil kamu di halaman profil biar makin banyak perusahaan yang melirik kamu",
-        buttons: ["OK"]
-      });
-
-      alert.present();
+      this.authService.postData(this.userPostData, "aftersignupPK").then(
+        result => {
+          this.responseData = result;
+          if (this.responseData.profileData) {
+            this.dataSet = this.responseData.profileData;
+            console.log(this.dataSet);
+            const alert = this.alertCtrl.create({
+              title: "Selamat datang di halaman beranda kamu",
+              subTitle:
+                "Yuk lengkapi dahulu profil kamu di halaman profil biar makin banyak perusahaan yang melirik kamu",
+              buttons: ["OK"]
+            });
+            alert.present();
+            this.navCtrl.push(TabsPage);
+          } else {
+            this.presentToast(
+              "Harap lengkapi isi dan lengkapi data terlebih dahulu"
+            );
+          }
+        },
+        err => {
+          //Connection failed message
+          const alert = this.alertCtrl.create({
+            title: "Koneksi bermasalah",
+            subTitle: "Jaringan internet atau server bermasalah",
+            buttons: ["OK"]
+          });
+          alert.present();
+        }
+      );
     } else {
-      this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu");
+      this.presentToast(
+        "Harap lengkapi isi dan lengkapi data terlebih dahulu 2"
+      );
     }
+  }
+
+  getProgramStudi() {
+    this.authService.postData(this.userPostData, "getProgramStudi").then(
+      result => {
+        this.resposeDataPS = result;
+        if (this.resposeDataPS.ProgramStudiData) {
+          this.dataSetPS = this.resposeDataPS.ProgramStudiData;
+          console.log(this.dataSetPS);
+        } else {
+        }
+      },
+      err => {
+        console.log("asuuu");
+      }
+    );
+  }
+
+  ambilIDProdi(index:any){
+    console.log(this.dataSetPS[index].id_prodi);
+    this.userPostData.prodi = this.dataSetPS[index].id_prodi;
+    console.log(this.userPostData.prodi);
   }
 
   presentToast(msg) {

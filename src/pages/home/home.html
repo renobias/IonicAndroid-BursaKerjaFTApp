@@ -11,6 +11,7 @@
 <ion-content padding>
   <ng-template #kosong> <img src="assets/imgs/empty2.png" /> </ng-template>
   <ng-template #noprofil> <img src="assets/imgs/Foto Profil Dark.jpg" /> </ng-template>
+  <ng-template #belumlulus> <h4>belum lulus</h4> </ng-template>
   <!-- <h1>Welcome {{userDetails.username}}</h1> -->
 
   <ion-searchbar (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel" placeholder="search by name"></ion-searchbar>
@@ -98,6 +99,7 @@
     <ion-item *ngFor="let item of items"> {{ item }} </ion-item>
   </ion-list>
 
+  <div *ngIf="dataSet; else: masihkosong">
   <ion-grid *ngFor="let item of dataSet;let i = index">
     <ion-row>
       <ion-col col-12 no-padding no-margin>
@@ -118,7 +120,7 @@
             <ion-row>
               <ion-col col-6> Tahun lulus </ion-col>
               <ion-col col-6>
-                <h3 [innerHTML]="item.tahun_lulus | linky"></h3>
+                <h3 *ngIf="item.tahun_lulus;else:belumlulus" [innerHTML]="item.tahun_lulus | linky"></h3>
               </ion-col>
             </ion-row>
             <hr />
@@ -146,7 +148,16 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+</div>
 
+<h6 text-center *ngIf="noRecords">tidak ada data</h6>
+<ng-template #masihkosong>
+    <div id="kosong"><h6>masih kosong</h6></div>
+  </ng-template>
+
+<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
   <!--
       <ion-list>
         <ion-item *ngFor="let item of items">

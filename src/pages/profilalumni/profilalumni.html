@@ -12,6 +12,9 @@
 </ion-header>
 
 <ion-content padding class="foto-feed">
+    <ng-template #belumlulus> <h4 text-center>belum lulus</h4> </ng-template>
+    <ng-template #belumada> <h4 text-center>belum ada</h4> </ng-template>
+
   <div class="bg"><img src="{{img_profile}}"/></div>
   <ion-card *ngFor="let item of dataSet">
     <button ion-button clear (click)="editintro()">
@@ -21,7 +24,7 @@
       <div id="biodata">
         <h1 text-center [innerHTML]="item.nama_lengkap"></h1>
         <h3 text-center class="text-prodi" [innerHTML]="item.prodi"></h3>
-        <h4 text-center>lulus tahun {{ item.tahun_lulus }}</h4>
+        <h4 text-center *ngIf="item.tahun_masuk">Masuk tahun {{item.tahun_masuk}}</h4> <h4 text-center *ngIf="item.tahun_lulus;else:belumlulus">lulus tahun {{ item.tahun_lulus }}</h4>
         <hr />
         <div *ngIf="item.ttg_saya">
           <h5 text-center>tentang saya</h5>
@@ -178,14 +181,14 @@
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang pekerjaan</h2>
-            <p [innerHTML]="item.bidang_pekerjaan">Not yet</p>
+            <p [innerHTML]="item.bidang_pekerjaan"  *ngIf="item.bidang_pekerjaan;else:belumada"></p>
             <hr />
           </ion-item>
 
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang keahlian</h2>
-            <h4 [innerHTML]="item.bidang_keahlian">Not yet</h4>
+            <h4 [innerHTML]="item.bidang_keahlian"  *ngIf="item.bidang_keahlian;else:belumada"></h4>
             <hr />
           </ion-item>
         </ion-list>
@@ -206,14 +209,14 @@
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang pekerjaan</h2>
-            <p [innerHTML]="item.bidang_pekerjaan">Not yet</p>
+            <p [innerHTML]="item.bidang_pekerjaan"  *ngIf="item.bidang_pekerjaan;else:belumada"></p>
             <hr />
           </ion-item>
 
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang keahlian</h2>
-            <h4 [innerHTML]="item.bidang_keahlian">Not yet</h4>
+            <h4 [innerHTML]="item.bidang_keahlian" *ngIf="item.bidang_keahlian;else:belumada">Not yet</h4>
             <hr />
           </ion-item>
         </ion-list>
@@ -234,14 +237,14 @@
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang pekerjaan</h2>
-            <p [innerHTML]="item.bidang_pekerjaan">Not yet</p>
+            <p [innerHTML]="item.bidang_pekerjaan"  *ngIf="item.bidang_pekerjaan;else:belumada"></p>
             <hr />
           </ion-item>
 
           <ion-item>
             <ion-icon name="cafe" item-start></ion-icon>
             <h2 class="teks-tebel">Bidang keahlian</h2>
-            <h4 [innerHTML]="item.bidang_keahlian">Not yet</h4>
+            <h4 [innerHTML]="item.bidang_keahlian"  *ngIf="item.bidang_keahlian;else:belumada"></h4>
             <hr />
           </ion-item>
         </ion-list>
@@ -250,6 +253,17 @@
 
     <div *ngSwitchCase="'riwayat'">
       <div *ngFor="let item of dataSet">
+          <ion-card class="kartu">
+              <ion-item>
+                <ion-card-header item-start>Judul Skripsi</ion-card-header>
+                <button ion-button clear item-end>
+                  <ion-icon name="create" isActive="false"></ion-icon>
+                </button>
+              </ion-item>
+              <hr />
+              <ion-card-content> <h3 text-center *ngIf="item.judul_skripsi; else:belumada">{{item.judul_skripsi}}</h3> </ion-card-content>
+            </ion-card>
+
         <ion-card class="kartu">
           <ion-item>
             <ion-card-header item-start> Riwayat Pendidikan </ion-card-header>
@@ -258,7 +272,7 @@
             </button>
           </ion-item>
           <hr />
-          <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
+          <ion-card-content> <h3 text-center *ngIf="item.riw_pendidikan; else:belumada">none</h3> </ion-card-content>
         </ion-card>
 
         <ion-card class="kartu">
@@ -269,7 +283,7 @@
             </button>
           </ion-item>
           <hr />
-          <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
+          <ion-card-content> <h3 text-center  *ngIf="item.riw_pelatihan; else:belumada">none</h3> </ion-card-content>
         </ion-card>
 
         <ion-card class="kartu">
@@ -280,7 +294,7 @@
             </button>
           </ion-item>
           <hr />
-          <ion-card-content> <h3 text-center>none</h3> </ion-card-content>
+          <ion-card-content> <h3 text-center  *ngIf="item.riw_portofolio; else:belumada">none</h3> </ion-card-content>
         </ion-card>
       </div>
     </div>

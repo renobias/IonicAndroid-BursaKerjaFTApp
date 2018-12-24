@@ -70,7 +70,7 @@ export class ProfilSesamaPkPage {
     const dataIDFeedUser = localStorage.getItem("uidIdentifier");
     const dataNotif = localStorage.getItem("setDataNotif");
 
-    this.userDetailstest = testdata.feedData;
+    this.userDetailstest = testdata;
     this.userDetails = data.userData;
     this.notifDetails = dataNotif;
 
@@ -145,6 +145,28 @@ export class ProfilSesamaPkPage {
         if (this.resposeDataKeahlianUtama.keahlianUtamaData) {
           this.dataKeahlianUtama = this.resposeDataKeahlianUtama.keahlianUtamaData;
           console.log(this.dataKeahlianUtama);
+        } else {
+        }
+      },
+      err => {}
+    );
+
+    this.authService.postData(this.gettKeahlianPostData, "getKeahlianKedua").then(
+      result => {
+        this.resposeDataKeahlianKedua = result;
+        if (this.resposeDataKeahlianKedua.keahlianKeduaData) {
+          this.dataKeahlianKedua = this.resposeDataKeahlianKedua.keahlianKeduaData;
+        } else {
+        }
+      },
+      err => {}
+    );
+
+    this.authService.postData(this.gettKeahlianPostData, "getKeahlianKetiga").then(
+      result => {
+        this.resposeDataKeahlianKetiga = result;
+        if (this.resposeDataKeahlianKetiga.keahlianKetigaData) {
+          this.dataKeahlianKetiga = this.resposeDataKeahlianKetiga.keahlianKetigaData;
         } else {
         }
       },

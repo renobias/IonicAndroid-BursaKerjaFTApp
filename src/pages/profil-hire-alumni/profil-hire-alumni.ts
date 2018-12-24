@@ -85,7 +85,7 @@ export class ProfilHireAlumniPage {
     const dataIDFeedUser = localStorage.getItem("uidIdentifier");
     const dataNotif = localStorage.getItem("setDataNotif");
 
-    this.userDetailstest = testdata.feedData;
+    this.userDetailstest = testdata;
     this.userDetails = data.userData;
     this.notifDetails = dataNotif;
 

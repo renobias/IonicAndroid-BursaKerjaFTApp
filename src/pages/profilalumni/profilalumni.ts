@@ -70,12 +70,16 @@ export class ProfilalumniPage {
 
     this.userPostData2.user_id = this.userDetails.user_id;
     this.userPostData2.token = this.userDetails.token;
-    this.getProfileIntro();
-    this.getProfileDetail();
+    this.ionViewWillEnter();
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ProfilalumniPage");
+  }
+
+  ionViewWillEnter() {
+    this.getProfileIntro();
+    this.getProfileDetail();
   }
 
   getProfileIntro() {

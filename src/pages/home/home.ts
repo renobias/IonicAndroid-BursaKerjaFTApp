@@ -32,7 +32,7 @@ export class HomePage {
   searchQuery: string = "";
   items: string[];
 
-  userPostData = { user_id: "", token: "",prodi:"",keyword:"",tahun_lulus:"",bidang_keahlian:""};
+  userPostData = { user_id: "", token: "",prodi:"",keyword:"",tahun_lulus:"",bidang_keahlian:"",lastCreated: ""};
   userPostDataKey = { user_id: "", token: "",keyword:""};
   pekerjaanPostData = { user_id: "", token: "", id_bidang_pekerjaan: "" };
 
@@ -49,6 +49,7 @@ export class HomePage {
 
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+    this.userPostData.lastCreated = "";
 
     this.pekerjaanPostData.user_id = this.userDetails.user_id;
     this.pekerjaanPostData.token = this.userDetails.token;
@@ -131,15 +132,22 @@ export class HomePage {
     this.userPostData.tahun_lulus="";
     this.userPostData.bidang_keahlian="";
     this.userPostData.prodi="";
+    this.userPostData.lastCreated = "";
     this.Common.presentLoading();
-    this.authService.postData(this.userPostData, "feedPK").then(
+    this.authService.postData(this.userPostData, "feedPKinfinite").then(
       result => {
         this.resposeData = result;
         if (this.resposeData.feedData) {
-          localStorage.setItem("feedData", JSON.stringify(this.resposeData));
-          this.dataSet = this.resposeData.feedData;
-          //this.img_profile = "http://localhost/WebService-BursaKerja-final/img/"+this.dataSet+".jpg";
           this.Common.closeLoading();
+          this.dataSet = this.resposeData.feedData;
+          localStorage.setItem("feedData", JSON.stringify(this.dataSet));
+
+          const dataLength = this.resposeData.feedData.length;
+
+          this.userPostData.lastCreated = this.resposeData.feedData[
+            dataLength - 1
+          ].created;
+          //this.img_profile = "http://localhost/WebService-BursaKerja-final/img/"+this.dataSet+".jpg";
         } else {
         }
       },
@@ -185,8 +193,8 @@ filter(){
     result => {
       this.resposeData = result;
       if (this.resposeData.feedData) {
-        localStorage.setItem("feedData", JSON.stringify(this.resposeData));
         this.dataSet = this.resposeData.feedData;
+        localStorage.setItem("feedData", JSON.stringify(this.dataSet));
         console.log(this.dataSet);
         this.Common.closeLoading();
       } else {
@@ -218,6 +226,7 @@ filter(){
               item.nama_lengkap.toLowerCase().indexOf(val.toLowerCase()) > -1
             );
           });
+          localStorage.setItem("feedData", JSON.stringify(this.dataSet));
         } else {
           console.log("No access");
         }
@@ -238,5 +247,38 @@ filter(){
     //mengambil index feed dari pencari kerja
     localStorage.setItem("uidIdentifier", index);
     this.navCtrl.push(ProfilSesamaPkPage);
+  }
+
+  doInfinite(e): Promise<any> {
+    console.log("Begin async operation");
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.authService.postData(this.userPostData, "feedPKinfinite").then(
+          result => {
+            this.resposeData = result;
+            if (this.resposeData.feedData.length) {
+              const newData = this.resposeData.feedData;
+              this.userPostData.lastCreated = this.resposeData.feedData[
+                newData.length - 1
+              ].created;
+
+              for (let i = 0; i < newData.length; i++) {
+                this.dataSet.push(newData[i]);
+              }
+
+              localStorage.setItem("feedData", JSON.stringify(this.dataSet));
+              console.log(this.dataSet);
+            } else {
+              this.noRecords = true;
+              console.log("No user updates");
+            }
+          },
+          err => {
+            //Connection failed message
+          }
+        );
+        resolve();
+      }, 500);
+    });
   }
 }

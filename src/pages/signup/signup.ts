@@ -49,7 +49,8 @@ export class SignupPage {
       this.userData.username &&
       this.userData.password &&
       this.userData.email &&
-      this.userData.name
+      this.userData.name &&
+      this.userData.JenisDaftarPK
     ) {
       this.alumni = "alumni";
       console.log(this.alumni);
@@ -61,6 +62,7 @@ export class SignupPage {
             console.log(this.responseData);
             window.localStorage.setItem("sudahloginPK", "sudah loginPK");
             localStorage.setItem("userData", JSON.stringify(this.responseData));
+            if(this.userData.JenisDaftarPK=="alumni"){
             this.navCtrl.push(AfterSignupPencarikerjaPage);
             const alert = this.alertCtrl.create({
               title: "Selamat datang",
@@ -68,6 +70,15 @@ export class SignupPage {
               buttons: ["OK"]
             });
             alert.present();
+          }else{
+            this.navCtrl.push(AfterSignupMahasiswaPage);
+            const alert = this.alertCtrl.create({
+              title: "Selamat datang",
+              subTitle: this.userData.name,
+              buttons: ["OK"]
+            });
+            alert.present();
+          }
             /**ini buat kalo nanti ada 2 tipe pendaftar : alumni dan mahasiswa */
             /*
       if(this.userData.JenisDaftarPK==this.alumni){

@@ -75,7 +75,7 @@ export class EditIntroPkPage {
         console.log(err);
         this.loading.dismiss();
         let alert = this.alertCtrl.create({
-          title: "update Failed",
+          title: "update gagal",
           subTitle: "Oh tidak! update gagal",
           buttons: ["OK"]
         });
@@ -120,12 +120,11 @@ export class EditIntroPkPage {
            headers: {}
         }
 
-        this.userPostData.poto_profil = "http://10.0.2.2/WebService-BursaKerja-final/img/"+this.userPostData.user_id+".jpg";
-        
-    fileTransfer.upload(this.imgPreview, 'http://10.0.2.2/WebService-BursaKerja-final/upload.php', options1)
+        this.userPostData.poto_profil = "http://10.0.2.2/WebService-BursaKerja-final/img/foto_profil/pencari_kerja/"+this.userPostData.user_id+".jpg";
+    fileTransfer.upload(this.imgPreview, 'http://10.0.2.2/WebService-BursaKerja-final/upload_profilPK_mobile.php', options1)
      .then((data) => {
        // success
-       alert("success");
+       alert("berhasil diunggah..");
      }, (err) => {
        // error
        alert("error"+JSON.stringify(err));

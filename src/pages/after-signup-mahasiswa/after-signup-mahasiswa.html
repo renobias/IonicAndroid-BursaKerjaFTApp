@@ -19,29 +19,30 @@
       <ion-label>Nama lengkap</ion-label>
       <ion-input
         type="text"
-        [(ngModel)]="afterSignupData.namaLengkap"
+        [(ngModel)]="userPostData.namaLengkap"
       ></ion-input>
       <hr />
     </ion-item>
 
     <ion-list>
       <ion-item>
-        <ion-label>Program studi</ion-label>
-        <ion-select [(ngModel)]="afterSignupData.programstudi">
-          <ion-option value="nes">Pendidikan Informatika</ion-option>
-          <ion-option value="n64">Pendidikan vokasional elektro</ion-option>
+        <ion-label>Program Studi</ion-label>
+        <ion-select class="text-center-select">
+          <div *ngFor="let item of dataSetPS;let i=index">
+            <ion-option [innerHTML]="item.prodi" (ionSelect)="ambilIDProdi(i)"></ion-option>
+          </div>
         </ion-select>
       </ion-item>
     </ion-list>
 
     <ion-item>
-      <ion-label>Tahun lulus</ion-label>
+      <ion-label>Tahun Masuk</ion-label>
       <ion-datetime
         displayFormat="YYYY"
-        [(ngModel)]="afterSignupData.tahunlulus"
+        [(ngModel)]="userPostData.tahunmasuk"
       ></ion-datetime>
     </ion-item>
   </ion-list>
 
-  <button ion-button (click)="keHome()">Next</button>
+  <button ion-button (click)="keHome(i)">Next</button>
 </ion-content>
