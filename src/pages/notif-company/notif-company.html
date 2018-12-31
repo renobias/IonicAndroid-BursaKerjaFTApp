@@ -15,13 +15,16 @@
   <ng-template #masihkosong>
     <div id="kosong"><img src="assets/imgs/kosong.jpg" /></div>
   </ng-template>
+  <ng-template #noprofil> <img src="assets/imgs/Foto Profil Dark.jpg" /> </ng-template>
 
   <div *ngIf="dataSet; else: masihkosong">
     <ion-list>
       <ion-item-sliding *ngFor="let item of dataSet; let i = index;">
         <ion-item>
           <ion-avatar item-start>
-            <img src="{{img_profil}}" />
+            <div *ngIf="dataSet[i].foto_profil; else: noprofil">
+              <img src="{{item.foto_profil}}" />
+              </div>
           </ion-avatar>
           <h2 [innerHTML]="item.nama_lengkap">nama lengkap</h2>
           <h3 [innerHTML]="item.bidang_pekerjaan">Enginering</h3>

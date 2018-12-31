@@ -41,7 +41,7 @@ export class HomecompanyPage {
   public variabelsearch:any;
   searchQuery: string = "";
   items: string[]; 
-  userPostData = { user_id: "", token: "",prodi:"",keyword:"",tahun_lulus:"",bidang_keahlian:"",lastCreated: ""};
+  userPostData = { user_id: "", token: "",prodi:"",keyword:"",tahun_lulus:"",bidang_pekerjaan:"",bidang_keahlian:"",lastCreated: ""};
   userPostDataKey = { user_id: "", token: "",keyword:""};
   pekerjaanPostData = { user_id: "", token: "", id_bidang_pekerjaan: "" };
   public userIdentify = { uidfk: "" };
@@ -138,6 +138,7 @@ export class HomecompanyPage {
 
   getFeed() {
     this.userPostData.tahun_lulus="";
+    this.userPostData.bidang_pekerjaan="";
     this.userPostData.bidang_keahlian="";
     this.userPostData.prodi="";
     this.userPostData.lastCreated = "";

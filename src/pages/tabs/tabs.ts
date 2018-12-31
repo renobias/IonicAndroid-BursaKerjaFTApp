@@ -135,9 +135,9 @@ export class TabsPage {
 
   setSound() {
     if (this.platform.is("android")) {
-      return "file://assets/sounds/Funncartoon text mesage(2).mp3";
+      return "file://assets/sounds/mars unj - cut musik.mp3";
     } else {
-      return "file://assets/sounds/Funncartoon text mesage(2).mp3";
+      return "file://assets/sounds/mars unj - cut musik.mp3";
     }
   }
 

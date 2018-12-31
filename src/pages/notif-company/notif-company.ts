@@ -7,6 +7,7 @@ import {
 } from "ionic-angular";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { Common } from "../../providers/auth-service/common";
+import { ProfilHireAlumniPage } from "../profil-hire-alumni/profil-hire-alumni";
 
 /**
  * Generated class for the NotifCompanyPage page.
@@ -29,13 +30,17 @@ export class NotifCompanyPage {
   public dataKeahlianKetiga: any;
   public img_profile:any;
 
-  berhentipenawaranPostData = { user_id: "", token: "", id_penawaran: "" };
-  userPostData = { user_id: "", token: "" };
+  berhentipenawaranPostData = { user_id: "", token: "", user_id_fk: "" };
+  ambilCompanyNameData = { user_id: "", token: "",nama_perusahaan:"" };
+  userPostData = { user_id: "", token: "",nama_perusahaan:"" };
   public userDetails: any;
   public daftarpenawaranDetails: any;
   public responseData: any;
   public dataSet: any;
   public userDetailstest: any;
+
+  public companyNameDataSet: any;
+  public responsecompanyNameData: any;
 
   public responseDataStop: any;
   public dataSetStop: any;
@@ -50,6 +55,8 @@ export class NotifCompanyPage {
     this.userDetails = data.userData;
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+    this.userPostData.nama_perusahaan = this.userDetails.nama_perusahaan;
+
   }
 
   ionViewDidLoad() {
@@ -66,12 +73,6 @@ export class NotifCompanyPage {
             JSON.stringify(this.responseData)
           );
           this.dataSet = this.responseData.profileUserData;
-          if(this.dataSet[0].foto_profil){
-            this.img_profile = this.dataSet[0].foto_profil;
-          }
-          else{
-            this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
-          }
         } else {
         }
       },
@@ -86,9 +87,9 @@ export class NotifCompanyPage {
     console.log(dataPenawaran.profileUserData[index].id_penawaran);
     this.berhentipenawaranPostData.user_id = this.userDetails.user_id;
     this.berhentipenawaranPostData.token = this.userDetails.token;
-    this.berhentipenawaranPostData.id_penawaran =
-      dataPenawaran.profileUserData[index].id_penawaran;
-    console.log(this.berhentipenawaranPostData.id_penawaran);
+    this.berhentipenawaranPostData.user_id_fk =
+      dataPenawaran.profileUserData[index].user_id_fk;
+    console.log(this.berhentipenawaranPostData.user_id_fk);
 
     this.authService
       .postData(this.berhentipenawaranPostData, "berhentiPenawaran")

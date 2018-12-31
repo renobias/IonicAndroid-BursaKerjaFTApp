@@ -58,10 +58,7 @@ export class LoginPage {
           if (this.responseData.userData) {
             if (this.responseData.userData.level == "pencari kerja") {
               console.log(this.responseData);
-              localStorage.setItem(
-                "userData",
-                JSON.stringify(this.responseData)
-              );
+              localStorage.setItem("userData",JSON.stringify(this.responseData));
               this.navCtrl.setRoot(TabsPage);
               this.app.getRootNav();
               this.Common.closeLoading();
@@ -79,10 +76,7 @@ export class LoginPage {
                 "sudah login company"
               );
               console.log(this.responseData);
-              localStorage.setItem(
-                "userData",
-                JSON.stringify(this.responseData)
-              );
+              localStorage.setItem("userData",JSON.stringify(this.responseData));
               this.navCtrl.setRoot(TabsCompanyPage);
               this.app.getRootNav();
               this.Common.closeLoading();

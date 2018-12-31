@@ -64,7 +64,8 @@ export class ProfilHireAlumniPage {
     user_id: "",
     token: "",
     user_id_fk: "",
-    count_badge_notif: ""
+    count_badge_notif: "",
+    nama_perusahaan:""
   };
   gettKeahlianPostData={user_id:""};
 
@@ -106,6 +107,7 @@ export class ProfilHireAlumniPage {
 
     this.notifPostData.user_id = this.userDetails.user_id;
     this.notifPostData.token = this.userDetails.token;
+    this.notifPostData.nama_perusahaan = this.userDetails.nama_perusahaan;
     this.notifPostData.user_id_fk = this.userDetailstest[
       dataIDFeedUser
     ].user_id_fk;

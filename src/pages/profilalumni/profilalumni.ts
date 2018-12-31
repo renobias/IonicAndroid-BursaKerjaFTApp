@@ -17,6 +17,7 @@ import { EditPortofolioPkPage } from "../edit-portofolio-pk/edit-portofolio-pk";
 import { EditKeahlianUtamaPage } from "../edit-keahlian-utama/edit-keahlian-utama";
 import { EditKeahlianKeduaPage } from "../edit-keahlian-kedua/edit-keahlian-kedua";
 import { EditKeahlianKetigaPage } from "../edit-keahlian-ketiga/edit-keahlian-ketiga";
+import { UbahRiwayatPage } from "../ubah-riwayat/ubah-riwayat";
 
 /**
  * Generated class for the ProfilalumniPage page.
@@ -179,5 +180,8 @@ export class ProfilalumniPage {
   }
   editkeahlianketiga(){
     this.navCtrl.push(EditKeahlianKetigaPage);
+  }
+  ubahriwayat(){
+    this.navCtrl.push(UbahRiwayatPage);
   }
 }

@@ -48,7 +48,7 @@ import { EditKeahlianUtamaPageModule } from "../pages/edit-keahlian-utama/edit-k
 import { EditKeahlianKeduaPageModule } from "../pages/edit-keahlian-kedua/edit-keahlian-kedua.module";
 import { EditKeahlianKetigaPageModule } from "../pages/edit-keahlian-ketiga/edit-keahlian-ketiga.module";
 import { ProfilSesamaPkPageModule} from "../pages/profil-sesama-pk/profil-sesama-pk.module";
-
+import{UbahRiwayatPageModule} from "../pages/ubah-riwayat/ubah-riwayat.module" 
 //plugin
 import { ShareServiceProvider } from "../providers/share-service/share-service";
 import { Badge } from "@ionic-native/badge";
@@ -111,7 +111,8 @@ import { HttpModule } from "@angular/http";
     EditKeahlianUtamaPageModule,
     EditKeahlianKeduaPageModule,
     EditKeahlianKetigaPageModule,
-    ProfilSesamaPkPageModule
+    ProfilSesamaPkPageModule,
+    UbahRiwayatPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
