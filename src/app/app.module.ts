@@ -48,7 +48,10 @@ import { EditKeahlianUtamaPageModule } from "../pages/edit-keahlian-utama/edit-k
 import { EditKeahlianKeduaPageModule } from "../pages/edit-keahlian-kedua/edit-keahlian-kedua.module";
 import { EditKeahlianKetigaPageModule } from "../pages/edit-keahlian-ketiga/edit-keahlian-ketiga.module";
 import { ProfilSesamaPkPageModule} from "../pages/profil-sesama-pk/profil-sesama-pk.module";
-import{UbahRiwayatPageModule} from "../pages/ubah-riwayat/ubah-riwayat.module" 
+import{UbahRiwayatPageModule} from "../pages/ubah-riwayat/ubah-riwayat.module";
+import{ProfilCompanyPkSidePageModule} from "../pages/profil-company-pk-side/profil-company-pk-side.module";
+
+
 //plugin
 import { ShareServiceProvider } from "../providers/share-service/share-service";
 import { Badge } from "@ionic-native/badge";
@@ -65,6 +68,8 @@ import { LocalNotifications } from "@ionic-native/local-notifications";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 //HTTP
 import { HttpModule } from "@angular/http";
@@ -112,7 +117,8 @@ import { HttpModule } from "@angular/http";
     EditKeahlianKeduaPageModule,
     EditKeahlianKetigaPageModule,
     ProfilSesamaPkPageModule,
-    UbahRiwayatPageModule
+    UbahRiwayatPageModule,
+    ProfilCompanyPkSidePageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -138,7 +144,9 @@ import { HttpModule } from "@angular/http";
     FileTransfer,
     FileTransferObject,
     File,
-    Camera
+    Camera,
+    CallNumber,
+    EmailComposer
   ]
 })
 export class AppModule {}

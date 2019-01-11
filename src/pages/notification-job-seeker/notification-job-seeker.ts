@@ -8,6 +8,7 @@ import {
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { LinkyModule } from "angular-linky";
 import { MomentModule } from "angular2-moment";
+import { ProfilCompanyPkSidePage } from "../profil-company-pk-side/profil-company-pk-side";
 
 /**
  * Generated class for the NotificationJobSeekerPage page.
@@ -52,6 +53,7 @@ export class NotificationJobSeekerPage {
         this.resposeData = result;
         if (this.resposeData.profileUserData) {
           this.dataSet = this.resposeData.profileUserData;
+          localStorage.setItem("namaCompany", JSON.stringify(this.dataSet));
           console.log(this.dataSet);
         } else {
         }
@@ -73,5 +75,10 @@ export class NotificationJobSeekerPage {
   convertTime(created) {
     let date = new Date(created * 1000);
     return date;
+  }
+
+  toCompany(index:any){
+    localStorage.setItem("idIdentifier",index);
+    this.navCtrl.push(ProfilCompanyPkSidePage);
   }
 }

@@ -13,12 +13,16 @@
 
 <ion-content padding>
   <ng-template #jebol> <img src="assets/imgs/kosong.jpg" /> </ng-template>
-
+  <ng-template #noprofil> <img src="assets/imgs/office.jpg" /> </ng-template>
   <div *ngIf="dataSet; else: jebol">
-    <div *ngFor="let item of dataSet">
+    <div *ngFor="let item of dataSet;let i = index;">
       <ion-card>
-        <ion-card-header [innerHTML]="item.nama_perusahaan"> </ion-card-header>
+        <ion-card-header [innerHTML]="item.nama_perusahaan" (click)="toCompany(i)"> 
+        </ion-card-header>
         <ion-card-content class="notif">
+            <div *ngIf="dataSet[i].logo; else: noprofil">
+                <img src="{{item.logo}}" />
+                </div>
           Hello, kami dari {{ item.nama_perusahaan }} sangat tertarik dengan profil
           anda, dalam waktu dekat kami akan segera menghubungi anda, mohon
           diangkat jika terdapat panggilan dari nomor tidak dikenal. Terima

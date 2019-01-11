@@ -54,7 +54,7 @@
           <ion-list>
             <ion-item>
               <ion-label>Bidang Pekerjaan</ion-label>
-              <ion-select class="text-center-select">
+              <ion-select class="text-center-select" [(ngModel)]="userPostData.bidang_pekerjaan">
                 <div *ngFor="let item of dataSetBP; let i = index">
                   <ion-option
                     [innerHTML]="item.bidang_pekerjaan"
@@ -153,7 +153,7 @@
     <div id="kosong"><h6>masih kosong</h6></div>
   </ng-template>
 
-<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+<ion-infinite-scroll *ngIf="noScroll" (ionInfinite)="$event.waitFor(doInfinite())">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
   <!--

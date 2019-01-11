@@ -101,4 +101,8 @@ export class WelcomePage {
   openLogin() {
     this.navCtrl.push(LoginPage);
   }
+
+  signup(){
+    this.navCtrl.push(SignupPage);
+  }
 }

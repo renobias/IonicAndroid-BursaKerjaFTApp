@@ -120,8 +120,10 @@ export class EditIntroPkPage {
            headers: {}
         }
 
-        this.userPostData.poto_profil = "http://10.0.2.2/WebService-BursaKerja-final/img/foto_profil/pencari_kerja/"+this.userPostData.user_id+".jpg";
-    fileTransfer.upload(this.imgPreview, 'http://10.0.2.2/WebService-BursaKerja-final/upload_profilPK_mobile.php', options1)
+        //this.userPostData.poto_profil = "http://10.0.2.2/WebService-BursaKerja-final/img/foto_profil/pencari_kerja/"+this.userPostData.user_id+".jpg";
+    //fileTransfer.upload(this.imgPreview, 'http://10.0.2.2/WebService-BursaKerja-final/upload_profilPK_mobile.php', options1)
+    this.userPostData.poto_profil = "https://bursakerjaftunj.000webhostapp.com/img/foto_profil/pencari_kerja/"+this.userPostData.user_id+".jpg";
+    fileTransfer.upload(this.imgPreview, 'https://bursakerjaftunj.000webhostapp.com/upload_profilPK_mobile.php', options1)
      .then((data) => {
        // success
        alert("berhasil diunggah..");

@@ -155,7 +155,7 @@
     <div id="kosong"><h6>masih kosong</h6></div>
   </ng-template>
 
-<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+<ion-infinite-scroll *ngIf="noScroll" (ionInfinite)="$event.waitFor(doInfinite())">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
   <!--

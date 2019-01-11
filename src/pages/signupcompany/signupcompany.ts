@@ -42,8 +42,7 @@ export class SignupcompanyPage {
     if (
       this.userData.username &&
       this.userData.password &&
-      this.userData.email &&
-      this.userData.name
+      this.userData.email
     ) {
       //Api connections
       this.authService.postData(this.userData, "signupperusahaan").then(
@@ -57,12 +56,6 @@ export class SignupcompanyPage {
             );
             localStorage.setItem("userData", JSON.stringify(this.responseData));
             this.navCtrl.push(AfterSignupPerusahaanPage);
-            const alert = this.alertCtrl.create({
-              title: "Welcome",
-              subTitle: this.userData.name,
-              buttons: ["OK"]
-            });
-            alert.present();
           } else {
             this.presentToast(
               "Format penulisan ada yang salah, mungkin anda salah memasukkan format email"

@@ -52,7 +52,7 @@ export class SignupPage {
       this.userData.name &&
       this.userData.JenisDaftarPK
     ) {
-      this.alumni = "alumni";
+      this.alumni = "Alumni";
       console.log(this.alumni);
       //Api connections
       this.authService.postData(this.userData, "signuppencarikerja").then(
@@ -62,7 +62,7 @@ export class SignupPage {
             console.log(this.responseData);
             window.localStorage.setItem("sudahloginPK", "sudah loginPK");
             localStorage.setItem("userData", JSON.stringify(this.responseData));
-            if(this.userData.JenisDaftarPK=="alumni"){
+            if(this.userData.JenisDaftarPK=="Alumni"){
             this.navCtrl.push(AfterSignupPencarikerjaPage);
             const alert = this.alertCtrl.create({
               title: "Selamat datang",

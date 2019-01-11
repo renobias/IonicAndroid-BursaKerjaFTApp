@@ -1,15 +1,10 @@
-import { Component } from "@angular/core";
-import {
-  IonicPage,
-  NavController,
-  NavParams,
-  AlertController
-} from "ionic-angular";
-import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
-import { Common } from "../../providers/auth-service/common";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Common } from '../../providers/auth-service/common';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
- * Generated class for the ProfilCompanyPage page.
+ * Generated class for the ProfilCompanyPkSidePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -17,33 +12,28 @@ import { Common } from "../../providers/auth-service/common";
 
 @IonicPage()
 @Component({
-  selector: "page-profil-company",
-  templateUrl: "profil-company.html"
+  selector: 'page-profil-company-pk-side',
+  templateUrl: 'profil-company-pk-side.html',
 })
-export class ProfilCompanyPage {
+export class ProfilCompanyPkSidePage {
   public resposeData: any;
   public dataSet: any;
   public userDetails: any;
   public img_profile_company:any;
 
-  userPostData = { user_id: "" };
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
+  userPostData = { user_id: ""};
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     public Common: Common,
     public alertCtrl: AlertController,
-    public authService: AuthServiceProvider
-  ) {
-    const data = JSON.parse(localStorage.getItem("userData"));
-    this.userDetails = data.userData;
-
-    this.userPostData.user_id = this.userDetails.user_id;
-
-    this.ionViewWillEnter();
+    public authService: AuthServiceProvider) {
+      const data = JSON.parse(localStorage.getItem("namaCompany"));
+      const dataID = localStorage.getItem("idIdentifier");
+      this.userPostData.user_id = data[dataID].id_perusahaan_fk;
+      this.ionViewWillEnter();
   }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad ProfilCompanyPage");
+    console.log('ionViewDidLoad ProfilCompanyPkSidePage');
   }
 
   ionViewWillEnter() {
@@ -70,4 +60,5 @@ export class ProfilCompanyPage {
       err => {}
     );
   }
+
 }

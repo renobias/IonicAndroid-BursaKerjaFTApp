@@ -9,38 +9,44 @@
 </ion-header>
 
 <ion-content padding class="appBackground">
+  <!--<h3 text-justify>Pendaftaran perusahaan hanya dapat dilakukan pada versi website</h3>-->
+  
   <ion-card>
     <ion-card-header> Perusahaan </ion-card-header>
     <ion-card-content>
-      <ion-list>
+      <ion-item-group>
+        <!--
         <ion-item>
           <ion-label stacked>Name pemegang akun</ion-label>
           <ion-input type="text" [(ngModel)]="userData.name"></ion-input>
         </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Alamat surel pemegang akun</ion-label>
-          <ion-input type="text" [(ngModel)]="userData.email"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Username pemegang akun</ion-label>
+        -->
+        <ion-item-divider>
+          <ion-label stacked>Username perusahaan</ion-label>
           <ion-input type="text" [(ngModel)]="userData.username"></ion-input>
-        </ion-item>
+        </ion-item-divider>
 
-        <ion-item>
+        <ion-item-divider>
+          <ion-label stacked>Alamat surel perusahaan</ion-label>
+          <ion-input type="text" [(ngModel)]="userData.email"></ion-input>
+        </ion-item-divider>
+
+        <ion-item-divider>
           <ion-label stacked>Password</ion-label>
           <ion-input
             type="password"
             [(ngModel)]="userData.password"
           ></ion-input>
-        </ion-item>
+        </ion-item-divider>
+        <h6>*password minimal terdiri dari 8 karakter</h6>
 
         <button ion-button full color="success" (click)="signupperusahaan()">
           Daftar
         </button>
         sudah punya akun? <a href="#">Masuk</a>
-      </ion-list>
+      </ion-item-group>
+      
     </ion-card-content>
   </ion-card>
+
 </ion-content>

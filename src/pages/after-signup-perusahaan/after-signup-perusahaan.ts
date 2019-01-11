@@ -19,7 +19,7 @@ export class AfterSignupPerusahaanPage {
 userDetails:any;
 responseData:any;
 dataSet:any;
-userPostData={"user_id":"","token":"token","namaPerusahaan":"","bidangPerusahaan":"","alamatPerusahaan":"","kodeposPerusahaan":"","notelpPerusahaan":"","emailPerusahaan":"","deskripsiPerusahaan":""};
+userPostData={"user_id":"","token":"","namaPerusahaan":"","bidangPerusahaan":"","alamatPerusahaan":"","kodeposPerusahaan":"","notelpPerusahaan":"","deskripsiPerusahaan":""};
   constructor(public navCtrl: NavController, public navParams: NavParams,public authService:AuthServiceProvider,private toastCtrl:ToastController,public alertCtrl: AlertController) {
     const data = JSON.parse(localStorage.getItem('userData'));
     this.userDetails=data.userData;
@@ -32,7 +32,7 @@ userPostData={"user_id":"","token":"token","namaPerusahaan":"","bidangPerusahaan
   }
 
   keHome(){
-    if(this.userPostData.namaPerusahaan&&this.userPostData.bidangPerusahaan&&this.userPostData.alamatPerusahaan&&this.userPostData.kodeposPerusahaan&&this.userPostData.notelpPerusahaan&&this.userPostData.emailPerusahaan&&this.userPostData.deskripsiPerusahaan){
+    if(this.userPostData.namaPerusahaan&&this.userPostData.bidangPerusahaan&&this.userPostData.alamatPerusahaan&&this.userPostData.kodeposPerusahaan&&this.userPostData.notelpPerusahaan&&this.userPostData.deskripsiPerusahaan){
       this.authService.postData(this.userPostData, "aftersignupPerusahaan").then((result) =>{
         this.responseData = result;
         if(this.responseData.profileData){

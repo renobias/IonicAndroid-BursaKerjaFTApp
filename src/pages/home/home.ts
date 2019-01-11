@@ -28,7 +28,7 @@ export class HomePage {
   public variabelsearch:any;
 
   public img_profile:any;
-
+  public noScroll: any;
   searchQuery: string = "";
   items: string[];
 
@@ -53,6 +53,7 @@ export class HomePage {
 
     this.pekerjaanPostData.user_id = this.userDetails.user_id;
     this.pekerjaanPostData.token = this.userDetails.token;
+    this.noScroll=1;
   }
 
   ionViewWillEnter() {
@@ -142,7 +143,7 @@ export class HomePage {
           this.Common.closeLoading();
           this.dataSet = this.resposeData.feedData;
           localStorage.setItem("feedData", JSON.stringify(this.dataSet));
-
+          this.noScroll=1;
           const dataLength = this.resposeData.feedData.length;
 
           this.userPostData.lastCreated = this.resposeData.feedData[
@@ -150,6 +151,7 @@ export class HomePage {
           ].created;
           //this.img_profile = "http://localhost/WebService-BursaKerja-final/img/"+this.dataSet+".jpg";
         } else {
+          this.Common.closeLoading();
         }
       },
       err => {}
@@ -215,6 +217,7 @@ filter(){
   }
 
   getItems(ev: any) {
+    this.noScroll="";
     this.initializeItems();
     let val = ev.target.value;
 

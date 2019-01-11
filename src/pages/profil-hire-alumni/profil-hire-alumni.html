@@ -53,7 +53,30 @@
               </ion-col>
             </ion-row>
           </ion-grid>
+          <div *ngIf="item.status_kerja=='bekerja' && item.nama_perusahaan">
           <hr />
+          <h3 text-center class="teks-tebel">tempat kerja</h3>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-12>
+                <h2 class="text-center-select">{{ item.nama_perusahaan }}</h2>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <hr/>
+        </div>
+        <div *ngIf="item.status_kerja=='sedang dalam penawaran' && item.nama_perusahaan">
+            <hr />
+            <h3 text-center class="teks-tebel">sedang negosiasi dengan</h3>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-12>
+                  <h2 class="text-center-select">{{ item.nama_perusahaan }}</h2>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <hr/>
+          </div>
           <h3 text-center class="teks-tebel">status pencarian kerja</h3>
           <ion-grid>
             <ion-row>

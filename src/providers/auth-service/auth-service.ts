@@ -3,9 +3,9 @@ import { Injectable } from "@angular/core";
 import { Http, Headers } from "@angular/http";
 import "rxjs/add/operator/map";
 
-//let apiUrl = 'https://bursakerjaftunj.000webhostapp.com/api/';
+let apiUrl = 'https://bursakerjaftunj.000webhostapp.com/api/';
 //let apiUrl = 'http://10.0.2.2/WebService-BursaKerja-final/api/';
-let apiUrl = "http://localhost/WebService-BursaKerja-final/api/";
+//let apiUrl = "http://localhost/WebService-BursaKerja-final/api/";
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -22,8 +22,7 @@ export class AuthServiceProvider {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
 
-      this.http
-        .post(apiUrl + type, JSON.stringify(credentials), { headers: headers })
+      this.http.post(apiUrl + type, JSON.stringify(credentials), { headers: headers })
         .subscribe(
           res => {
             resolve(res.json());

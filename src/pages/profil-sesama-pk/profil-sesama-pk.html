@@ -15,13 +15,15 @@
 
 <ion-content padding class="foto-feed">
     <ng-template #belumada> <h4 text-center>belum ada</h4> </ng-template>
+    <ng-template #belumlulus> <h4 text-center>belum lulus</h4> </ng-template>
+
     <div class="bg"><img src="{{img_profile}}" /></div>
     <ion-card *ngFor="let item of dataSet">
       <ion-card-content>
         <div id="biodata">
           <h1 text-center [innerHTML]="item.nama_lengkap"></h1>
           <h3 text-center class="text-prodi" [innerHTML]="item.prodi"></h3>
-          <h4 text-center>lulus tahun {{ item.tahun_lulus }}</h4>
+           <h4 text-center *ngIf="item.tahun_masuk">Masuk tahun {{item.tahun_masuk}}</h4> <h4 text-center *ngIf="item.tahun_lulus;else:belumlulus">lulus tahun {{ item.tahun_lulus }}</h4>
           <hr />
           <div *ngIf="item.ttg_saya">
             <h5 text-center>tentang saya</h5>
@@ -56,7 +58,30 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
-            <hr />
+            <div *ngIf="item.status_kerja=='bekerja' && item.nama_perusahaan">
+                <hr />
+                <h3 text-center class="teks-tebel">tempat kerja</h3>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-12>
+                      <h2 class="text-center-select">{{ item.nama_perusahaan }}</h2>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <hr/>
+              </div>
+              <div *ngIf="item.status_kerja=='sedang dalam penawaran' && item.nama_perusahaan">
+                  <hr />
+                  <h3 text-center class="teks-tebel">sedang negosiasi dengan</h3>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-12>
+                        <h2 class="text-center-select">{{ item.nama_perusahaan }}</h2>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                  <hr/>
+                </div>
             <h3 text-center class="teks-tebel">status pencarian kerja</h3>
             <ion-grid>
               <ion-row>

@@ -36,6 +36,7 @@ export class HomecompanyPage {
   public dataSetBP: any;
   public dataSetBK: any;
   public dataSetPS: any;
+  public noScroll: any;
 
   public noRecords: boolean;
   public variabelsearch:any;
@@ -62,6 +63,7 @@ export class HomecompanyPage {
 
     this.pekerjaanPostData.user_id = this.userDetails.user_id;
     this.pekerjaanPostData.token = this.userDetails.token;
+    this.noScroll=1;
   }
 
   ionViewWillEnter() {
@@ -152,6 +154,7 @@ export class HomecompanyPage {
           this.dataSet = this.resposeData.feedData;
           localStorage.setItem("feedData", JSON.stringify(this.dataSet));
           console.log(this.dataSet);
+          this.noScroll=1;
 
           const dataLength = this.resposeData.feedData.length;
 
@@ -159,8 +162,10 @@ export class HomecompanyPage {
             dataLength - 1
           ].created;
 
-        } else {
-          console.log("No access");
+        }
+        else {
+          this.Common.closeLoading();
+          console.log("No data");
         }
       },
       err => {}
@@ -207,6 +212,7 @@ export class HomecompanyPage {
           this.dataSet = this.resposeData.feedData;
           localStorage.setItem("feedData", JSON.stringify(this.dataSet));
           console.log(this.dataSet);
+          this.noScroll="";
           this.Common.closeLoading();
         } else {
         }
@@ -225,6 +231,7 @@ export class HomecompanyPage {
   }
 
   getItems(ev: any) {
+    this.noScroll="";
     this.initializeItems();
     let val = ev.target.value;
 

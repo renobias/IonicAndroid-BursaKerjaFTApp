@@ -13,6 +13,7 @@ import { HomePage } from "../home/home";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { Common } from "../../providers/auth-service/common";
 import { TabsCompanyPage } from "../tabs-company/tabs-company";
+import { SignupPage } from "../signup/signup";
 /**
  * Generated class for the LoginPage page.
  *
@@ -56,20 +57,13 @@ export class LoginPage {
         result => {
           this.responseData = result;
           if (this.responseData.userData) {
-            if (this.responseData.userData.level == "pencari kerja") {
+            if (this.responseData.userData.level == "pencari_kerja") {
               console.log(this.responseData);
               localStorage.setItem("userData",JSON.stringify(this.responseData));
               this.navCtrl.setRoot(TabsPage);
               this.app.getRootNav();
               this.Common.closeLoading();
               window.localStorage.setItem("sudahloginPK", "sudah loginPK");
-
-              const alert = this.alertCtrl.create({
-                title: "Selamat datang",
-                subTitle: this.userData.username,
-                buttons: ["OK"]
-              });
-              alert.present();
             } else if (this.responseData.userData.level == "perusahaan") {
               window.localStorage.setItem(
                 "sudahloginCompany",
@@ -80,13 +74,7 @@ export class LoginPage {
               this.navCtrl.setRoot(TabsCompanyPage);
               this.app.getRootNav();
               this.Common.closeLoading();
-              const alert = this.alertCtrl.create({
-                title: "Selamat datang",
-                subTitle: this.userData.username,
-                buttons: ["OK"]
-              });
 
-              alert.present();
             }
           } else {
             this.Common.closeLoading();
@@ -118,4 +106,6 @@ export class LoginPage {
     });
     toast.present();
   }
+
+
 }

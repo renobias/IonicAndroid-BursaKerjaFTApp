@@ -237,7 +237,7 @@ export class ProfilHireAlumniPage {
           const alert = this.alertCtrl.create({
             title: "Berhasil",
             subTitle:
-              "Pencari kerja tersebut telah masuk ke dalam daftar penawaran dan notifikasi akan terkirim ke pencari kerja tersebut",
+              this.dataSet[0].nama_lengkap+" telah masuk ke dalam daftar penawaran dan notifikasi akan segera terkirim ke "+this.dataSet[0].nama_lengkap,
             buttons: ["OK"]
           });
           alert.present();
@@ -247,6 +247,7 @@ export class ProfilHireAlumniPage {
       err => {}
     );
     this.disableButton = true;
+    this.navCtrl.push(ProfilHireAlumniPage);
   }
 
   //fungsi untuk Mengambil data jumlah notifikasi dari database dan memasukkan ke localstorage

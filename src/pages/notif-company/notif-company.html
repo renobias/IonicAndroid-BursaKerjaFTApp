@@ -32,14 +32,20 @@
         </ion-item>
 
         <ion-item-options side="right">
-          <button ion-button color="green">
+          <button ion-button color="secondary" (click)="panggil(i)">
             <ion-icon name="call"></ion-icon>
             Panggil
           </button>
-          <button ion-button color="Kuning">
+          <button ion-button color="green" (click)="terimaPenawaran(i)">
+              <ion-icon name="checkmark"></ion-icon>
+                  Terima
+            </button>
+            
+          <button ion-button color="Kuning" (click)="kirimemail(i)">
             <ion-icon name="mail"></ion-icon>
             Email
           </button>
+        
         </ion-item-options>
         <ion-item-options side="left">
           <button ion-button color="darkred" (click)="berhentiPenawaran(i)">
