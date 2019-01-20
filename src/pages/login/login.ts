@@ -77,6 +77,7 @@ export class LoginPage {
 
             }
           } else {
+            console.log(this.responseData);
             this.Common.closeLoading();
             this.presentToast("username dan password tidak cocok");
           }

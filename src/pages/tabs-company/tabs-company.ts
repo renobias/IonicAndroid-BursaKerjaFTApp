@@ -11,6 +11,7 @@ import { HomecompanyPage } from "../homecompany/homecompany";
 import { NotifCompanyPage } from "../notif-company/notif-company";
 import { ProfilCompanyPage } from "../profil-company/profil-company";
 import { WelcomePage } from "../welcome/welcome";
+import { NotifikasiPerusahaanPage } from "../notifikasi-perusahaan/notifikasi-perusahaan";
 /**
  * Generated class for the TabsCompanyPage page.
  *
@@ -26,8 +27,9 @@ export class TabsCompanyPage {
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
   tab1Root = HomecompanyPage;
-  tab2Root = NotifCompanyPage;
-  tab3Root = ProfilCompanyPage;
+  tab2Root = NotifikasiPerusahaanPage;
+  tab3Root = NotifCompanyPage;
+  tab4Root = ProfilCompanyPage;
 
   constructor(
     public app: App,

@@ -160,7 +160,7 @@ export class HomecompanyPage {
 
           this.userPostData.lastCreated = this.resposeData.feedData[
             dataLength - 1
-          ].created;
+          ].user_id_fk;
 
         }
         else {
@@ -300,7 +300,7 @@ export class HomecompanyPage {
               const newData = this.resposeData.feedData;
               this.userPostData.lastCreated = this.resposeData.feedData[
                 newData.length - 1
-              ].created;
+              ].user_id_fk;
 
               for (let i = 0; i < newData.length; i++) {
                 this.dataSet.push(newData[i]);

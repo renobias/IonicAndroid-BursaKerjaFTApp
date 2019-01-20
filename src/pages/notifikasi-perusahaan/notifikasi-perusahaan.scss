@@ -1,0 +1,27 @@
+page-notifikasi-perusahaan {
+    .kartu{
+        margin-bottom: 10px;
+    }
+
+    img{
+        height: 10vh;
+        width: 10vh;
+        /**
+        margin: auto;
+        align-items: center;
+        display: block;
+        */
+        border-radius: 50%;
+    }
+
+    .notif {
+        text-align: justify;
+      }
+    
+      #btn-notif {
+        vertical-align: middle;
+        margin-left: 15vw;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+      }
+}

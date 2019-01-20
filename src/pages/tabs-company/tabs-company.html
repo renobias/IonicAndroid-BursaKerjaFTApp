@@ -26,11 +26,18 @@
     tabBadgeStyle="danger"
   ></ion-tab>
   <ion-tab
-    [root]="tab2Root"
+  [root]="tab2Root"
+  tabTitle="Pemberitahuan"
+  [tabBadge]="null"
+  tabBadgeStyle="danger"
+  tabIcon="notifications"
+  ></ion-tab>
+  <ion-tab
+    [root]="tab3Root"
     tabTitle="Penawaran saya"
     [tabBadge]="null"
     tabBadgeStyle="danger"
     tabIcon="paper"
   ></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Profil" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Profil" tabIcon="contacts"></ion-tab>
 </ion-tabs>

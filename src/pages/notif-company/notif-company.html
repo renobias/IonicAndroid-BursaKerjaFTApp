@@ -26,25 +26,27 @@
               <img src="{{item.foto_profil}}" />
               </div>
           </ion-avatar>
-          <h2 [innerHTML]="item.nama_lengkap">nama lengkap</h2>
+          <h2 [innerHTML]="item.nama_pencarikerja">nama lengkap</h2>
+          <p>{{item.status_kerja_sdm}}</p>
           <h3 [innerHTML]="item.bidang_pekerjaan">Enginering</h3>
           <p [innerHTML]="item.bidang_keahlian"> Full stack developer</p>
         </ion-item>
 
         <ion-item-options side="right">
-          <button ion-button color="secondary" (click)="panggil(i)">
+          <button ion-button color="Kuning" (click)="panggil(i)">
             <ion-icon name="call"></ion-icon>
             Panggil
           </button>
-          <button ion-button color="green" (click)="terimaPenawaran(i)">
+          <button ion-button color="Hijau" (click)="terimaPenawaran(i)">
               <ion-icon name="checkmark"></ion-icon>
                   Terima
             </button>
-            
+            <!--
           <button ion-button color="Kuning" (click)="kirimemail(i)">
             <ion-icon name="mail"></ion-icon>
             Email
           </button>
+          -->
         
         </ion-item-options>
         <ion-item-options side="left">
@@ -56,4 +58,13 @@
       </ion-item-sliding>
     </ion-list>
   </div>
+
+  <ng-template #terimaKerja>
+    <div>
+      <button ion-button color="green" (click)="terimaPenawaran(i)">
+          <ion-icon name="checkmark"></ion-icon>
+              Terima
+        </button>
+      </div>
+  </ng-template>
 </ion-content>

@@ -32,8 +32,10 @@ export class NotifCompanyPage {
   public dataKeahlianKedua: any;
   public dataKeahlianKetiga: any;
   public img_profile:any;
+  public x:any;
 
-  berhentipenawaranPostData = { user_id: "", token: "", user_id_fk: "" };
+  berhentipenawaranPostData = { user_id: "", token: "", user_id_fk: "",ID_daftarsdm:"" };
+  terimapenawaranPostData = { user_id: "", token: "", user_id_fk: "",ID_daftarsdm:"" };
   ambilCompanyNameData = { user_id: "", token: "",nama_perusahaan:"" };
   userPostData = { user_id: "", token: "",nama_perusahaan:"" };
   public userDetails: any;
@@ -42,12 +44,14 @@ export class NotifCompanyPage {
   public dataSet: any;
   public userDetailstest: any;
   public nomortelepon;
+  public hasilDataSet;
 
   public companyNameDataSet: any;
   public responsecompanyNameData: any;
 
   public responseDataStop: any;
   public dataSetStop: any;
+  public enableButton:any;
   constructor(
     public Common: Common,
     public alertController: AlertController,
@@ -62,7 +66,7 @@ export class NotifCompanyPage {
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
     this.userPostData.nama_perusahaan = this.userDetails.nama_perusahaan;
-
+    this.enableButton=true;
   }
 
   ionViewDidLoad() {
@@ -79,6 +83,17 @@ export class NotifCompanyPage {
             JSON.stringify(this.responseData)
           );
           this.dataSet = this.responseData.profileUserData;
+
+          /**
+          this.dataSet.forEach(element => {
+            console.log(element.status_kerja);
+            if(element.status_kerja=="bekerja" && element.status_pencarian_kerja=="sudah bekerja"){
+              this.enableButton[element]=true;
+            }else{
+              this.enableButton[element]=false;
+            }
+          });
+          */
         } else {
         }
       },
@@ -90,11 +105,15 @@ export class NotifCompanyPage {
   berhentiPenawaran(index: any) {
     console.log(index);
     const dataPenawaran = JSON.parse(localStorage.getItem("daftarPenawaran"));
-    console.log(dataPenawaran.profileUserData[index].id_penawaran);
+    console.log(dataPenawaran.profileUserData[index].id_daftarsdm);
     this.berhentipenawaranPostData.user_id = this.userDetails.user_id;
     this.berhentipenawaranPostData.token = this.userDetails.token;
     this.berhentipenawaranPostData.user_id_fk =
-      dataPenawaran.profileUserData[index].user_id_fk;
+      dataPenawaran.profileUserData[index].ID_pencarikerja_fk;
+
+      this.berhentipenawaranPostData.ID_daftarsdm =
+      dataPenawaran.profileUserData[index].id_daftarsdm;
+
     console.log(this.berhentipenawaranPostData.user_id_fk);
 
     this.authService
@@ -106,7 +125,7 @@ export class NotifCompanyPage {
           const alert = this.alertController.create({
             title: "Berhasil",
             subTitle:
-            dataPenawaran.profileUserData[index].nama_lengkap+" telah diberhentikan dari masa penawaran!",
+            dataPenawaran.profileUserData[index].nama_pencarikerja+" telah diberhentikan dari masa penawaran!",
             buttons: ["OK"]
           });
           alert.present();
@@ -120,14 +139,19 @@ export class NotifCompanyPage {
     console.log(index);
     const dataPenawaran = JSON.parse(localStorage.getItem("daftarPenawaran"));
     console.log(dataPenawaran.profileUserData[index].id_penawaran);
-    this.berhentipenawaranPostData.user_id = this.userDetails.user_id;
-    this.berhentipenawaranPostData.token = this.userDetails.token;
-    this.berhentipenawaranPostData.user_id_fk =
+    this.terimapenawaranPostData.user_id = this.userDetails.user_id;
+    this.terimapenawaranPostData.token = this.userDetails.token;
+
+    this.terimapenawaranPostData.user_id_fk =
       dataPenawaran.profileUserData[index].user_id_fk;
-    console.log(this.berhentipenawaranPostData.user_id_fk);
+
+      this.terimapenawaranPostData.ID_daftarsdm =
+      dataPenawaran.profileUserData[index].id_daftarsdm;
+
+    console.log(this.terimapenawaranPostData.user_id_fk);
 
     this.authService
-    .postData(this.berhentipenawaranPostData, "terimaPenawaran")
+    .postData(this.terimapenawaranPostData, "terimaPenawaran")
     .then(
       result => {
         this.responseDataStop = result;
@@ -135,11 +159,10 @@ export class NotifCompanyPage {
         const alert = this.alertController.create({
           title: "Berhasil",
           subTitle:
-          dataPenawaran.profileUserData[index].nama_lengkap+" telah masuk sebagai karyawan anda... perusahaan anda akan tercantum di profil "+dataPenawaran.profileUserData[index].nama_lengkap,
+          dataPenawaran.profileUserData[index].nama_pencarikerja+" telah masuk sebagai karyawan anda... perusahaan anda akan tercantum di profil "+dataPenawaran.profileUserData[index].nama_lengkap,
           buttons: ["OK"]
         });
         alert.present();
-        this.navCtrl.push(NotifCompanyPage);
       },
       err => {}
     );
@@ -156,7 +179,7 @@ export class NotifCompanyPage {
       const alert = this.alertController.create({
         title: "Tidak dapat dihubungi",
         subTitle:
-        dataPenawaran.profileUserData[index].nama_lengkap+" tidak mencantumkan nomor telepon ",
+        dataPenawaran.profileUserData[index].nama_pencarikerja+" tidak mencantumkan nomor telepon ",
         buttons: ["OK"]
       });
       alert.present();

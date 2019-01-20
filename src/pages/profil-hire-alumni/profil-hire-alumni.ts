@@ -58,6 +58,9 @@ export class ProfilHireAlumniPage {
 
   public img_profile:any;
 
+  public responseCekdaftarpenawaran:any;
+  public dataSetcekPenawaran:any;
+
   userPostData = { user_id: "", token: "", user_id_fk: "" };
   userPostData2 = { user_id: "", token: "", user_id_fk: "" };
   notifPostData = {
@@ -65,11 +68,10 @@ export class ProfilHireAlumniPage {
     token: "",
     user_id_fk: "",
     count_badge_notif: "",
-    nama_perusahaan:""
+    nama_perusahaan:"",
+    nama_PK:""
   };
   gettKeahlianPostData={user_id:""};
-
-
   nilaiNotifPostData = {user_id:""};
 
   constructor(
@@ -112,6 +114,10 @@ export class ProfilHireAlumniPage {
       dataIDFeedUser
     ].user_id_fk;
 
+    this.notifPostData.nama_PK = this.userDetailstest[
+      dataIDFeedUser
+    ].nama_lengkap;
+
     this.nilaiNotifPostData.user_id = this.userDetailstest[
       dataIDFeedUser
     ].user_id_fk;
@@ -123,6 +129,7 @@ export class ProfilHireAlumniPage {
     this.getProfileDetail();
     this.tidakbisaditawar();
     this.getKeahlian();
+    this.cekDaftarPenawaran()
   }
 
   ionViewDidLoad() {
@@ -227,13 +234,26 @@ export class ProfilHireAlumniPage {
       "notifPostData.count_badge_notif :" + this.notifPostData.count_badge_notif
     );
 
-    //mengirim ke API untuk mengubah/mengupdate jumlah notifikasi di database
+  
+      if(this.dataSetcekPenawaran){
+        const alert = this.alertCtrl.create({
+          title: "Tidak bisa melakukan penawaran",
+          subTitle:
+            "Anda sedang melakukan penawaran dengan "+this.dataSet[0].nama_lengkap+" dan tidak bisa melakukannya lagi",
+          buttons: ["OK"]
+        });
+        alert.present();
+        this.navCtrl.push(ProfilHireAlumniPage);
+    }else{
+      this.Common.presentLoading();
+       //mengirim ke API untuk mengubah/mengupdate jumlah notifikasi di database
     this.authService.postData(this.notifPostData, "notifikasi").then(
       result => {
         this.resposeDataNotif = result;
         if (this.resposeDataNotif.notifData) {
           this.dataSetNotif = this.resposeDataNotif.notifData;
           console.log(this.dataSetNotif);
+          this.Common.closeLoading();
           const alert = this.alertCtrl.create({
             title: "Berhasil",
             subTitle:
@@ -246,6 +266,7 @@ export class ProfilHireAlumniPage {
       },
       err => {}
     );
+    }
     this.disableButton = true;
     this.navCtrl.push(ProfilHireAlumniPage);
   }
@@ -278,5 +299,29 @@ export class ProfilHireAlumniPage {
 
   tidakbisaditawar() {
     const dataIDFeedUser = localStorage.getItem("uidIdentifier");
+  }
+
+  cekDaftarPenawaran(){
+    this.authService.postData(this.userPostData, "cekDaftarPenawaran").then(
+      result => {
+        this.responseCekdaftarpenawaran = result;
+        if (this.responseCekdaftarpenawaran.profileUserData) {
+          this.dataSetcekPenawaran = this.responseCekdaftarpenawaran.profileUserData;
+
+          /**
+          this.dataSet.forEach(element => {
+            console.log(element.status_kerja);
+            if(element.status_kerja=="bekerja" && element.status_pencarian_kerja=="sudah bekerja"){
+              this.enableButton[element]=true;
+            }else{
+              this.enableButton[element]=false;
+            }
+          });
+          */
+        } else {
+        }
+      },
+      err => {}
+    );
   }
 }

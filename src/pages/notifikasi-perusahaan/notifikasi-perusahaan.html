@@ -1,0 +1,55 @@
+<!--
+  Generated template for the NotifikasiPerusahaanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>pemberitahuan</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngFor="let item of dataSet">
+  <div *ngIf="item.status=='diterima'" class="kartu">
+      <ion-card>
+        <ion-card-content class="notif">
+          <ion-item>
+              <img item-start src="assets/imgs/logo-info-png-5.png" />
+                 <p item-end margin-left="5px">{{item.nama_lengkap}} telah mengonfirmasi dan bersedia untuk dihubungi dan melakukan komunikasi selanjutnya
+                </p>
+              </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div *ngIf="item.status=='ditolak'" class="kartu">
+      <ion-card>
+          <ion-card-content class="notif">
+              <ion-item>
+                  <img item-start src="assets/imgs/logo-info-png-5.png" />
+                     <p item-end margin-left="5px">{{item.nama_lengkap}} telah menolak tawaran anda dan tidak bersedia untuk dihubungi
+                    </p>
+              </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div *ngIf="item.status=='penawaran'" class="kartu">
+        <ion-card>
+            <ion-card-content class="notif">
+                  <ion-item>
+                      <img item-start src="assets/imgs/logo-info-png-5.png" />
+                         <p item-end margin-left="5px">Anda telah melakukan penawaran terhadap {{item.nama_lengkap}} dan silahkan tunggu konfirmasi dari pencari kerja tersebut
+                           untuk melakukan komunikasi atau menghubungi pencari kerja tersebut
+                        </p>
+                  </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+</ion-content>

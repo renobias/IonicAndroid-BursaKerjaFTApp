@@ -135,12 +135,12 @@ export class HomePage {
     this.userPostData.bidang_keahlian="";
     this.userPostData.prodi="";
     this.userPostData.lastCreated = "";
-    this.Common.presentLoading();
+    //this.Common.presentLoading();
     this.authService.postData(this.userPostData, "feedPKinfinite").then(
       result => {
         this.resposeData = result;
         if (this.resposeData.feedData) {
-          this.Common.closeLoading();
+          //this.Common.closeLoading();
           this.dataSet = this.resposeData.feedData;
           localStorage.setItem("feedData", JSON.stringify(this.dataSet));
           this.noScroll=1;
@@ -148,7 +148,7 @@ export class HomePage {
 
           this.userPostData.lastCreated = this.resposeData.feedData[
             dataLength - 1
-          ].created;
+          ].user_id_fk;
           //this.img_profile = "http://localhost/WebService-BursaKerja-final/img/"+this.dataSet+".jpg";
         } else {
           this.Common.closeLoading();

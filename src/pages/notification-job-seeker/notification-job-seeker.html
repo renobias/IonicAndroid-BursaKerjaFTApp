@@ -24,10 +24,15 @@
                 <img src="{{item.logo}}" />
                 </div>
           Hello, kami dari {{ item.nama_perusahaan }} sangat tertarik dengan profil
-          anda, dalam waktu dekat kami akan segera menghubungi anda, mohon
-          diangkat jika terdapat panggilan dari nomor tidak dikenal. Terima
-          kasih :)
+          anda, kami akan sangat senang jika anda segera mengonfirmasi penawaran ini agar kami
+          dapat segera menghubungi anda.. Terima Kasih :)
         </ion-card-content>
+        <ion-item>
+          <Button item-start ion-button color="Hijau" (click)="terimaPenawaran(i)">Terima</Button>
+          <h2 text-center>{{item.status}}</h2>
+          <Button item-end ion-button color="danger"  (click)="tolakPenawaran(i)">Tolak</Button>
+        </ion-item>
+
         <!--
             <div id="btn-notif">
             <button ion-button color="green" outline (click)="beriNomor()">call me</button>
@@ -36,7 +41,8 @@
         -->
         <hr />
         <div style="margin-bottom: 5%;text-align: right;margin-right: 5%;">
-          {{ convertTime(item.created) | amTimeAgo }}
+          {{ convertTime(item.waktu_rekrut) | amTimeAgo }}
+          <!--{{ item.created }}-->
         </div>
       </ion-card>
     </div>

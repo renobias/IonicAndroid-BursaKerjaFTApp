@@ -25,8 +25,10 @@ import { ProfilCompanyPkSidePage } from "../profil-company-pk-side/profil-compan
 export class NotificationJobSeekerPage {
   public dataSet: any;
   public resposeData: any;
+  public resposeDataAll: any;
   public userDetails: any;
   userPostData = { user_id: "", token: "" };
+  terimaPostData = { user_id: "", token: "",id_interest:"" };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -37,6 +39,9 @@ export class NotificationJobSeekerPage {
     this.userDetails = data.userData;
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+
+    this.terimaPostData.user_id = this.userDetails.user_id;
+    this.terimaPostData.token = this.userDetails.token;
 
   }
 
@@ -80,5 +85,39 @@ export class NotificationJobSeekerPage {
   toCompany(index:any){
     localStorage.setItem("idIdentifier",index);
     this.navCtrl.push(ProfilCompanyPkSidePage);
+  }
+
+  terimaPenawaran(index:any){
+    this.terimaPostData.id_interest = this.dataSet[index].id_interest;
+    console.log(this.terimaPostData.id_interest);
+      this.authService.postData(this.terimaPostData, "terimaPenawaranSDM").then(
+      result => {
+        const alert = this.alertCtrl.create({
+          title: "Terkonfirmasi",
+          subTitle: "Anda menerima tawaran tersebut dan akan segera dihubungi oleh yang bersangkutan",
+          buttons: ["OK"]
+        });
+        alert.present();
+      },
+      err => {}
+    );
+    this.navCtrl.push(NotificationJobSeekerPage);
+    }
+
+  tolakPenawaran(index:any){
+    this.terimaPostData.id_interest = this.dataSet[index].id_interest;
+    console.log(this.terimaPostData.id_interest);
+      this.authService.postData(this.terimaPostData, "tolakPenawaranSDM").then(
+      result => {
+        const alert = this.alertCtrl.create({
+          title: "Terkonfirmasi",
+          subTitle: "Anda telah memberitahu ke yang bersangkutan bahwa anda tidak tertarik dengan penawaran tersebut",
+          buttons: ["OK"]
+        });
+        alert.present();
+      },
+      err => {}
+    );
+    this.navCtrl.push(NotificationJobSeekerPage);
   }
 }

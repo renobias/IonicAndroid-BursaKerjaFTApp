@@ -293,7 +293,7 @@
   <div *ngFor="let item of dataSet2">
     <div
       *ngIf="
-        item.status_pencarian_kerja == 'tidak mencari pekerjaan' || item.status_kerja == 'sedang dalam penawaran';
+        item.status_pencarian_kerja == 'tidak mencari pekerjaan';
         else: enablee
       "
     >

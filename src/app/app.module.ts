@@ -50,7 +50,7 @@ import { EditKeahlianKetigaPageModule } from "../pages/edit-keahlian-ketiga/edit
 import { ProfilSesamaPkPageModule} from "../pages/profil-sesama-pk/profil-sesama-pk.module";
 import{UbahRiwayatPageModule} from "../pages/ubah-riwayat/ubah-riwayat.module";
 import{ProfilCompanyPkSidePageModule} from "../pages/profil-company-pk-side/profil-company-pk-side.module";
-
+import{NotifikasiPerusahaanPageModule} from "../pages/notifikasi-perusahaan/notifikasi-perusahaan.module";
 
 //plugin
 import { ShareServiceProvider } from "../providers/share-service/share-service";
@@ -119,6 +119,7 @@ import { HttpModule } from "@angular/http";
     ProfilSesamaPkPageModule,
     UbahRiwayatPageModule,
     ProfilCompanyPkSidePageModule,
+    NotifikasiPerusahaanPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
