@@ -7,7 +7,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>pemberitahuan</ion-title>
+      <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>status penawaran</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,6 +18,9 @@
   <div *ngFor="let item of dataSet">
   <div *ngIf="item.status=='diterima'" class="kartu">
       <ion-card>
+          <ion-card-header>
+              DITERIMA
+            </ion-card-header>
         <ion-card-content class="notif">
           <ion-item>
               <img item-start src="assets/imgs/logo-info-png-5.png" />
@@ -29,6 +33,9 @@
 
     <div *ngIf="item.status=='ditolak'" class="kartu">
       <ion-card>
+          <ion-card-header>
+              DITOLAK
+            </ion-card-header>
           <ion-card-content class="notif">
               <ion-item>
                   <img item-start src="assets/imgs/logo-info-png-5.png" />
@@ -41,15 +48,48 @@
 
       <div *ngIf="item.status=='penawaran'" class="kartu">
         <ion-card>
+            <ion-card-header>
+                MENUNGGU KONFIRMASI
+              </ion-card-header>
             <ion-card-content class="notif">
                   <ion-item>
                       <img item-start src="assets/imgs/logo-info-png-5.png" />
-                         <p item-end margin-left="5px">Anda telah melakukan penawaran terhadap {{item.nama_lengkap}} dan silahkan tunggu konfirmasi dari pencari kerja tersebut
+                         <p item-end margin-left="5px">Anda telah melakukan penawaran terhadap {{item.nama_lengkap}} dan silahkan tunggu konfirmasi dari {{item.nama_lengkap}}
                            untuk melakukan komunikasi atau menghubungi pencari kerja tersebut
                         </p>
                   </ion-item>
             </ion-card-content>
           </ion-card>
         </div>
+
+            <div *ngIf="item.status=='diberhentikan'" class="kartu">
+                <ion-card>
+                    <ion-card-header>
+                        DIBERHENTIKAN
+                      </ion-card-header>
+                    <ion-card-content class="notif">
+                          <ion-item>
+                              <img item-start src="assets/imgs/logo-info-png-5.png" />
+                                 <p item-end margin-left="5px">Anda telah memberhentikan {{item.nama_lengkap}}
+                                </p>
+                          </ion-item>
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+
+                <div *ngIf="item.status=='penawaran habis'" class="kartu">
+                    <ion-card>
+                        <ion-card-header>
+                            TIDAK ADA KONFIRMASI
+                          </ion-card-header>
+                        <ion-card-content class="notif">
+                              <ion-item>
+                                  <img item-start src="assets/imgs/logo-info-png-5.png" />
+                                     <p item-end margin-left="5px">Masa penawaran telah habis dan tidak ada konfirmasi dari {{item.nama_lengkap}}
+                                    </p>
+                              </ion-item>
+                        </ion-card-content>
+                      </ion-card>
+                    </div>
       </div>
 </ion-content>

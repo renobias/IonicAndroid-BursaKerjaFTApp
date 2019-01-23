@@ -58,7 +58,7 @@ export class ProfilCompanyPage {
           this.dataSet = this.resposeData.feedData;
           console.log(this.dataSet[0].logo);
           if(this.dataSet[0].logo){
-            this.img_profile_company = this.dataSet[0].logo;
+            this.img_profile_company = "https://bursakerjaft.000webhostapp.com/img/foto_perusahaan/"+this.dataSet[0].logo;
           }
           else{
             this.img_profile_company ="assets/imgs/office.jpg";

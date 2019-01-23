@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar  hideBackButton>
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     <ion-title>Pemberitahuan</ion-title>
   </ion-navbar>
@@ -16,12 +16,14 @@
   <ng-template #noprofil> <img src="assets/imgs/office.jpg" /> </ng-template>
   <div *ngIf="dataSet; else: jebol">
     <div *ngFor="let item of dataSet;let i = index;">
+      <!--STATUS PENAWARAN-->
+      <div *ngIf="item.status=='penawaran'">
       <ion-card>
         <ion-card-header [innerHTML]="item.nama_perusahaan" (click)="toCompany(i)"> 
         </ion-card-header>
         <ion-card-content class="notif">
             <div *ngIf="dataSet[i].logo; else: noprofil">
-                <img src="{{item.logo}}" />
+                <img src="{{item.logo}}"/>
                 </div>
           Hello, kami dari {{ item.nama_perusahaan }} sangat tertarik dengan profil
           anda, kami akan sangat senang jika anda segera mengonfirmasi penawaran ini agar kami
@@ -45,6 +47,42 @@
           <!--{{ item.created }}-->
         </div>
       </ion-card>
+      </div>
+
+      <!--STATUS DITOLAK-->
+      <div *ngIf="item.status=='ditolak'||item.status=='diterima'||item.status=='diberhentikan'">
+          <img src="assets/imgs/confirmed-green.png" style="height:60px; margin-bottom:-28%; margin-left:66%;transform: rotate(-6.5deg);"/>
+          <ion-card>
+            <ion-card-header [innerHTML]="item.nama_perusahaan" (click)="toCompany(i)"> 
+            </ion-card-header>
+            <ion-card-content class="notif">
+                <div *ngIf="dataSet[i].logo; else: noprofil">
+                    <img src="{{item.logo}}"/>
+                    </div>
+              Hello, kami dari {{ item.nama_perusahaan }} sangat tertarik dengan profil
+              anda, kami akan sangat senang jika anda segera mengonfirmasi penawaran ini agar kami
+              dapat segera menghubungi anda.. Terima Kasih :)
+            </ion-card-content>
+            <ion-item>
+              <Button item-start ion-button color="Hijau" (click)="terimaPenawaran(i)" [disabled]="true">Terima</Button>
+              <h2 text-center>{{item.status}}</h2>
+              <Button item-end ion-button color="danger"  (click)="tolakPenawaran(i)"  [disabled]="true">Tolak</Button>
+            </ion-item>
+    
+            <!--
+                <div id="btn-notif">
+                <button ion-button color="green" outline (click)="beriNomor()">call me</button>
+                <button ion-button color="danger" outline>not now</button>
+              </div>
+            -->
+            <hr />
+            <div style="margin-bottom: 5%;text-align: right;margin-right: 5%;">
+              {{ convertTime(item.waktu_rekrut) | amTimeAgo }}
+              <!--{{ item.created }}-->
+            </div>
+          </ion-card>
+          </div>
+
     </div>
   </div>
 </ion-content>

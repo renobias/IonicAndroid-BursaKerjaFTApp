@@ -1,11 +1,13 @@
 page-notification-job-seeker {
-  img {
+  .card{
+    img {
       height: 20vh;
       width: 20vh;
       margin: auto;
       align-items: center;
       display: block;
       border-radius: 50%;
+}
   }
 
   .notif {

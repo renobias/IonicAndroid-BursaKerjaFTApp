@@ -26,7 +26,7 @@ export class ProfilCompanyPkSidePage {
     public Common: Common,
     public alertCtrl: AlertController,
     public authService: AuthServiceProvider) {
-      const data = JSON.parse(localStorage.getItem("namaCompany"));
+      const data = JSON.parse(localStorage.getItem("dataPenawaran"));
       const dataID = localStorage.getItem("idIdentifier");
       this.userPostData.user_id = data[dataID].id_perusahaan_fk;
       this.ionViewWillEnter();
@@ -48,7 +48,7 @@ export class ProfilCompanyPkSidePage {
           this.dataSet = this.resposeData.feedData;
           console.log(this.dataSet[0].logo);
           if(this.dataSet[0].logo){
-            this.img_profile_company = this.dataSet[0].logo;
+            this.img_profile_company = "https://bursakerjaft.000webhostapp.com/img/foto_perusahaan/"+this.dataSet[0].logo;
           }
           else{
             this.img_profile_company ="assets/imgs/office.jpg";

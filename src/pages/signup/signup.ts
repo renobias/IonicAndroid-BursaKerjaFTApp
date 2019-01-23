@@ -11,6 +11,7 @@ import { LoginPage } from "../login/login";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { AfterSignupPencarikerjaPage } from "../after-signup-pencarikerja/after-signup-pencarikerja";
 import { AfterSignupMahasiswaPage } from "../after-signup-mahasiswa/after-signup-mahasiswa";
+import { Common } from "../../providers/auth-service/common";
 /**
  * Generated class for the SignupPage page.
  *
@@ -37,7 +38,8 @@ export class SignupPage {
     public alertCtrl: AlertController,
     public navCtrl: NavController,
     public authService: AuthServiceProvider,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public common:Common
   ) {}
 
   ionViewDidLoad() {
@@ -54,6 +56,7 @@ export class SignupPage {
     ) {
       this.alumni = "Alumni";
       console.log(this.alumni);
+      this.common.presentLoading();
       //Api connections
       this.authService.postData(this.userData, "signuppencarikerja").then(
         result => {
@@ -64,6 +67,7 @@ export class SignupPage {
             localStorage.setItem("userData", JSON.stringify(this.responseData));
             if(this.userData.JenisDaftarPK=="Alumni"){
             this.navCtrl.push(AfterSignupPencarikerjaPage);
+            this.common.closeLoading();
             const alert = this.alertCtrl.create({
               title: "Selamat datang",
               subTitle: this.userData.name,
@@ -72,6 +76,7 @@ export class SignupPage {
             alert.present();
           }else{
             this.navCtrl.push(AfterSignupMahasiswaPage);
+            this.common.closeLoading()
             const alert = this.alertCtrl.create({
               title: "Selamat datang",
               subTitle: this.userData.name,
@@ -89,12 +94,14 @@ export class SignupPage {
       }
       */
           } else {
+            this.common.closeLoading();
             this.presentToast(
               "isilah data dengan format yang benar terutama email"
             );
           }
         },
         err => {
+          this.common.closeLoading();
           //Connection failed message
           let alert = this.alertCtrl.create({
             title: "Gagal Masuk",
@@ -106,6 +113,7 @@ export class SignupPage {
         }
       );
     } else {
+      this.common.closeLoading();
       this.presentToast(
         "Harap lengkapi setiap informasi atau kolom terlebih dahulu"
       );

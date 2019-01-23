@@ -107,7 +107,7 @@ export class ProfilSesamaPkPage {
         if (this.resposeData.profileUserData) {
           this.dataSet = this.resposeData.profileUserData;
           if(this.dataSet[0].foto_profil){
-            this.img_profile = this.dataSet[0].foto_profil;
+            this.img_profile = "https://bursakerjaft.000webhostapp.com/img/foto_pencari_kerja/"+this.dataSet[0].foto_profil;
           }
           else{
             this.img_profile ="assets/imgs/Foto Profil Dark.jpg";

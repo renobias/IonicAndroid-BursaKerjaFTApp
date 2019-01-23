@@ -19,7 +19,7 @@ import {ProfilalumniPage} from '../profilalumni/profilalumni';
 export class EditBiodataPkPage {
   userPostData={"user_id":"","token":"","nama_lengkap":"","tmpt_lahir":"","tgl_lahir":"","jenkel":""};
   userDetails:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthServiceProvider,public Common: Common,public alertCtrl: AlertController,private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService : AuthServiceProvider,public Common: Common,public alertCtrl: AlertController,private toastCtrl: ToastController,public alertController:AlertController,public common:Common) {
     const data = JSON.parse(localStorage.getItem('userData'));
     this.userDetails=data.userData;
     this.userPostData.user_id = this.userDetails.user_id;
@@ -32,7 +32,9 @@ export class EditBiodataPkPage {
 
   simpanBiodata(){
     if(this.userPostData.nama_lengkap&&this.userPostData.tmpt_lahir&&this.userPostData.tgl_lahir&&this.userPostData.jenkel){
+      this.common.presentLoading();
       this.authService.postData(this.userPostData, "editbiodataPK").then((result) =>{
+        this.common.closeLoading();
           const alert = this.alertCtrl.create({
             title: 'Tersimpan',
             subTitle: 'Biodata berhasil diubah',
@@ -41,10 +43,19 @@ export class EditBiodataPkPage {
             alert.present();
             this.navCtrl.push(ProfilalumniPage);
         }, (err) => {
+          this.common.closeLoading();
           //Connection failed message
+          const alert = this.alertController.create({
+            title: "Error!",
+            subTitle:
+              "Koneksi Error",
+            buttons: ["OK"]
+          });
+          alert.present();
         });
       }else{
-        this.presentToast("Harap lengkapi isi dan lengkapi data terlebih dahulu ");
+        this.common.closeLoading();
+        this.presentToast("Harap isi dan lengkapi data terlebih dahulu ");
       }
     }
 

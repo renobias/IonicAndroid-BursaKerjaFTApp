@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams, AlertController } from "ionic-angular";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { ProfilalumniPage } from "../profilalumni/profilalumni";
+import { Common } from "../../providers/auth-service/common";
 
 /**
  * Generated class for the EditKeahlianUtamaPage page.
@@ -25,7 +26,7 @@ export class EditKeahlianUtamaPage {
   public dataSetBK: any;
   pekerjaanPostData = { user_id: "", token: "", id_bidang_pekerjaan: "" };
   userPostData = { user_id: "", token: "",idBidangPekerjaan:"",idBidangKeahlian:"" };
-  constructor(public navCtrl: NavController, public navParams: NavParams,public authService:AuthServiceProvider,public alertController:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public authService:AuthServiceProvider,public alertController:AlertController,public common:Common) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
 
@@ -53,7 +54,7 @@ export class EditKeahlianUtamaPage {
         }
       },
       err => {
-        console.log("asuuu");
+        console.log("jaringan bermasalah");
       }
     );
   }
@@ -74,7 +75,7 @@ export class EditKeahlianUtamaPage {
         }
       },
       err => {
-        console.log("asuuu");
+        console.log("jaringan bermasalah");
       }
     );
   }
@@ -85,12 +86,14 @@ export class EditKeahlianUtamaPage {
   }
 
   simpan(){
+    this.common.presentLoading();
     this.authService
     .postData(this.userPostData, "simpanBidangKeahlianSatu")
     .then(
       result => {
         this.resposeDataSimpan = result;
         console.log(this.resposeDataSimpan);
+        this.common.closeLoading();
         const alert = this.alertController.create({
           title: "Berhasil!",
           subTitle:
@@ -101,11 +104,12 @@ export class EditKeahlianUtamaPage {
         this.navCtrl.push(ProfilalumniPage);
       },
       err => {
+        this.common.closeLoading();
         console.log(this.resposeDataSimpan);
         const alert = this.alertController.create({
           title: "Error!",
           subTitle:
-            "Kneksi Error",
+            "Koneksi Error",
           buttons: ["OK"]
         });
         alert.present();

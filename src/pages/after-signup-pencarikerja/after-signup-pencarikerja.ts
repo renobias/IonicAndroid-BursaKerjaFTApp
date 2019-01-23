@@ -10,6 +10,7 @@ import { HomePage } from "../home/home";
 import { TabsPage } from "../tabs/tabs";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { LoginPage } from "../login/login";
+import { Common } from "../../providers/auth-service/common";
 
 /**
  * Generated class for the AfterSignupPencarikerjaPage page.
@@ -44,7 +45,8 @@ export class AfterSignupPencarikerjaPage {
     public navParams: NavParams,
     private toastCtrl: ToastController,
     public alertCtrl: AlertController,
-    public authService: AuthServiceProvider
+    public authService: AuthServiceProvider,
+    public common:Common
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
@@ -64,11 +66,14 @@ export class AfterSignupPencarikerjaPage {
       this.userPostData.prodi &&
       this.userPostData.tahunlulus
     ) {
+      this.common.presentLoading();
       this.authService.postData(this.userPostData, "aftersignupPK").then(
         result => {
           this.responseData = result;
           if (this.responseData.profileData) {
             this.dataSet = this.responseData.profileData;
+            this.navCtrl.push(TabsPage);
+            this.common.closeLoading();
             console.log(this.dataSet);
             const alert = this.alertCtrl.create({
               title: "Selamat datang di halaman beranda kamu",
@@ -77,14 +82,15 @@ export class AfterSignupPencarikerjaPage {
               buttons: ["OK"]
             });
             alert.present();
-            this.navCtrl.push(TabsPage);
           } else {
+            this.common.closeLoading();
             this.presentToast(
               "Harap lengkapi isi dan lengkapi data terlebih dahulu"
             );
           }
         },
         err => {
+          this.common.closeLoading();
           //Connection failed message
           const alert = this.alertCtrl.create({
             title: "Koneksi bermasalah",
@@ -95,6 +101,7 @@ export class AfterSignupPencarikerjaPage {
         }
       );
     } else {
+      this.common.closeLoading();
       this.presentToast(
         "Harap lengkapi isi dan lengkapi data terlebih dahulu 2"
       );

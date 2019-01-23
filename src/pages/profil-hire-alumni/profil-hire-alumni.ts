@@ -145,7 +145,7 @@ export class ProfilHireAlumniPage {
         if (this.resposeData.profileUserData) {
           this.dataSet = this.resposeData.profileUserData;
           if(this.dataSet[0].foto_profil){
-            this.img_profile = this.dataSet[0].foto_profil;
+            this.img_profile = "https://bursakerjaft.000webhostapp.com/img/foto_pencari_kerja/"+this.dataSet[0].foto_profil;
           }
           else{
             this.img_profile ="assets/imgs/Foto Profil Dark.jpg";
@@ -214,6 +214,7 @@ export class ProfilHireAlumniPage {
 
   //fungsi ketika perusahaan menghire atau tertarik terhadap pencari kerja
   interest() {
+    this.Common.presentLoading();
     //mengambil jumlah data notifikasi dari local storage
     const dataNotif = localStorage.getItem("setDataNotif");
     this.notifDetails = dataNotif;
@@ -245,7 +246,6 @@ export class ProfilHireAlumniPage {
         alert.present();
         this.navCtrl.push(ProfilHireAlumniPage);
     }else{
-      this.Common.presentLoading();
        //mengirim ke API untuk mengubah/mengupdate jumlah notifikasi di database
     this.authService.postData(this.notifPostData, "notifikasi").then(
       result => {
@@ -253,7 +253,6 @@ export class ProfilHireAlumniPage {
         if (this.resposeDataNotif.notifData) {
           this.dataSetNotif = this.resposeDataNotif.notifData;
           console.log(this.dataSetNotif);
-          this.Common.closeLoading();
           const alert = this.alertCtrl.create({
             title: "Berhasil",
             subTitle:
@@ -269,6 +268,7 @@ export class ProfilHireAlumniPage {
     }
     this.disableButton = true;
     this.navCtrl.push(ProfilHireAlumniPage);
+    this.Common.closeLoading();
   }
 
   //fungsi untuk Mengambil data jumlah notifikasi dari database dan memasukkan ke localstorage

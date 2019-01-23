@@ -14,6 +14,7 @@ import { ImagePicker } from "@ionic-native/image-picker";
 import { Base64 } from "@ionic-native/base64";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Common } from "../../providers/auth-service/common";
 /**
  * Generated class for the EditIntroPkPage page.
  *
@@ -30,6 +31,8 @@ export class EditIntroPkPage {
   /** Djamware */
   imageURI:any;
   imageFileName:any;
+  public tanggal:any;
+  public tanggalLengkap:any;
   /** djamware */
 
   userPostData = { user_id: "", token: "", ttg_saya: "", avatar: "",poto_profil:"" };
@@ -47,11 +50,23 @@ export class EditIntroPkPage {
     public loadingCtrl: LoadingController,
     private transfer: FileTransfer,
     private camera: Camera,
+    public common:Common
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
     this.userPostData.user_id = this.userDetails.user_id;
     this.userPostData.token = this.userDetails.token;
+
+let date = new Date();
+let year = date.getFullYear();
+let month = date.getMonth() + 1;
+let day = date.getDate();
+let hours = date.getHours();
+let minutes = date.getMinutes();
+let seconds = date.getSeconds();
+this.tanggalLengkap=day+""+month+""+year+""+hours+""+minutes+""+seconds;
+
+console.log(this.tanggalLengkap);
   }
 
   ionViewDidLoad() {
@@ -116,24 +131,43 @@ export class EditIntroPkPage {
 
         let options1: FileUploadOptions = {
            fileKey: 'file',
-           fileName: this.userPostData.user_id+'.jpg',
+           fileName: this.tanggalLengkap+this.userPostData.user_id+'.jpg',
            headers: {}
         }
 
-        //this.userPostData.poto_profil = "http://10.0.2.2/WebService-BursaKerja-final/img/foto_profil/pencari_kerja/"+this.userPostData.user_id+".jpg";
+    /** LOCALHOST TIPE FILE YANG LAMA */
+    //this.userPostData.poto_profil = "http://10.0.2.2/WebService-BursaKerja-final/img/foto_profil/pencari_kerja/"+this.userPostData.user_id+".jpg";
     //fileTransfer.upload(this.imgPreview, 'http://10.0.2.2/WebService-BursaKerja-final/upload_profilPK_mobile.php', options1)
-    this.userPostData.poto_profil = "https://bursakerjaftunj.000webhostapp.com/img/foto_profil/pencari_kerja/"+this.userPostData.user_id+".jpg";
-    fileTransfer.upload(this.imgPreview, 'https://bursakerjaftunj.000webhostapp.com/upload_profilPK_mobile.php', options1)
+
+    /** HOSTING INTERENT TIPE FILE YANG LAMA */
+    //https://bursakerjaftunj.000webhostapp.com/img/foto_profil/pencari_kerja/
+    //https://bursakerjaftunj.000webhostapp.com/upload_profilPK_mobile.php
+
+     /** HOSTING INTERENT TIPE FILE YANG BARU */
+    //https://bursakerjaft.000webhostapp.com/img/foto_pencari_kerja/
+    //https://bursakerjaft.000webhostapp.com/upload_profilPK_mobile.php
+
+    /** LOCALHOST TIPE FILE YANG BARU */
+    //localhost/img/foto_pencari_kerja/
+    //localhost/upload_profilPK_mobile.php
+    this.userPostData.poto_profil = this.tanggalLengkap+this.userPostData.user_id+".jpg";
+    this.common.presentLoading();
+    fileTransfer.upload(this.imgPreview, 'https://bursakerjaft.000webhostapp.com/upload_profilPK_mobile.php', options1)
      .then((data) => {
        // success
+       this.common.closeLoading();
        alert("berhasil diunggah..");
      }, (err) => {
+       this.common.closeLoading();
        // error
        alert("error"+JSON.stringify(err));
      });
 
       },
-      err => {}
+      err => {
+        this.common.closeLoading();
+        this.presentToast("Koneksi bermnasalah");
+      }
     );
   }
 

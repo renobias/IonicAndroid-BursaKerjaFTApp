@@ -135,12 +135,12 @@ export class HomePage {
     this.userPostData.bidang_keahlian="";
     this.userPostData.prodi="";
     this.userPostData.lastCreated = "";
-    //this.Common.presentLoading();
+    this.Common.presentLoading();
     this.authService.postData(this.userPostData, "feedPKinfinite").then(
       result => {
         this.resposeData = result;
         if (this.resposeData.feedData) {
-          //this.Common.closeLoading();
+          this.Common.closeLoading();
           this.dataSet = this.resposeData.feedData;
           localStorage.setItem("feedData", JSON.stringify(this.dataSet));
           this.noScroll=1;
@@ -264,7 +264,7 @@ filter(){
               const newData = this.resposeData.feedData;
               this.userPostData.lastCreated = this.resposeData.feedData[
                 newData.length - 1
-              ].created;
+              ].user_id_fk;
 
               for (let i = 0; i < newData.length; i++) {
                 this.dataSet.push(newData[i]);

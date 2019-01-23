@@ -27,10 +27,11 @@
   ></ion-tab>
   <ion-tab
   [root]="tab2Root"
-  tabTitle="Pemberitahuan"
-  [tabBadge]="null"
+  tabTitle="Status penawaran"
+  [tabBadge]="dataSet"
   tabBadgeStyle="danger"
-  tabIcon="notifications"
+  tabIcon="information-circle"
+  (ionSelect)="resetBadge()"
   ></ion-tab>
   <ion-tab
     [root]="tab3Root"

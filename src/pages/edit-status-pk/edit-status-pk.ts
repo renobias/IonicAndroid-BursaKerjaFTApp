@@ -8,6 +8,7 @@ import {
 } from "ionic-angular";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { ProfilalumniPage } from "../profilalumni/profilalumni";
+import { Common } from "../../providers/auth-service/common";
 
 /**
  * Generated class for the EditStatusPkPage page.
@@ -31,7 +32,8 @@ export class EditStatusPkPage {
     public navParams: NavParams,
     private toastCtrl: ToastController,
     public alertCtrl: AlertController,
-    public authService: AuthServiceProvider
+    public authService: AuthServiceProvider,
+    public common:Common
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
@@ -46,8 +48,10 @@ export class EditStatusPkPage {
 
   simpandata() {
     if (this.userPostData.status && this.userPostData.statusPK) {
+      this.common.presentLoading();
       this.authService.postData(this.userPostData, "editstatusPK").then(
         result => {
+          this.common.closeLoading();
           const alert = this.alertCtrl.create({
             title: "Tersimpan",
             subTitle: "status dan status kerja berhasil diubah",
@@ -57,10 +61,19 @@ export class EditStatusPkPage {
           this.navCtrl.push(ProfilalumniPage);
         },
         err => {
+          this.common.closeLoading();
           //Connection failed message
+          const alert = this.alertCtrl.create({
+            title: "Error!",
+            subTitle:
+              "Jaringan Bermasalah",
+            buttons: ["OK"]
+          });
+          alert.present();
         }
       );
     } else {
+      this.common.closeLoading();
       this.presentToast(
         "Harap lengkapi isi dan lengkapi data terlebih dahulu "
       );

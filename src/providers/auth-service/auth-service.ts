@@ -6,6 +6,7 @@ import "rxjs/add/operator/map";
 //let apiUrl = 'https://bursakerjaftunj.000webhostapp.com/api/';
 //let apiUrl = 'http://10.0.2.2/WebService-BursaKerja-final/api/';
 let apiUrl = "http://localhost/WebService-BursaKerja-final/api/";
+//let apiUrl = 'https://bursakerjaft.000webhostapp.com/api/';
 /*
   Generated class for the AuthServiceProvider provider.
 

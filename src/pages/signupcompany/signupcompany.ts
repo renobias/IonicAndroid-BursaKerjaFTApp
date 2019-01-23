@@ -12,6 +12,7 @@ import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { AfterSignupPencarikerjaPage } from "../after-signup-pencarikerja/after-signup-pencarikerja";
 import { AfterSignupMahasiswaPage } from "../after-signup-mahasiswa/after-signup-mahasiswa";
 import { AfterSignupPerusahaanPage } from "../after-signup-perusahaan/after-signup-perusahaan";
+import { Common } from "../../providers/auth-service/common";
 /**
  * Generated class for the SignupcompanyPage page.
  *
@@ -31,7 +32,8 @@ export class SignupcompanyPage {
     public alertCtrl: AlertController,
     public navCtrl: NavController,
     public authService: AuthServiceProvider,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public common:Common
   ) {}
 
   ionViewDidLoad() {
@@ -44,6 +46,7 @@ export class SignupcompanyPage {
       this.userData.password &&
       this.userData.email
     ) {
+      this.common.presentLoading();
       //Api connections
       this.authService.postData(this.userData, "signupperusahaan").then(
         result => {
@@ -56,13 +59,16 @@ export class SignupcompanyPage {
             );
             localStorage.setItem("userData", JSON.stringify(this.responseData));
             this.navCtrl.push(AfterSignupPerusahaanPage);
+            this.common.closeLoading();
           } else {
+            this.common.closeLoading();
             this.presentToast(
               "Format penulisan ada yang salah, mungkin anda salah memasukkan format email"
             );
           }
         },
         err => {
+          this.common.closeLoading();
           //Connection failed message
           let alert = this.alertCtrl.create({
             title: "Pendaftaran Gagagl",
@@ -74,6 +80,7 @@ export class SignupcompanyPage {
         }
       );
     } else {
+      this.common.closeLoading();
       this.presentToast("lengkapi semua kolom terlebih dahulu");
       console.log("Berikan Informsai yang Sesuai.");
     }

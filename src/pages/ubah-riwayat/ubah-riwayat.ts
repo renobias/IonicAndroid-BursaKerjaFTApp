@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ProfilalumniPage } from '../profilalumni/profilalumni';
+import { Common } from '../../providers/auth-service/common';
 
 /**
  * Generated class for the UbahRiwayatPage page.
@@ -18,7 +19,7 @@ import { ProfilalumniPage } from '../profilalumni/profilalumni';
 export class UbahRiwayatPage {
   dataRiwayat = {user_id:"",token:"",judul_skripsi:""};
   public dataDetails;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService:AuthServiceProvider,private toastCtrl: ToastController,public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService:AuthServiceProvider,private toastCtrl: ToastController,public alertCtrl: AlertController,public common:Common) {
   const data = JSON.parse(localStorage.getItem('userData'));
     this.dataDetails = data.userData;
 
@@ -39,8 +40,10 @@ simpanJudulSkripsi(){
   console.log(this.dataRiwayat.token);
   console.log(this.dataRiwayat.judul_skripsi);
   if(this.dataRiwayat.user_id && this.dataRiwayat.token && this.dataRiwayat.judul_skripsi){
+    this.common.presentLoading();
     this.authService.postData(this.dataRiwayat, "simpanRiwayat").then(
       result => {
+        this.common.closeLoading();
         const alert = this.alertCtrl.create({
           title: "Tersimpan",
           subTitle: "Judul skripsi berhasil disimpan",
@@ -50,6 +53,7 @@ simpanJudulSkripsi(){
         this.navCtrl.push(ProfilalumniPage);
       },
       err => {
+        this.common.closeLoading();
         //Connection failed message
         let alert = this.alertCtrl.create({
           title: "gagal menyimpan",

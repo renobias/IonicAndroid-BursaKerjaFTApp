@@ -35,7 +35,7 @@ export class NotifCompanyPage {
   public x:any;
 
   berhentipenawaranPostData = { user_id: "", token: "", user_id_fk: "",ID_daftarsdm:"" };
-  terimapenawaranPostData = { user_id: "", token: "", user_id_fk: "",ID_daftarsdm:"" };
+  terimapenawaranPostData = { user_id: "", token: "", user_id_fk: "",ID_daftarsdm:"",nama_perusahaan:"" };
   ambilCompanyNameData = { user_id: "", token: "",nama_perusahaan:"" };
   userPostData = { user_id: "", token: "",nama_perusahaan:"" };
   public userDetails: any;
@@ -143,10 +143,12 @@ export class NotifCompanyPage {
     this.terimapenawaranPostData.token = this.userDetails.token;
 
     this.terimapenawaranPostData.user_id_fk =
-      dataPenawaran.profileUserData[index].user_id_fk;
+      dataPenawaran.profileUserData[index].ID_pencarikerja_fk;
 
       this.terimapenawaranPostData.ID_daftarsdm =
       dataPenawaran.profileUserData[index].id_daftarsdm;
+
+      this.terimapenawaranPostData.nama_perusahaan=dataPenawaran.profileUserData[index].nama_perusahaan;
 
     console.log(this.terimapenawaranPostData.user_id_fk);
 
