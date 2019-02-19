@@ -71,7 +71,7 @@ export class NotificationJobSeekerPage {
           this.dataSet = this.resposeData.profileUserData;
           localStorage.setItem("dataPenawaran", JSON.stringify(this.dataSet));
           console.log(this.dataSet);
-          if(this.dataSet[0].foto_profil){
+          if(this.dataSet[0].logo){
             this.img_profile = "https://bursakerjaft.000webhostapp.com/img/foto_perusahaan/"+this.dataSet[0].logo;
           }
           else{

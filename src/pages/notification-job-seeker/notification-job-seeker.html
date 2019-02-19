@@ -22,8 +22,8 @@
         <ion-card-header [innerHTML]="item.nama_perusahaan" (click)="toCompany(i)"> 
         </ion-card-header>
         <ion-card-content class="notif">
-            <div *ngIf="dataSet[i].logo; else: noprofil">
-                <img src="{{item.logo}}"/>
+            <div *ngIf="item.logo; else: noprofil">
+                <img src="https://bursakerjaft.000webhostapp.com/img/foto_perusahaan/{{item.logo}}"/>
                 </div>
           Hello, kami dari {{ item.nama_perusahaan }} sangat tertarik dengan profil
           anda, kami akan sangat senang jika anda segera mengonfirmasi penawaran ini agar kami
@@ -56,8 +56,8 @@
             <ion-card-header [innerHTML]="item.nama_perusahaan" (click)="toCompany(i)"> 
             </ion-card-header>
             <ion-card-content class="notif">
-                <div *ngIf="dataSet[i].logo; else: noprofil">
-                    <img src="{{item.logo}}"/>
+                <div *ngIf="item.logo; else: noprofil">
+                    <img src="https://bursakerjaft.000webhostapp.com/img/foto_perusahaan/{{item.logo}}"/>
                     </div>
               Hello, kami dari {{ item.nama_perusahaan }} sangat tertarik dengan profil
               anda, kami akan sangat senang jika anda segera mengonfirmasi penawaran ini agar kami

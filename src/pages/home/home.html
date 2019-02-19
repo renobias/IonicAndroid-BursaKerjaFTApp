@@ -101,6 +101,7 @@
 
   <div *ngIf="dataSet; else: masihkosong">
   <ion-grid *ngFor="let item of dataSet;let i = index">
+    <div *ngIf="item.user_id_fk!=userPostData.user_id">
     <ion-row>
       <ion-col col-12 no-padding no-margin>
         <ion-card id="card-pk">
@@ -147,6 +148,7 @@
         <button id="btn-more" ion-button full (click)="more(i)">lainnya</button>
       </ion-col>
     </ion-row>
+  </div>
   </ion-grid>
 </div>
 

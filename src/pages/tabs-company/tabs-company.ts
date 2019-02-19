@@ -36,6 +36,7 @@ export class TabsCompanyPage {
   public dataSetawal: any = 0;
   public resposeData: any;
   public userDetails: any;
+  public ulangNotif:any;
   tab1Root = HomecompanyPage;
   tab2Root = NotifikasiPerusahaanPage;
   tab3Root = NotifCompanyPage;
@@ -75,6 +76,7 @@ export class TabsCompanyPage {
   logout() {
     this.Common.presentLoading();
     localStorage.clear();
+    clearInterval(this.ulangNotif);
     this.navCtrl.setRoot(WelcomePage);
     this.backToWelcome();
     window.localStorage.setItem("sudahlogoutCompany", "sudah logoutCompany");
@@ -131,7 +133,7 @@ export class TabsCompanyPage {
 
   //method agar fungsi getNotif dapat berjalan/terpanggil terus selama interval 1 detik
   startTimer() {
-    setInterval(() => {
+    this.ulangNotif=setInterval(() => {
       this.getnotif();
     }, 1000);
   }

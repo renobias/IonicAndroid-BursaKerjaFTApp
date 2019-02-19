@@ -33,6 +33,7 @@ export class TabsPage {
   public dataSetawal: any = 0;
   public resposeData: any;
   public userDetails: any;
+  public ulangNotif;
   tab1Root = HomePage;
   tab2Root = NotificationJobSeekerPage;
   tab3Root = ProfilalumniPage;
@@ -72,6 +73,7 @@ export class TabsPage {
   logout() {
     this.Common.presentLoading();
     localStorage.clear();
+    clearInterval(this.ulangNotif);
     this.navCtrl.setRoot(WelcomePage);
     this.backToWelcome;
     window.localStorage.setItem("sudahlogoutPK", "sudah logoutPK");
@@ -108,7 +110,7 @@ export class TabsPage {
             /*agar alarm/pemberitahuan hanya menyala jika nilai notifikasi bertambah(dibandingkan dengan nilai datasetawal)*/ this.dataSet > this.dataSetawal
           ) {
             this.localNotifications.schedule({
-              text: "Ada perusahaan baru yang tertarik dengan anda",
+              text: "Ada pemberitahuan baru",
               led: "FF0000",
               icon: "res://drawable-hdpi/icon.png",
               sound: this.setSound()
@@ -128,7 +130,7 @@ export class TabsPage {
 
   //method agar fungsi getNotif dapat berjalan/terpanggil terus selama interval 1 detik
   startTimer() {
-    setInterval(() => {
+    this.ulangNotif=setInterval(() => {
       this.getnotif();
     }, 1000);
   }
